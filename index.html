@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Landing Page - Your Journey Begins Here</title>
+    <meta name="description" content="Welcome to our innovative platform that helps you achieve your goals with cutting-edge solutions and exceptional user experience.">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <script>
+    (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = savedTheme || (systemDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+    })();
+    </script>
+
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="#home">DATACORE</a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link active">Platform</a></li>
+                    <li><a href="#capabilities" class="nav-link">Capabilities</a></li>
+                    <li><a href="#solutions" class="nav-link">Solutions</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li>
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                            <span class="theme-icon">🌙</span>
+                        </button>
+                    </li>
+                </ul>
+                <div class="nav-cta">
+                    <button class="btn btn-primary btn-small">Try Platform</button>
+                </div>
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Unlock Your Data Potential</h1>
+                    <p class="hero-subtitle">Discover how our AI-powered platform revolutionizes your business insights and capabilities.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary">Explore Platform</button>
+                        <button class="btn btn-secondary">Watch Demo</button>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">🌍 Global Clients</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">🔧 Support</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">☁️ Cloud Integration</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="capabilities" id="capabilities">
+            <div class="container">
+                <h2 class="section-title">Capabilities</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>AI-Driven Insights</h3>
+                        <p>Leverage cutting-edge AI to gain deeper insights and actionable intelligence.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Robust Security</h3>
+                        <p>Ensure the highest level of protection with state-of-the-art security protocols.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">☁️</div>
+                        <h3>Scalable Solutions</h3>
+                        <p>Adapt with ease using flexible solutions that scale with your business needs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="solutions" id="solutions">
+            <div class="container">
+                <h2 class="section-title">Solutions</h2>
+                <div class="solutions-content">
+                    <div class="solutions-text">
+                        <p>Transform your business with intelligent data solutions that drive growth, efficiency, and innovation across your entire organization.</p>
+                        <div class="solutions-list">
+                            <div class="solution-item">
+                                <div class="solution-icon">📊</div>
+                                <div class="solution-content">
+                                    <h4>Advanced Analytics</h4>
+                                    <p>Real-time insights and predictive analytics</p>
+                                </div>
+                            </div>
+                            <div class="solution-item">
+                                <div class="solution-icon">🤖</div>
+                                <div class="solution-content">
+                                    <h4>Machine Learning</h4>
+                                    <p>Automated decision-making capabilities</p>
+                                </div>
+                            </div>
+                            <div class="solution-item">
+                                <div class="solution-icon">🔄</div>
+                                <div class="solution-content">
+                                    <h4>Data Integration</h4>
+                                    <p>Seamless connectivity across all platforms</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="solutions-visual">
+                        <div class="data-visualization">
+                            <div class="logo-container logo-1">
+                                <img src="public/images/Just-Logo_-_Transparent.png" alt="DataCore Logo" class="logo-image">
+                            </div>
+                            <div class="logo-container logo-2">
+                                <img src="public/images/Just-Logo_-_Transparent.png" alt="DataCore Logo" class="logo-image">
+                            </div>
+                            <div class="logo-container logo-3">
+                                <img src="public/images/Just-Logo_-_Transparent.png" alt="DataCore Logo" class="logo-image">
+                            </div>
+                            <div class="logo-container logo-4">
+                                <img src="public/images/Just-Logo_-_Transparent.png" alt="DataCore Logo" class="logo-image">
+                            </div>
+                            <div class="logo-container logo-5">
+                                <img src="public/images/Just-Logo_-_Transparent.png" alt="DataCore Logo" class="logo-image">
+                            </div>
+                            <div class="logo-container logo-6">
+                                <img src="public/images/Just-Logo_-_Transparent.png" alt="DataCore Logo" class="logo-image">
+                            </div>
+                            <div class="logo-container logo-7">
+                                <img src="public/images/Just-Logo_-_Transparent.png" alt="DataCore Logo" class="logo-image">
+                            </div>
+                            <div class="logo-container logo-8">
+                                <img src="public/images/Just-Logo_-_Transparent.png" alt="DataCore Logo" class="logo-image">
+                            </div>
+                            <div class="visualization-text">
+                                <h3>AI-Powered Platform</h3>
+                                <p>Experience the future of data processing</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing" id="pricing">
+            <div class="container">
+                <div class="pricing-header">
+                    <h2 class="section-title">Pricing</h2>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card standard">
+                        <div class="pricing-card-content">
+                            <div class="pricing-card-header">
+                                <h3 class="pricing-card-title">STANDARD</h3>
+                                <div class="pricing-card-price">$400/month</div>
+                            </div>
+                            <div class="pricing-card-details">
+                                <div class="pricing-card-features">
+                                    <div class="pricing-feature">✓ 100 GB storage</div>
+                                    <div class="pricing-feature">✓ 1,000 events/second</div>
+                                    <div class="pricing-feature">✓ Unlimited number of data cores, users, events and proxy transformers</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pricing-card medium">
+                        <div class="pricing-card-content">
+                            <div class="pricing-card-header">
+                                <h3 class="pricing-card-title">MEDIUM</h3>
+                                <div class="pricing-card-price">$1,000/month</div>
+                            </div>
+                            <div class="pricing-card-details">
+                                <div class="pricing-card-features">
+                                    <div class="pricing-feature">✓ 1 TB storage</div>
+                                    <div class="pricing-feature">✓ 10,000 events/second</div>
+                                    <div class="pricing-feature">✓ Unlimited number of data cores, users, events and proxy transformers</div>
+                                    <div class="pricing-feature">✓ 50 transformer units</div>
+                                    <div class="pricing-feature">✓ Permission management</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pricing-card large">
+                        <div class="pricing-card-content">
+                            <div class="pricing-card-header">
+                                <h3 class="pricing-card-title">LARGE</h3>
+                                <div class="pricing-card-price">$2,000/month</div>
+                            </div>
+                            <div class="pricing-card-details">
+                                <div class="pricing-card-features">
+                                    <div class="pricing-feature">✓ 2 TB storage</div>
+                                    <div class="pricing-feature">✓ 20,000 events/second</div>
+                                    <div class="pricing-feature">✓ Unlimited number of data cores, users, events and proxy transformers</div>
+                                    <div class="pricing-feature">✓ 100 transformer units</div>
+                                    <div class="pricing-feature">✓ Permission management</div>
+                                    <div class="pricing-feature">✓ Obfuscation/GDPR-management</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pricing-card cluster">
+                        <div class="pricing-card-content">
+                            <div class="pricing-card-header">
+                                <h3 class="pricing-card-title">CLUSTER</h3>
+                                <div class="pricing-card-price">$2,000/month</div>
+                            </div>
+                            <div class="pricing-card-details">
+                                <div class="pricing-card-features">
+                                    <div class="pricing-feature">✓ On your own servers</div>
+                                    <div class="pricing-feature">✓ License for 20 vCPUs included</div>
+                                    <div class="pricing-feature">✓ Extra: $100/vCPU/month</div>
+                                    <div class="pricing-feature">✓ Unlimited number of data cores, users, events and proxy transformers</div>
+                                    <div class="pricing-feature">✓ Permission management</div>
+                                    <div class="pricing-feature">✓ Obfuscation/GDPR-management</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pricing-footer">
+                    <p class="pricing-notes">Extra storage $0.10/GB/month. Extra transformers $20/unit/month. All prices exclusive of sales tax.</p>
+                    <p class="pricing-subtitle">Discover the plan that aligns perfectly with your needs.</p>
+                    <p class="pricing-disclaimer">Note: all plans come with 'fair usage' limitations and will incur additional fees for managed read models.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="container">
+                <h2 class="section-title">Contact</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Ready to Transform?</h3>
+                        <p>Discover how our platform can revolutionize your data strategy and unlock new opportunities for growth.</p>
+                        <div class="contact-details">
+                            <p>📧 contact@datacore.ai</p>
+                            <p>📞 +1 (555) DATACORE</p>
+                            <p>📍 Silicon Valley, CA</p>
+                        </div>
+                        <div class="contact-cta">
+                            <button class="btn btn-primary">Book Demo</button>
+                            <button class="btn btn-secondary">Download Whitepaper</button>
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <input type="text" placeholder="Company Name" required>
+                        <input type="email" placeholder="Business Email" required>
+                        <select required>
+                            <option value="">Select Industry</option>
+                            <option value="finance">Finance</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="retail">Retail</option>
+                            <option value="technology">Technology</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <textarea placeholder="Tell us about your data challenges" rows="4" required></textarea>
+                        <button type="submit" class="btn btn-primary">Request Consultation</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>DATACORE</h4>
+                    <p>Empowering businesses with intelligent data solutions and AI-driven insights.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#home">Overview</a></li>
+                        <li><a href="#capabilities">Capabilities</a></li>
+                        <li><a href="#solutions">Solutions</a></li>
+                        <li><a href="#contact">Demo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="GitHub">🐙</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DataCore AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
