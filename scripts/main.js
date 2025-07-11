@@ -130,8 +130,8 @@
             });
         }, observerOptions);
 
-        // Observe feature cards and other elements
-        const animatedElements = document.querySelectorAll('.feature-card, .about-content, .contact-content');
+        // Observe only specific elements, excluding all card types
+        const animatedElements = document.querySelectorAll('.about-content, .contact-content');
         animatedElements.forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
