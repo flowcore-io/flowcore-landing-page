@@ -102,11 +102,11 @@ body {
     background-image: 
         radial-gradient(circle at 25% 25%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 75% 75%, rgba(255, 68, 170, 0.1) 0%, transparent 50%),
-        url('/public/images/waves-pattern.svg');
+        url('../public/images/waves-pattern.svg');
     background-attachment: fixed;
-background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-position: center;
-background-size: cover;
+    background-size: cover;
     color: var(--color-text);
     font-family: var(--font-family-body);
     font-size: var(--font-size-base);
