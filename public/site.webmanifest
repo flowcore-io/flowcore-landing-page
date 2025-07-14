@@ -1,0 +1,40 @@
+{
+    "name": "Flowcore - Event Storage and Processing Platform",
+    "short_name": "Flowcore",
+    "description": "Event-first data platform for AI developers with single source of truth, infinite replay capabilities, and universal database support.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#6366f1",
+    "icons": [
+        {
+            "src": "/public/images/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "/public/images/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/public/images/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "/public/images/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/public/images/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "categories": ["developer", "productivity", "business"],
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "en-US"
+}

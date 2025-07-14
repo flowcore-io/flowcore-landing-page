@@ -3,19 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flowcore - Event Storage and Processing</title>
-    <meta name="description" content="Event-first data platform for AI developers. Single source of truth with infinite replay capabilities and universal database support.">
+    
+    <!-- Primary Meta Tags -->
+    <title>Flowcore - Event Storage and Processing Platform for AI Developers</title>
+    <meta name="title" content="Flowcore - Event Storage and Processing Platform for AI Developers">
+    <meta name="description" content="Event-first data platform for AI developers. Single source of truth with infinite replay capabilities and universal database support. Scale infinitely with our standardized developer toolbox.">
+    <meta name="keywords" content="event storage, event processing, AI developers, data platform, event sourcing, database support, developer tools, event replay, data architecture, microservices">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="Flowcore">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://flowcore.io/">
+    <meta property="og:title" content="Flowcore - Event Storage and Processing Platform for AI Developers">
+    <meta property="og:description" content="Event-first data platform for AI developers. Single source of truth with infinite replay capabilities and universal database support.">
+    <meta property="og:image" content="https://flowcore.io/public/images/flowcore-og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Flowcore">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://flowcore.io/">
+    <meta property="twitter:title" content="Flowcore - Event Storage and Processing Platform for AI Developers">
+    <meta property="twitter:description" content="Event-first data platform for AI developers. Single source of truth with infinite replay capabilities and universal database support.">
+    <meta property="twitter:image" content="https://flowcore.io/public/images/flowcore-og-image.png">
+    <meta property="twitter:site" content="@flowcore_io">
+    <meta property="twitter:creator" content="@flowcore_io">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="public/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="public/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="public/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="public/images/apple-touch-icon.png">
+    <link rel="manifest" href="public/site.webmanifest">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://flowcore.io/">
+    
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Flowcore",
+      "description": "Event-first data platform for AI developers with single source of truth, infinite replay capabilities, and universal database support.",
+      "url": "https://flowcore.io/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "400",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "400",
+          "priceCurrency": "USD",
+          "billingDuration": "P1M"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Flowcore",
+        "url": "https://flowcore.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://flowcore.io/public/images/Just-Logo_-_Transparent.png"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+298-556-600",
+          "contactType": "Customer Service",
+          "email": "flowcore@flowcore.com"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Vestara Bryggja 15",
+          "addressLocality": "Tórshavn",
+          "postalCode": "100",
+          "addressCountry": "FO"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/company/flowcore",
+          "https://www.youtube.com/channel/UC-t-FsHqFETCuKzqCb9Ul2Q",
+          "https://discord.gg/k97YWAw8XF",
+          "https://www.threads.net/@flowcore.io",
+          "https://www.instagram.com/flowcore.io/"
+        ]
+      },
+      "featureList": [
+        "Event-First Architecture",
+        "Infinite Event Replay", 
+        "Auto-Managed Storage",
+        "Universal Database Support",
+        "10M+ Events/Second Processing",
+        "99.9% Uptime",
+        "0ms Latency"
+      ]
+    }
+    </script>
 </head>
 <body>
     <script>
     (function() {
         const savedTheme = localStorage.getItem('theme');
-        const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = savedTheme || (systemDark ? 'dark' : 'light');
+        const theme = savedTheme || 'dark';
         document.documentElement.setAttribute('data-theme', theme);
     })();
     </script>
@@ -24,7 +134,10 @@
         <nav class="nav">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <a href="#home">FLOWCORE</a>
+                    <a href="#home">
+                        <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="nav-logo-img">
+                        <span>FLOWCORE</span>
+                    </a>
                 </div>
                 <ul class="nav-menu">
                     <li><a href="#home" class="nav-link active">Home</a></li>
@@ -34,13 +147,13 @@
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                     <li>
                         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-                            <span class="theme-icon">🌙</span>
+                            <span class="theme-icon"><i class="fas fa-moon"></i></span>
                         </button>
                     </li>
+                    <li class="nav-cta-mobile">
+                        <a href="https://flowcore.io/" target="_blank" class="btn btn-primary btn-small">Try Platform</a>
+                    </li>
                 </ul>
-                <div class="nav-cta">
-                    <a href="https://flowcore.io/" target="_blank" class="btn btn-primary btn-small">Try Platform</a>
-                </div>
                 <button class="nav-toggle" aria-label="Toggle navigation">
                     <span></span>
                     <span></span>
@@ -59,21 +172,21 @@
                     <p class="hero-description">Event-first data platform with single source of truth. Replay events, iterate faster, and scale infinitely with our standardized developer toolbox.</p>
                     <div class="hero-buttons">
                         <a href="https://flowcore.io/" target="_blank" class="btn btn-primary">Explore Platform</a>
-                        <button class="btn btn-secondary">Watch Demo</button>
+                        <a href="https://docs.flowcore.io/" target="_blank" class="btn btn-secondary">Learn More</a>
                     </div>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
                         <div class="stat-number">10M+</div>
-                        <div class="stat-label">⚡ Events/Second</div>
+                        <div class="stat-label"><i class="fas fa-bolt"></i> Events/Second</div>
                     </div>
                     <div class="stat">
                         <div class="stat-number">99.9%</div>
-                        <div class="stat-label">🚀 Uptime</div>
+                        <div class="stat-label"><i class="fas fa-rocket"></i> Uptime</div>
                     </div>
                     <div class="stat">
                         <div class="stat-number">0ms</div>
-                        <div class="stat-label">⏱️ Latency</div>
+                        <div class="stat-label"><i class="fas fa-clock"></i> Latency</div>
                     </div>
                 </div>
             </div>
@@ -84,17 +197,17 @@
                 <h2 class="section-title">Capabilities</h2>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <div class="feature-icon">📝</div>
+                        <div class="feature-icon"><i class="fas fa-edit"></i></div>
                         <h3>Event-First Architecture</h3>
                         <p>Everything is written to the event store first, creating a single source of truth for all your data.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🔄</div>
+                        <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
                         <h3>Replay & Iterate</h3>
                         <p>Replay events infinitely to iterate development faster and test new features without risk.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🚀</div>
+                        <div class="feature-icon"><i class="fas fa-rocket"></i></div>
                         <h3>Auto-Managed Storage</h3>
                         <p>Automatic hot and cold data management - no manual intervention required from developers.</p>
                     </div>
@@ -110,21 +223,21 @@
                         <p>Stream events to any destination with parallel processing. Our standardized toolbox supports all major databases, storage systems, and communication channels.</p>
                         <div class="solutions-list">
                             <div class="solution-item">
-                                <div class="solution-icon">💾</div>
+                                <div class="solution-icon"><i class="fas fa-database"></i></div>
                                 <div class="solution-content">
                                     <h4>Universal Database Support</h4>
                                     <p>Relational, graph, time series, vector, key-value, column-based, document, and more</p>
                                 </div>
                             </div>
                             <div class="solution-item">
-                                <div class="solution-icon">📁</div>
+                                <div class="solution-icon"><i class="fas fa-warehouse"></i></div>
                                 <div class="solution-content">
                                     <h4>Data Warehouses & Storage</h4>
                                     <p>Object storage, CSV, Parquet files, and enterprise data warehouse integration</p>
                                 </div>
                             </div>
                             <div class="solution-item">
-                                <div class="solution-icon">📧</div>
+                                <div class="solution-icon"><i class="fas fa-envelope"></i></div>
                                 <div class="solution-content">
                                     <h4>Communication & Notifications</h4>
                                     <p>Email, SMS, message queues, push notifications, webhooks, and more</p>
@@ -138,25 +251,28 @@
                                 <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
                             <div class="logo-container logo-2">
-                                <img src="public/images/Just-Logo_-_Transparent.png" alt="DataCore Logo" class="logo-image">
+                                <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
                             <div class="logo-container logo-3">
-                                <img src="public/images/Just-Logo_-_Transparent.png" alt="DataCore Logo" class="logo-image">
+                                <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
                             <div class="logo-container logo-4">
-                                <img src="public/images/Just-Logo_-_Transparent.png" alt="DataCore Logo" class="logo-image">
+                                <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
                             <div class="logo-container logo-5">
-                                <img src="public/images/Just-Logo_-_Transparent.png" alt="DataCore Logo" class="logo-image">
+                                <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
                             <div class="logo-container logo-6">
-                                <img src="public/images/Just-Logo_-_Transparent.png" alt="DataCore Logo" class="logo-image">
+                                <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
                             <div class="logo-container logo-7">
-                                <img src="public/images/Just-Logo_-_Transparent.png" alt="DataCore Logo" class="logo-image">
+                                <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
                             <div class="logo-container logo-8">
-                                <img src="public/images/Just-Logo_-_Transparent.png" alt="DataCore Logo" class="logo-image">
+                                <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
+                            </div>
+                            <div class="logo-container logo-9">
+                                <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
                             <div class="visualization-text">
                                 <h3>Flowcore Platform</h3>
@@ -259,30 +375,30 @@
                 </div>
                 <div class="contact-content">
                     <div class="contact-cards">
-                        <div class="contact-card">
-                            <div class="contact-icon">📧</div>
+                        <a href="mailto:flowcore@flowcore.com" class="contact-card contact-card-link">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                             <h3>Email Us</h3>
                             <p>Send us a message and we'll get back to you within 24 hours.</p>
-                            <a href="mailto:flowcore@flowcore.com" class="contact-link">flowcore@flowcore.com</a>
-                        </div>
-                        <div class="contact-card">
-                            <div class="contact-icon">📞</div>
+                            <span class="contact-link">flowcore@flowcore.com</span>
+                        </a>
+                        <a href="tel:+298556600" class="contact-card contact-card-link">
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
                             <h3>Call Us</h3>
                             <p>Speak directly with our team for immediate assistance.</p>
-                            <a href="tel:+298556600" class="contact-link">+298 556 600</a>
-                        </div>
-                        <div class="contact-card">
-                            <div class="contact-icon">📍</div>
+                            <span class="contact-link">+298 556 600</span>
+                        </a>
+                        <a href="https://maps.app.goo.gl/5czHaR9F8Een7D94A" target="_blank" class="contact-card contact-card-link">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                             <h3>Visit Us</h3>
                             <p>Located in the heart of Tórshavn, Faroe Islands.</p>
-                            <a href="https://maps.app.goo.gl/5czHaR9F8Een7D94A" target="_blank" class="contact-link">Flowcore Sp/f<br>Vestara Bryggja 15<br>100 Tórshavn</a>
-                        </div>
-                        <div class="contact-card discord-card">
-                            <div class="contact-icon">💬</div>
+                            <span class="contact-link">Flowcore Sp/f<br>Vestara Bryggja 15<br>100 Tórshavn</span>
+                        </a>
+                        <a href="https://discord.gg/k97YWAw8XF" target="_blank" class="contact-card contact-card-link discord-card">
+                            <div class="contact-icon"><i class="fab fa-discord"></i></div>
                             <h3>Join Our Community</h3>
                             <p>Connect with other developers and get real-time support.</p>
-                            <a href="https://discord.gg/k97YWAw8XF" target="_blank" class="btn btn-primary">Join Discord Community</a>
-                        </div>
+                            <span class="contact-link">Join Discord Community</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -292,39 +408,73 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h4>FLOWCORE</h4>
-                    <p>Event storage and processing platform for AI developers. Single source of truth with infinite replay capabilities.</p>
+                <!-- Company Info Section -->
+                <div class="footer-section footer-brand">
+                    <div class="footer-logo">
+                        <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="footer-logo-img">
+                        <h4>FLOWCORE</h4>
+                    </div>
+                    <p class="footer-description">Event storage and processing platform for AI developers. Single source of truth with infinite replay capabilities.</p>
+                    
+                    <!-- Social Media Links -->
+                    <div class="footer-social">
+                        <h5>Follow Us</h5>
+                        <div class="social-links">
+                        <a href="https://www.linkedin.com/company/flowcore" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.youtube.com/channel/UC-t-FsHqFETCuKzqCb9Ul2Q" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://discord.gg/k97YWAw8XF" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                        <a href="https://www.threads.net/@flowcore.io" target="_blank" aria-label="Threads"><i class="fab fa-threads"></i></a>
+                        <a href="https://www.instagram.com/flowcore.io/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
                 </div>
+                
+                <!-- Support & Resources -->
                 <div class="footer-section">
-                    <h4>Platform</h4>
+                    <h4>Support</h4>
                     <ul>
-                        <li><a href="#home">Overview</a></li>
-                        <li><a href="#capabilities">Capabilities</a></li>
-                        <li><a href="#solutions">Solutions</a></li>
-                        <li><a href="#contact">Demo</a></li>
+                        <li><a href="https://flowcore.io/" target="_blank">Video Tutorials</a></li>
+                        <li><a href="https://flowcore.io/" target="_blank">Documentation</a></li>
+                        <li><a href="https://discord.gg/k97YWAw8XF" target="_blank">Community Support</a></li>
+                        <li><a href="https://flowcore.io/" target="_blank">API Reference</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="#">Documentation</a></li>
-                        <li><a href="#">API Reference</a></li>
-                        <li><a href="#">Case Studies</a></li>
-                        <li><a href="#">Support</a></li>
-                    </ul>
+                
+                <!-- Contact Information -->
+                <div class="footer-section footer-contact">
+                    <h4>Contact Us</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <a href="tel:+298556600">+298 556 600</a>
+                        </div>
+                        <div class="contact-item">
+                            <a href="mailto:flowcore@flowcore.com">flowcore@flowcore.com</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <div class="social-links">
-                        <a href="#" aria-label="LinkedIn">💼</a>
-                        <a href="#" aria-label="Twitter">🐦</a>
-                        <a href="#" aria-label="GitHub">🐙</a>
+                
+                <!-- Address Information -->
+                <div class="footer-section footer-address">
+                    <h4>Visit Us</h4>
+                    <div class="address-info">
+                        <p><strong>Flowcore Sp/f</strong></p>
+                        <p>Vestara Bryggja 15<br>
+                        100 Tórshavn<br>
+                        Faroe Islands</p>
                     </div>
                 </div>
             </div>
+            
+            <!-- Footer Bottom -->
             <div class="footer-bottom">
-                <p>&copy; 2025 Flowcore. All rights reserved.</p>
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Flowcore. All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="terms-of-service.html">Terms of Service</a>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="fulfillment-policy.html">Fulfillment Policy</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
