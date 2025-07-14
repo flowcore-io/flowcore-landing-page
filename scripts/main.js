@@ -41,30 +41,39 @@
 
     // Smooth scrolling for navigation links
     function initSmoothScrolling() {
-        const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+        const navLinks = document.querySelectorAll('.nav-link[href^="#"], .nav-logo a[href^="#"]');
         
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
                 
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                // Special handling for home link - scroll to very top
+                if (targetId === '#home') {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
                     });
+                } else {
+                    const targetElement = document.querySelector(targetId);
                     
-                    // Close mobile menu if open
-                    const navMenu = document.querySelector('.nav-menu');
-                    if (navMenu && navMenu.classList.contains('active')) {
-                        toggleMobileNav();
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
                     }
-                    
-                    // Update active nav link
-                    updateActiveNavLink(this);
                 }
+                
+                // Close mobile menu if open
+                const navMenu = document.querySelector('.nav-menu');
+                if (navMenu && navMenu.classList.contains('active')) {
+                    toggleMobileNav();
+                }
+                
+                // Update active nav link
+                updateActiveNavLink(this);
             });
         });
     }
@@ -140,12 +149,60 @@
         });
     }
 
-    // Initialize everything when DOM is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-        initializeTheme();
-        initSmoothScrolling();
-        initContactForm();
-        initScrollAnimations();
+// Enhanced scroll animations
+function initAdvancedScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all animated elements
+    const animatedElements = document.querySelectorAll('.animate-on-scroll, .fade-in-up, .fade-in-left, .fade-in-right, .scale-in');
+    animatedElements.forEach(el => observer.observe(el));
+}
+
+// Initialize page load animations
+function initPageLoadAnimations() {
+    // Add loaded class to hero section after a short delay
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        setTimeout(() => {
+            heroSection.classList.add('loaded');
+        }, 300); // Small delay to ensure smooth transition
+        
+        // Animate hero stats with stagger effect
+        const heroStats = document.querySelectorAll('.hero-stats .stat');
+        heroStats.forEach((stat, index) => {
+            setTimeout(() => {
+                stat.classList.add('animate-in');
+            }, 800 + (index * 200)); // Start after hero loads, then stagger by 200ms each
+        });
+    }
+    
+    // Add loaded class to terms section for policy pages (same animation as hero)
+    const termsSection = document.querySelector('.terms-section');
+    if (termsSection) {
+        setTimeout(() => {
+            termsSection.classList.add('loaded');
+        }, 300); // Same delay as hero for consistency
+    }
+}
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeTheme();
+    initSmoothScrolling();
+    initContactForm();
+    initAdvancedScrollAnimations();
+    initPageLoadAnimations();
 
         // Theme toggle event listener
         const themeToggle = document.getElementById('theme-toggle');

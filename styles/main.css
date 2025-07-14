@@ -279,6 +279,9 @@ body {
     padding: 0 1rem;
     width: 100%;
     box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .hero-title {
@@ -472,13 +475,13 @@ body {
     background-clip: text;
 }
 
-.feature-card h3 {
-    font-family: var(--font-family-header);
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-normal);
-    margin: 0 0 var(--spacing-sm) 0;
-    color: var(--color-text);
-}
+    .feature-card h3 {
+        font-family: var(--font-family-header);
+        font-size: var(--font-size-2xl);
+        font-weight: var(--font-weight-normal);
+        margin: 0 0 var(--spacing-sm) 0;
+        color: var(--color-text);
+    }
 
 .feature-card p {
     color: var(--color-text-muted);
@@ -695,8 +698,22 @@ background-color: rgba(var(--color-surface-rgb), 0.75);
     border-radius: var(--border-radius-xl);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-secondary);
     position: relative;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.visualization-text:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(255, 68, 170, 0.2);
+    border-color: var(--color-secondary);
+    background: rgba(var(--color-surface-rgb), 0.8);
+    text-decoration: none;
+    color: inherit;
 }
 
 .visualization-text h3 {
@@ -782,6 +799,8 @@ background-color: rgba(var(--color-surface-rgb), 0.75);
     height: 100%;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    text-decoration: none;
+    color: inherit;
 }
 
 .pricing-card-header::after {
@@ -800,6 +819,7 @@ background-color: rgba(var(--color-surface-rgb), 0.75);
 .pricing-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    opacity: 1;
 }
 
 .pricing-card:hover .pricing-card-header::after {
@@ -1043,13 +1063,13 @@ background-color: rgba(var(--color-surface-rgb), 0.75);
     background-clip: text;
 }
 
-.contact-card h3 {
-    font-family: var(--font-family-header);
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-normal);
-    margin: 0 0 var(--spacing-sm) 0;
-    color: var(--color-text);
-}
+    .contact-card h3 {
+        font-family: var(--font-family-header);
+        font-size: var(--font-size-2xl);
+        font-weight: var(--font-weight-normal);
+        margin: 0 0 var(--spacing-sm) 0;
+        color: var(--color-text);
+    }
 
 .contact-card p {
     color: var(--color-text-muted);
@@ -1242,10 +1262,201 @@ background-color: rgba(var(--color-surface-rgb), 0.75);
     opacity: 1;
 }
 
+/* Main content padding for policy pages to account for fixed header */
+main {
+    padding-top: 70px; /* Account for fixed header height - reduced to minimize hero gap */
+}
+
+/* Scroll Animations */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-up.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-left.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-right.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scale-in {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scale-in.animate-in {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Hero and terms container loaded state */
+.hero.loaded .hero-container,
+.terms-section.loaded .terms-container {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.stagger-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.stagger-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.stagger-delay-3 {
+    transition-delay: 0.3s;
+}
+
+.stagger-delay-4 {
+    transition-delay: 0.4s;
+}
+
+/* Section title animations */
+.section-title.animate-on-scroll {
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Hero stats stagger animation */
+.hero-stats .stat {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.hero-stats .stat.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Feature cards stagger animation */
+.feature-card.animate-on-scroll {
+    transform: translateY(40px) scale(0.95);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.feature-card.animate-on-scroll.animate-in {
+    transform: translateY(0) scale(1);
+}
+
+/* Solutions animation */
+.solutions-content .solutions-text {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.solutions-content .solutions-text.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.solutions-content .solutions-visual {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.solutions-content .solutions-visual.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Pricing cards animation */
+.pricing-card.animate-on-scroll {
+    transform: translateY(50px) rotateX(15deg);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform-style: preserve-3d;
+}
+
+.pricing-card.animate-on-scroll.animate-in {
+    transform: translateY(0) rotateX(0deg);
+}
+
+/* Contact cards animation */
+.contact-card.animate-on-scroll {
+    transform: translateY(40px) scale(0.9);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.contact-card.animate-on-scroll.animate-in {
+    transform: translateY(0) scale(1);
+}
+
+/* Enhanced animations for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .animate-on-scroll,
+    .fade-in-up,
+    .fade-in-left,
+    .fade-in-right,
+    .scale-in,
+    .hero-stats .stat,
+    .feature-card.animate-on-scroll,
+    .solutions-content .solutions-text,
+    .solutions-content .solutions-visual,
+    .pricing-card.animate-on-scroll,
+    .contact-card.animate-on-scroll {
+        transition: opacity 0.3s ease;
+        transform: none;
+    }
+    
+    .animate-on-scroll.animate-in,
+    .fade-in-up.animate-in,
+    .fade-in-left.animate-in,
+    .fade-in-right.animate-in,
+    .scale-in.animate-in,
+    .hero-stats .stat.animate-in,
+    .feature-card.animate-on-scroll.animate-in,
+    .solutions-content .solutions-text.animate-in,
+    .solutions-content .solutions-visual.animate-in,
+    .pricing-card.animate-on-scroll.animate-in,
+    .contact-card.animate-on-scroll.animate-in {
+        transform: none;
+    }
+}
+
 /* Terms of Service Page */
 .terms-section {
     padding: var(--spacing-2xl) 0;
-    background-color: rgba(var(--color-background-rgb), 0.75);
+    background-color: rgba(var(--color-surface-rgb), 0.75);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     min-height: 100vh;
 }
 
@@ -1253,6 +1464,9 @@ background-color: rgba(var(--color-surface-rgb), 0.75);
     max-width: 800px;
     margin: 0 auto;
     padding: 0 var(--spacing-md);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .terms-title {
@@ -1378,6 +1592,13 @@ background-color: rgba(var(--color-surface-rgb), 0.75);
     }
 }
 
+/* Comprehensive tablet range - all devices 481px to 1022px */
+@media (max-width: 1022px) and (min-width: 481px) {
+    .hero {
+        padding: calc(var(--spacing-sm) + 10px) 0 var(--spacing-lg) 0;
+    }
+}
+
 /* iPad Air and larger tablets - Updated for 2x2 layouts */
 @media (max-width: 1200px) and (min-width: 769px) {
     .pricing-grid {
@@ -1458,6 +1679,10 @@ background-color: rgba(var(--color-surface-rgb), 0.75);
     
     .nav-menu.active .nav-cta-mobile {
         display: block;
+    }
+    
+    .nav-cta {
+        display: none;
     }
     
     .nav-toggle {
@@ -1611,6 +1836,19 @@ background-color: rgba(var(--color-surface-rgb), 0.75);
         margin: 0 auto;
     }
     
+    /* Policy pages mobile optimization */
+    .terms-container {
+        padding: 0 0.75rem;
+    }
+    
+    .terms-content {
+        padding: var(--spacing-lg);
+    }
+    
+    .terms-intro {
+        padding: var(--spacing-sm);
+    }
+    
     .nav-container {
         padding: var(--spacing-sm) 0.75rem;
     }
@@ -1659,11 +1897,11 @@ background-color: rgba(var(--color-surface-rgb), 0.75);
     }
     
     .hero-title {
-        font-size: var(--font-size-2xl);
+        font-size: var(--font-size-3xl);
     }
     
     .section-title {
-        font-size: var(--font-size-2xl);
+        font-size: var(--font-size-3xl);
     }
     
     .features-grid {
@@ -1706,12 +1944,13 @@ background-color: rgba(var(--color-surface-rgb), 0.75);
     
     /* Updated pricing card header responsiveness - Mobile */
     .pricing-card-header {
-        padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md) var(--spacing-md);
+        padding: var(--spacing-xl) var(--spacing-md) var(--spacing-md) var(--spacing-md);
+        margin-top: calc(-1 * var(--spacing-md));
     }
     
     .pricing-card-title {
-        font-size: var(--font-size-xl);
-        margin-bottom: var(--spacing-xs);
+        font-size: var(--font-size-2xl);
+        margin-bottom: var(--spacing-sm);
         line-height: var(--line-height-tight);
         letter-spacing: 0.25px;
     }
@@ -1719,6 +1958,21 @@ background-color: rgba(var(--color-surface-rgb), 0.75);
     .pricing-card-price {
         font-size: var(--font-size-lg);
         line-height: var(--line-height-tight);
+    }
+    
+    /* Fix card height consistency */
+    .pricing-card-details {
+    padding: 0 var(--spacing-md) var(--spacing-lg) var(--spacing-md);
+        display: flex;
+        flex-direction: column;
+        min-height: 200px;
+    }
+    
+    .pricing-card-features {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     }
 }
 
