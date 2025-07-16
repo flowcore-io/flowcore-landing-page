@@ -137,7 +137,12 @@ body > .wave-container {
 /* Mobile fix for wave container to prevent scrolling with top bar */
 @media (max-width: 768px) {
     body > .wave-container {
-        height: 100svh; /* Small viewport height for mobile */
+        height: 100dvh; /* Dynamic viewport height for mobile */
+    }
+    
+    /* Reduce mobile navbar padding */
+    .nav-container {
+        padding: var(--spacing-xs) 1rem;
     }
 }
 
@@ -1842,7 +1847,7 @@ main {
     }
     
     .nav-container {
-        padding: var(--spacing-sm) 0.75rem;
+        padding: var(--spacing-xs) 0.75rem;
     }
     
     .hero-container {
