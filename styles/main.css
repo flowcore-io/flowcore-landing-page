@@ -1861,9 +1861,6 @@ main {
     .social-links {
         justify-content: center;
     }
-    .header {
-        padding: var(--spacing-sm);
-    }
     .nav-toggle {
         margin-left: auto;
     }
