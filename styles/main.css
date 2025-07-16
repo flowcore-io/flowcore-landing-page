@@ -112,14 +112,6 @@ a:hover {
 
 body {
     background-color: var(--color-background);
-    background-image: 
-        radial-gradient(circle at 25% 25%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(255, 68, 170, 0.1) 0%, transparent 50%),
-        url('../public/images/waves-pattern_transparent.svg');
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
     color: var(--color-text);
     font-family: var(--font-family-body);
     font-size: var(--font-size-base);
@@ -127,6 +119,19 @@ body {
     margin: 0;
     padding: 0;
     transition: background-color var(--transition-base), color var(--transition-base);
+    position: relative;
+}
+
+/* Wave Container as Body Background */
+body > .wave-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
 }
 
 .container {
@@ -268,7 +273,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(var(--color-surface-rgb), 0.75);
+    background-color: rgba(var(--color-surface-rgb), 0.6);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 }
@@ -411,7 +416,7 @@ body {
 .capabilities,
 .features {
     padding: var(--spacing-2xl) 0;
-    background-color: rgba(var(--color-background-rgb), 0.75);
+    background-color: rgba(var(--color-background-rgb), 0.6);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -492,7 +497,7 @@ body {
 /* Solutions Section */
 .solutions {
     padding: var(--spacing-2xl) 0;
-background-color: rgba(var(--color-surface-rgb), 0.75);
+background-color: rgba(var(--color-surface-rgb), 0.6);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     min-height: 100vh;
@@ -745,10 +750,11 @@ background-color: rgba(var(--color-surface-rgb), 0.75);
     }
 }
 
+
 /* Pricing Section */
 .pricing {
     padding: var(--spacing-2xl) 0;
-    background-color: rgba(var(--color-background-rgb), 0.75);
+    background-color: rgba(var(--color-background-rgb), 0.6);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -962,7 +968,7 @@ background-color: rgba(var(--color-surface-rgb), 0.75);
 /* Contact Section */
 .contact {
     padding: var(--spacing-2xl) 0;
-    background-color: rgba(var(--color-surface-rgb), 0.75);
+    background-color: rgba(var(--color-surface-rgb), 0.6);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     min-height: 100vh;
@@ -2025,5 +2031,21 @@ main {
     .solution-content p {
         font-size: var(--font-size-sm);
     }
+    
+    .mission-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .mission-item {
+        text-align: center;
+        padding: var(--spacing-md);
+    }
+    
+    .mission-icon {
+        font-size: 2.5rem;
+        margin-bottom: var(--spacing-sm);
+    }
 }
+
 

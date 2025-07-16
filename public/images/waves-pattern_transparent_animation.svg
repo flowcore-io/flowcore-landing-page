@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="glowing-waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3072 1928" style="background-color:transparent">
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="intenseglow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <radialGradient id="glowGradient1" cx="0" cy="0" r="0.8">
+      <stop offset="0%" stop-color="#ff00ff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ff44aa" stop-opacity="0.3"/>
+    </radialGradient>
+    
+    <radialGradient id="glowGradient2" cx="0" cy="0" r="0.8">
+      <stop offset="0%" stop-color="#ff44aa" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#ff8755" stop-opacity="0.2"/>
+    </radialGradient>
+    
+    <radialGradient id="glowGradient3" cx="0" cy="0" r="0.8">
+      <stop offset="0%" stop-color="#ff8755" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ffcc00" stop-opacity="0.4"/>
+    </radialGradient>
+    
+    <radialGradient id="glowGradient4" cx="0" cy="0" r="0.8">
+      <stop offset="0%" stop-color="#ffcc00" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ff8755" stop-opacity="0.2"/>
+    </radialGradient>
+    
+    <radialGradient id="glowGradient5" cx="0" cy="0" r="0.8">
+      <stop offset="0%" stop-color="#ffcc00" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ff44aa" stop-opacity="0.3"/>
+    </radialGradient>
+  </defs>
+  <!-- Wave Layer 1 - Main purple wave -->
+  <g opacity="0.9">
+    <path d="M0,1400 C768,1360 1536,1440 3072,1400 L3072,1928 L0,1928 Z" fill="url(#glowGradient1)" stroke="#ff00ff" stroke-width="3" filter="url(#intenseglow)">
+      <animate attributeName="d" 
+        values="M0,1400 C768,1360 1536,1440 3072,1400 L3072,1928 L0,1928 Z;M0,1420 C768,1460 1536,1380 3072,1420 L3072,1928 L0,1928 Z;M0,1380 C768,1420 1536,1340 3072,1380 L3072,1928 L0,1928 Z;M0,1400 C768,1360 1536,1440 3072,1400 L3072,1928 L0,1928 Z"
+        dur="5s" repeatCount="indefinite"
+        keyTimes="0; 0.33; 0.66; 1"
+        keySplines="0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1"/>
+    </path>
+  </g>
+  
+  <!-- Wave Layer 2 - Pink wave -->
+  <g opacity="0.7">
+    <path d="M0,1480 C1024,1440 2048,1520 3072,1480 L3072,1928 L0,1928 Z" fill="url(#glowGradient2)" stroke="#ff44aa" stroke-width="2" filter="url(#glow)">
+      <animate attributeName="d" 
+        values="M0,1480 C1024,1440 2048,1520 3072,1480 L3072,1928 L0,1928 Z;M0,1500 C1024,1540 2048,1460 3072,1500 L3072,1928 L0,1928 Z;M0,1460 C1024,1500 2048,1420 3072,1460 L3072,1928 L0,1928 Z;M0,1480 C1024,1440 2048,1520 3072,1480 L3072,1928 L0,1928 Z"
+        dur="6s" repeatCount="indefinite"
+        keyTimes="0; 0.33; 0.66; 1"
+        keySplines="0.4 0 0.6 1; 0.4 0 0.6 1; 0.4 0 0.6 1"/>
+    </path>
+  </g>
+  
+  <!-- Wave Layer 3 - Orange wave -->
+  <g opacity="0.6">
+    <path d="M0,1560 C1024,1540 2048,1580 3072,1560 L3072,1928 L0,1928 Z" fill="url(#glowGradient3)" stroke="#ff8755" stroke-width="2" filter="url(#glow)">
+      <animate attributeName="d" 
+        values="M0,1560 C1024,1540 2048,1580 3072,1560 L3072,1928 L0,1928 Z;M0,1570 C1024,1590 2048,1550 3072,1570 L3072,1928 L0,1928 Z;M0,1550 C1024,1570 2048,1530 3072,1550 L3072,1928 L0,1928 Z;M0,1560 C1024,1540 2048,1580 3072,1560 L3072,1928 L0,1928 Z"
+        dur="7s" repeatCount="indefinite"
+        keyTimes="0; 0.33; 0.66; 1"
+        keySplines="0.25 0.1 0.25 1; 0.25 0.1 0.25 1; 0.25 0.1 0.25 1"/>
+    </path>
+  </g>
+  
+  <!-- Wave Layer 4 - Yellow wave -->
+  <g opacity="0.8">
+    <path d="M0,1500 C768,1485 1536,1515 3072,1500 L3072,1928 L0,1928 Z" fill="url(#glowGradient4)" stroke="#ffcc00" stroke-width="3" filter="url(#glow)">
+      <animate attributeName="d" 
+        values="M0,1500 C768,1485 1536,1515 3072,1500 L3072,1928 L0,1928 Z;M0,1510 C768,1525 1536,1495 3072,1510 L3072,1928 L0,1928 Z;M0,1490 C768,1505 1536,1475 3072,1490 L3072,1928 L0,1928 Z;M0,1500 C768,1485 1536,1515 3072,1500 L3072,1928 L0,1928 Z"
+        dur="8s" repeatCount="indefinite"
+        keyTimes="0; 0.33; 0.66; 1"
+        keySplines="0.68 -0.6 0.32 1.6; 0.68 -0.6 0.32 1.6; 0.68 -0.6 0.32 1.6"/>
+    </path>
+  </g>
+  
+  <!-- Wave Layer 5 - Additional yellow wave for more yellow presence -->
+  <g opacity="0.5">
+    <path d="M0,1600 C1024,1590 2048,1610 3072,1600 L3072,1928 L0,1928 Z" fill="url(#glowGradient5)" stroke="#ffcc00" stroke-width="2" filter="url(#glow)">
+      <animate attributeName="d" 
+        values="M0,1600 C1024,1590 2048,1610 3072,1600 L3072,1928 L0,1928 Z;M0,1605 C1024,1615 2048,1595 3072,1605 L3072,1928 L0,1928 Z;M0,1595 C1024,1605 2048,1585 3072,1595 L3072,1928 L0,1928 Z;M0,1600 C1024,1590 2048,1610 3072,1600 L3072,1928 L0,1928 Z"
+        dur="9s" repeatCount="indefinite"
+        keyTimes="0; 0.33; 0.66; 1"
+        keySplines="0.17 0.67 0.83 0.67; 0.17 0.67 0.83 0.67; 0.17 0.67 0.83 0.67"/>
+    </path>
+  </g>
+  
+  <!-- Wave Layer 6 - Extra dynamic wave for visual interest -->
+  <g opacity="0.3">
+    <path d="M0,1320 C1024,1310 2048,1330 3072,1320 L3072,1928 L0,1928 Z" fill="url(#glowGradient1)" stroke="#ff00ff" stroke-width="1" filter="url(#glow)">
+      <animate attributeName="d" 
+        values="M0,1320 C1024,1310 2048,1330 3072,1320 L3072,1928 L0,1928 Z;M0,1325 C1024,1335 2048,1315 3072,1325 L3072,1928 L0,1928 Z;M0,1315 C1024,1325 2048,1305 3072,1315 L3072,1928 L0,1928 Z;M0,1320 C1024,1310 2048,1330 3072,1320 L3072,1928 L0,1928 Z"
+        dur="4s" repeatCount="indefinite"
+        keyTimes="0; 0.33; 0.66; 1"
+        keySplines="0.25 0.46 0.45 0.94; 0.25 0.46 0.45 0.94; 0.25 0.46 0.45 0.94"/>
+    </path>
+  </g>
+</svg>

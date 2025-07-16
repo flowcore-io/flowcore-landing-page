@@ -1,0 +1,136 @@
+/* Static Wave Background - Performance-friendly alternative to CSS Wave Animation */
+
+.wave-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.wave-layer {
+    position: absolute;
+    width: 200%;
+    height: 400px;
+    background: linear-gradient(90deg, transparent, var(--wave-color), transparent);
+    border-radius: 50%;
+    opacity: var(--wave-opacity);
+    transform-origin: center;
+    box-shadow: 0 0 20px var(--wave-glow-color, var(--wave-color));
+}
+
+/* =====================================
+   STATIC WAVE LAYER CONFIGURATIONS
+   ===================================== */
+
+/* 🌊 WAVE #1 - PURPLE (Main Layer) - Static positioned */
+.wave-layer-1 {
+    --wave-color: rgba(255, 0, 255, 0.6);
+    --wave-glow-color: rgba(255, 0, 255, 0.9);
+    --wave-opacity: 0.35;
+    bottom: -150px;
+    left: -50%;
+    z-index: 1;
+    transform: translateY(-8px) scaleY(1.05) skewX(1deg);
+}
+
+/* 🌊 WAVE #2 - PINK (Secondary Layer) - Static positioned */
+.wave-layer-2 {
+    --wave-color: rgba(255, 68, 170, 0.5);
+    --wave-glow-color: rgba(255, 68, 170, 0.9);
+    --wave-opacity: 0.5;
+    bottom: -180px;
+    left: -50%;
+    transform: translateX(10px) scaleX(1.05) translateY(-5px);
+}
+
+/* 🌊 WAVE #4 - YELLOW (Deep Layer) - Static positioned */
+.wave-layer-4 {
+    --wave-color: rgba(255, 204, 0, 0.6);
+    --wave-glow-color: rgba(255, 204, 0, 0.9);
+    --wave-opacity: 0.55;
+    bottom: -230px;
+    left: -50%;
+    transform: translateX(15px) scaleX(1.1) translateY(-3px);
+}
+
+/* 🌊 WAVE #5 - LIGHT YELLOW (Deepest Layer) - Static positioned */
+.wave-layer-5 {
+    --wave-color: rgba(255, 204, 0, 0.8);
+    --wave-glow-color: rgba(255, 204, 0, 0.9);
+    --wave-opacity: 0.75;
+    bottom: -320px;
+    left: -50%;
+    z-index: 50;
+    transform: translateY(-12px) scaleY(1.1) skewX(-1deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .wave-layer {
+        height: 300px;
+    }
+    
+    .wave-layer-1 { 
+        bottom: -90px;
+        transform: translateY(-6px) scaleY(1.03) skewX(0.5deg);
+    }
+    .wave-layer-2 { 
+        bottom: -110px;
+        transform: translateX(8px) scaleX(1.03) translateY(-4px);
+    }
+    .wave-layer-4 { 
+        bottom: -150px;
+        transform: translateX(12px) scaleX(1.08) translateY(-2px);
+    }
+    .wave-layer-5 { 
+        bottom: -200px;
+        transform: translateY(-9px) scaleY(1.08) skewX(-0.5deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .wave-layer {
+        height: 200px;
+    }
+    
+    .wave-layer-1 { 
+        bottom: -70px;
+        transform: translateY(-4px) scaleY(1.02) skewX(0.3deg);
+    }
+    .wave-layer-2 { 
+        bottom: -90px;
+        transform: translateX(6px) scaleX(1.02) translateY(-3px);
+    }
+    .wave-layer-4 { 
+        bottom: -110px;
+        transform: translateX(10px) scaleX(1.05) translateY(-1px);
+    }
+    .wave-layer-5 { 
+        bottom: -160px;
+        transform: translateY(-7px) scaleY(1.05) skewX(-0.3deg);
+    }
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .wave-layer-1 {
+    --wave-color: rgba(255, 0, 255, 0.8);
+}
+
+[data-theme="dark"] .wave-layer-2 {
+    --wave-color: rgba(255, 68, 170, 0.7);
+}
+
+[data-theme="dark"] .wave-layer-4 {
+    --wave-color: rgba(255, 204, 0, 0.8);
+}
+
+[data-theme="dark"] .wave-layer-5 {
+    --wave-color: rgba(255, 204, 0, 0.6);
+}
+
+/* Performance optimizations for static version */
+.wave-layer {
+    backface-visibility: hidden;
+    will-change: auto; /* Reset will-change for static version */
+}
