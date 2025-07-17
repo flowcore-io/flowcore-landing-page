@@ -85,7 +85,7 @@
         activeLink.classList.add('active');
     }
 
-    // Contact form handling
+    // Contact form handling (currently no contact form in HTML)
     function initContactForm() {
         const contactForm = document.querySelector('.contact-form');
         
@@ -94,10 +94,9 @@
                 e.preventDefault();
                 
                 // Get form data
-                const formData = new FormData(this);
-                const name = this.querySelector('input[type="text"]').value;
-                const email = this.querySelector('input[type="email"]').value;
-                const message = this.querySelector('textarea').value;
+                const name = this.querySelector('input[type="text"]')?.value;
+                const email = this.querySelector('input[type="email"]')?.value;
+                const message = this.querySelector('textarea')?.value;
                 
                 // Simple validation
                 if (!name || !email || !message) {
@@ -123,8 +122,8 @@
         }
     }
 
-    // Intersection Observer for scroll animations
-    function initScrollAnimations() {
+    // Enhanced scroll animations
+    function initAdvancedScrollAnimations() {
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -133,68 +132,42 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('animate-in');
                 }
             });
         }, observerOptions);
 
-        // Observe only specific elements, excluding all card types
-        const animatedElements = document.querySelectorAll('.about-content, .contact-content');
-        animatedElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
+        // Observe all animated elements
+        const animatedElements = document.querySelectorAll('.animate-on-scroll, .fade-in-up, .fade-in-left, .fade-in-right, .scale-in');
+        animatedElements.forEach(el => observer.observe(el));
     }
 
-// Enhanced scroll animations
-function initAdvancedScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-            }
-        });
-    }, observerOptions);
-
-    // Observe all animated elements
-    const animatedElements = document.querySelectorAll('.animate-on-scroll, .fade-in-up, .fade-in-left, .fade-in-right, .scale-in');
-    animatedElements.forEach(el => observer.observe(el));
-}
-
-// Initialize page load animations
-function initPageLoadAnimations() {
-    // Add loaded class to hero section after a short delay
-    const heroSection = document.querySelector('.hero');
-    if (heroSection) {
-        setTimeout(() => {
-            heroSection.classList.add('loaded');
-        }, 300); // Small delay to ensure smooth transition
-        
-        // Animate hero stats with stagger effect
-        const heroStats = document.querySelectorAll('.hero-stats .stat');
-        heroStats.forEach((stat, index) => {
+    // Initialize page load animations
+    function initPageLoadAnimations() {
+        // Add loaded class to hero section after a short delay
+        const heroSection = document.querySelector('.hero');
+        if (heroSection) {
             setTimeout(() => {
-                stat.classList.add('animate-in');
-            }, 800 + (index * 200)); // Start after hero loads, then stagger by 200ms each
-        });
+                heroSection.classList.add('loaded');
+            }, 300); // Small delay to ensure smooth transition
+            
+            // Animate hero stats with stagger effect
+            const heroStats = document.querySelectorAll('.hero-stats .stat');
+            heroStats.forEach((stat, index) => {
+                setTimeout(() => {
+                    stat.classList.add('animate-in');
+                }, 800 + (index * 200)); // Start after hero loads, then stagger by 200ms each
+            });
+        }
+        
+        // Add loaded class to terms section for policy pages (same animation as hero)
+        const termsSection = document.querySelector('.terms-section');
+        if (termsSection) {
+            setTimeout(() => {
+                termsSection.classList.add('loaded');
+            }, 300); // Same delay as hero for consistency
+        }
     }
-    
-    // Add loaded class to terms section for policy pages (same animation as hero)
-    const termsSection = document.querySelector('.terms-section');
-    if (termsSection) {
-        setTimeout(() => {
-            termsSection.classList.add('loaded');
-        }, 300); // Same delay as hero for consistency
-    }
-}
 
 // Ensure page loads at the very top - multiple attempts
 if (history.scrollRestoration) {

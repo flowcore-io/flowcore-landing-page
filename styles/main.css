@@ -1753,10 +1753,6 @@ main {
 }
 
 @media (max-width: 480px) {
-    .hero-gap {
-        height: 20px;
-        background-color: green; /* Set gap area color to green */
-    }
     
     main {
         padding-top: 55px; /* Reduce main padding for mobile */

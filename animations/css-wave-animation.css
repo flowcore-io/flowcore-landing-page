@@ -57,20 +57,6 @@
     animation-delay: -3s;
 }
 
-/* 🌊 WAVE #3 - ORANGE (Mid Layer) - REMOVED FOR PERFORMANCE
-   Position: -150px from bottom
-   Animation: wave-float (vertical movement)
-   ===================================== */
-/* .wave-layer-3 {
-    --wave-color: rgba(255, 135, 85, 0.4);
-    --wave-glow-color: rgba(255, 135, 85, 0.6);
-    --wave-opacity: 0.4;
-    --wave-blur: 4px;
-    --wave-duration: 21s;
-    bottom: -150px;
-    left: -50%;
-    animation-delay: -6s;
-} */
 
 /* 🌊 WAVE #4 - YELLOW (Deep Layer)
    Position: -230px from bottom
@@ -103,20 +89,6 @@
     z-index: 50; /* Bring Wave 5 to the front */
 }
 
-/* 🌊 WAVE #6 - ACCENT PURPLE (Top Layer) - REMOVED FOR PERFORMANCE
-   Position: -50px from bottom
-   Animation: wave-drift (horizontal movement)
-   ===================================== */
-/* .wave-layer-6 {
-    --wave-color: rgba(255, 0, 255, 0.3);
-    --wave-glow-color: rgba(255, 0, 255, 0.5);
-    --wave-opacity: 0.2;
-    --wave-blur: 2px;
-    --wave-duration: 15s;
-    bottom: -50px;
-    left: -50%;
-    animation-delay: -15s;
-} */
 
 /* Wave Animation Keyframes */
 @keyframes wave-float {
@@ -159,30 +131,24 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .wave-layer {
-        height: 300px; /* Increased height to maintain bottom fill */
-        /* filter: blur(calc(var(--wave-blur) * 0.8)); - Removed for crisp edges */
+        height: 300px;
     }
     
     .wave-layer-1 { bottom: -90px; }
     .wave-layer-2 { bottom: -110px; }
-    .wave-layer-3 { bottom: -100px; }
     .wave-layer-4 { bottom: -150px; }
     .wave-layer-5 { bottom: -200px; }
-    .wave-layer-6 { bottom: -40px; }
 }
 
 @media (max-width: 480px) {
     .wave-layer {
-        height: 200px; /* Increased height to maintain bottom fill */
-        /* filter: blur(calc(var(--wave-blur) * 0.6)); - Removed for crisp edges */
+        height: 200px;
     }
     
     .wave-layer-1 { bottom: -70px; }
     .wave-layer-2 { bottom: -90px; }
-    .wave-layer-3 { bottom: -70px; }
     .wave-layer-4 { bottom: -110px; }
     .wave-layer-5 { bottom: -160px; }
-    .wave-layer-6 { bottom: -30px; }
 }
 
 /* Performance optimizations */
@@ -208,18 +174,10 @@
     --wave-color: rgba(255, 68, 170, 0.7);
 }
 
-[data-theme="dark"] .wave-layer-3 {
-    --wave-color: rgba(255, 135, 85, 0.6);
-}
-
 [data-theme="dark"] .wave-layer-4 {
     --wave-color: rgba(255, 204, 0, 0.8);
 }
 
 [data-theme="dark"] .wave-layer-5 {
     --wave-color: rgba(255, 204, 0, 0.6);
-}
-
-[data-theme="dark"] .wave-layer-6 {
-    --wave-color: rgba(255, 0, 255, 0.5);
 }
