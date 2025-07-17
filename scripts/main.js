@@ -198,6 +198,9 @@ function initPageLoadAnimations() {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Ensure page loads scrolled to the top
+    window.scrollTo(0, 0);
+    
     initializeTheme();
     initSmoothScrolling();
     initContactForm();

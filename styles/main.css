@@ -138,7 +138,7 @@ body > .wave-container {
 @media (max-width: 768px) {
     body > .wave-container {
         position: fixed;
-        height: 100svh; /* Small viewport height - excludes UI bars */
+        height: 100dvh; /* Dynamic viewport height - accounts for mobile UI */
         /* Alternative approach using viewport units that work better on mobile */
         transform: translateZ(0);
         will-change: transform;
@@ -289,7 +289,7 @@ body > .wave-container {
 
 /* Hero Section */
 .hero {
-    padding: calc(var(--spacing-2xl) + 80px) 0 var(--spacing-2xl) 0;
+    padding: calc(var(--spacing-2xl) + 70px) 0 var(--spacing-2xl) 0;
     text-align: center;
     min-height: 100vh;
     display: flex;
