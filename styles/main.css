@@ -138,16 +138,20 @@ body > .wave-container {
 @media (max-width: 768px) {
     body > .wave-container {
         position: fixed;
-        height: 100dvh; /* Dynamic viewport height - accounts for mobile UI */
-        /* Alternative approach using viewport units that work better on mobile */
-        transform: translateZ(0);
-        will-change: transform;
-        /* Ensure it stays properly positioned */
+        height: 100vh; /* Use stable viewport height */
+        min-height: 100vh; /* Ensure minimum height */
+        /* Force container to stick to actual viewport bounds */
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         width: 100vw;
+        /* Prevent any shifting due to address bar */
+        transform: translateZ(0);
+        will-change: transform;
+        /* Override any dynamic height changes */
+        max-height: none;
+        overflow: hidden;
     }
     
     /* Reduce mobile navbar padding */
@@ -285,6 +289,11 @@ body > .wave-container {
     background-color: var(--color-text);
     margin: 3px 0;
     transition: var(--transition-base);
+}
+
+/* Hero Gap Section */
+.hero-gap {
+    display: none; /* Hidden by default */
 }
 
 /* Hero Section */
@@ -1718,8 +1727,19 @@ main {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
+    .hero-gap {
+        height: 20px;
+        background-color: green; /* Set gap area color to green */
+    }
     
+    main {
+        padding-top: 55px; /* Reduce main padding for mobile */
+    }
+    
+    .hero {
+        padding: calc(var(--spacing-2xl) + 55px) 0 var(--spacing-2xl) 0;
+    }
     .hero-title {
         font-size: var(--font-size-3xl);
     }
@@ -1896,9 +1916,6 @@ main {
         padding: 0 var(--spacing-sm);
     }
     
-    .hero {
-        padding: calc(var(--spacing-xl) - 20px) 0;
-    }
     
     .hero-title {
         font-size: var(--font-size-3xl);
