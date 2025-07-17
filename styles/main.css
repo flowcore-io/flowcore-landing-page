@@ -1861,7 +1861,7 @@ main {
     }
     
     .hero-container {
-        padding: 0 0.75rem;
+        padding: 10px 0.75rem 0 0.75rem;
     }
     
     /* Footer mobile optimization - single column layout */
@@ -1897,7 +1897,7 @@ main {
     }
     
     .hero {
-        padding: var(--spacing-xl) 0;
+        padding: calc(var(--spacing-xl) - 20px) 0;
     }
     
     .hero-title {
