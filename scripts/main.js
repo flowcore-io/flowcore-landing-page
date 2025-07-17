@@ -196,6 +196,14 @@ function initPageLoadAnimations() {
     }
 }
 
+// Ensure page loads at the very top - multiple attempts
+if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+}
+
+// Immediate scroll to top
+window.scrollTo(0, 0);
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Ensure page loads scrolled to the top
@@ -206,6 +214,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
     initAdvancedScrollAnimations();
     initPageLoadAnimations();
+    
+    // Additional scroll to top after everything is initialized
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 100);
 
         // Theme toggle event listener
         const themeToggle = document.getElementById('theme-toggle');
@@ -267,3 +280,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 })();
+
+// Additional scroll to top when page is fully loaded
+window.addEventListener('load', function() {
+    window.scrollTo(0, 0);
+});
+
+// Prevent scroll restoration on page refresh
+window.addEventListener('beforeunload', function() {
+    window.scrollTo(0, 0);
+});
