@@ -122,24 +122,50 @@
         }
     }
 
-    // Enhanced scroll animations
-    function initAdvancedScrollAnimations() {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+// Enhanced scroll animations
+function initAdvancedScrollAnimations() {
+    // Initialize interactive elements for use case visuals
+    initInteractiveElements();
+    
+    const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
+                    // Add a small delay to ensure smooth animation
+                    setTimeout(() => {
+                        entry.target.classList.add('animate-in');
+                    }, 50);
+                } else {
+                    // Optional: Remove animation class when element leaves viewport
+                    // This can be useful for repeated animations
+                    // entry.target.classList.remove('animate-in');
                 }
             });
         }, observerOptions);
 
-        // Observe all animated elements
-        const animatedElements = document.querySelectorAll('.animate-on-scroll, .fade-in-up, .fade-in-left, .fade-in-right, .scale-in');
-        animatedElements.forEach(el => observer.observe(el));
+        // Observe all animated elements with proper error handling
+        const animatedElements = document.querySelectorAll(
+            '.animate-on-scroll, .fade-in-up, .fade-in-left, .fade-in-right, .scale-in'
+        );
+        
+        animatedElements.forEach(el => {
+            // Ensure element is properly set up for animation
+            if (!el.classList.contains('animate-in')) {
+                observer.observe(el);
+            }
+        });
+
+        // Handle staggered animations separately
+        const staggeredElements = document.querySelectorAll('[class*="stagger-delay-"]');
+        staggeredElements.forEach(el => {
+            if (!el.classList.contains('animate-in')) {
+                observer.observe(el);
+            }
+        });
     }
 
     // Initialize page load animations
@@ -169,6 +195,19 @@
         }
     }
 
+    // Reset animations on page reload
+    function resetAnimations() {
+        const animatedElements = document.querySelectorAll('.animate-in');
+        animatedElements.forEach(el => {
+            el.classList.remove('animate-in');
+        });
+        
+        const loadedElements = document.querySelectorAll('.loaded');
+        loadedElements.forEach(el => {
+            el.classList.remove('loaded');
+        });
+    }
+
 // Ensure page loads at the very top - multiple attempts
 if (history.scrollRestoration) {
     history.scrollRestoration = 'manual';
@@ -182,11 +221,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ensure page loads scrolled to the top
     window.scrollTo(0, 0);
     
+    // Reset any existing animations
+    resetAnimations();
+    
     initializeTheme();
     initSmoothScrolling();
     initContactForm();
     initAdvancedScrollAnimations();
     initPageLoadAnimations();
+    initFAQToggle();
     
     // Additional scroll to top after everything is initialized
     setTimeout(() => {
@@ -259,7 +302,198 @@ window.addEventListener('load', function() {
     window.scrollTo(0, 0);
 });
 
+// FAQ Section Toggle
+function initFAQToggle() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const header = item.querySelector('.faq-question');
+        header.addEventListener('click', () => {
+            // Toggle active class on current FAQ item
+            item.classList.toggle('active');
+            
+            // Close other FAQ items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+        });
+    });
+}
+
+
 // Prevent scroll restoration on page refresh
 window.addEventListener('beforeunload', function() {
     window.scrollTo(0, 0);
 });
+
+// Interactive Elements - From js/interactive-elements.js
+function initInteractiveElements() {
+    // Initialize use case icon activation
+    initUseCaseIconActivation();
+    
+    // Define all interactive element selectors
+    const interactiveSelectors = [
+        // AI Training Visual
+        '.data-box',
+        '.output-box',
+        '.model-training',
+        '.replay-feature',
+        
+        // Analytics Visual
+        '.metrics-count',
+        '.flow-stage',
+        '.pulse-dot',
+        
+        // Microservices Visual
+        '.service-node',
+        '.event-bus-simple',
+        
+        // Sync Visual
+        '.env-item',
+        '.platform-item',
+        '.sync-status'
+    ];
+    
+    // Add click handlers to all interactive elements
+    interactiveSelectors.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        
+        elements.forEach(element => {
+            element.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Toggle clicked state
+                this.classList.toggle('clicked');
+                
+                // Optional: Add a subtle animation effect
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+            
+            // Add keyboard support for accessibility
+            element.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+            
+            // Make elements focusable for keyboard navigation
+            if (!element.hasAttribute('tabindex')) {
+                element.setAttribute('tabindex', '0');
+            }
+        });
+    });
+    
+    // Optional: Add a "Reset All" function
+    window.resetInteractiveElements = function() {
+        interactiveSelectors.forEach(selector => {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(element => {
+                element.classList.remove('clicked');
+            });
+        });
+    };
+    
+    // Optional: Add double-click to reset individual elements
+    interactiveSelectors.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        
+        elements.forEach(element => {
+            element.addEventListener('dblclick', function(e) {
+                e.preventDefault();
+                this.classList.remove('clicked');
+                
+                // Add a subtle "reset" animation
+                this.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    });
+}
+
+// Use Case Icon Activation - Click to toggle active state
+function initUseCaseIconActivation() {
+    // Find all use case icons
+    const useCaseIcons = document.querySelectorAll('.use-case-icon i');
+    
+    useCaseIcons.forEach(icon => {
+        // Add click event listener
+        icon.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Toggle active class
+            this.classList.toggle('active');
+            
+            // Optional: Add a subtle click feedback
+            const originalTransform = this.style.transform;
+            this.style.transform = 'scale(0.9)';
+            
+            setTimeout(() => {
+                this.style.transform = originalTransform;
+            }, 100);
+            
+            // Optional: Console log for debugging (can be removed)
+            console.log('Use case icon toggled:', this.classList.contains('active') ? 'activated' : 'deactivated');
+        });
+        
+        // Add keyboard support for accessibility
+        icon.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+        
+        // Make icons focusable for keyboard navigation
+        if (!icon.hasAttribute('tabindex')) {
+            icon.setAttribute('tabindex', '0');
+        }
+        
+        // Add proper cursor pointer
+        icon.style.cursor = 'pointer';
+        
+        // Optional: Add aria-label for screen readers
+        if (!icon.hasAttribute('aria-label')) {
+            icon.setAttribute('aria-label', 'Toggle use case activation');
+        }
+    });
+    
+    // Optional: Add a function to reset all use case icons
+    window.resetUseCaseIcons = function() {
+        useCaseIcons.forEach(icon => {
+            icon.classList.remove('active');
+        });
+        console.log('All use case icons reset');
+    };
+    
+    // Optional: Add a function to get currently active icons
+    window.getActiveUseCaseIcons = function() {
+        return Array.from(useCaseIcons).filter(icon => icon.classList.contains('active'));
+    };
+}
+
+// Terminal typing animation for getting started section
+function initTerminalAnimation() {
+    const typingElement = document.querySelector('.command.typing');
+    if (!typingElement) return;
+    
+    const fullText = typingElement.textContent;
+    typingElement.textContent = '';
+    
+    let i = 0;
+    const typeInterval = setInterval(() => {
+        if (i < fullText.length) {
+            typingElement.textContent += fullText.charAt(i);
+            i++;
+        } else {
+            clearInterval(typeInterval);
+        }
+    }, 50);
+}
