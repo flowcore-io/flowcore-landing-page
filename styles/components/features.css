@@ -1,0 +1,99 @@
+/* Features Component - BEM Structure */
+
+/* Block: features-grid */
+.features-grid {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    flex-wrap: wrap;
+}
+
+/* Block: feature-card */
+.feature-card {
+    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(255, 0, 255, 0.05) 100%);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-xl);
+    text-align: center;
+    border: 2px solid var(--color-secondary);
+    transition: transform var(--transition-base), border-color var(--transition-base);
+    color: var(--color-text);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--color-gradient);
+    transform: scaleX(0);
+    transition: transform var(--transition-base);
+}
+
+.feature-card:hover {
+    border-color: var(--color-secondary);
+}
+
+.feature-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Element: feature-card__icon */
+.feature-card__icon {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.feature-card__icon i {
+    background: var(--color-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Element: feature-card__title */
+.feature-card__title {
+    font-family: var(--font-family-header);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-normal);
+    margin: 0 0 var(--spacing-sm) 0;
+    color: var(--color-text);
+}
+
+/* Element: feature-card__description */
+.feature-card__description {
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: var(--line-height-relaxed);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .features-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .feature-card {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .feature-card__icon {
+        font-size: var(--font-size-3xl);
+    }
+} 

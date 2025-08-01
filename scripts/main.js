@@ -12,9 +12,9 @@
 
     // Update theme toggle icon
     function updateThemeIcon(theme) {
-        const themeIcon = document.querySelector('.theme-icon');
+        const themeIcon = document.querySelector('.theme-toggle__icon i');
         if (themeIcon) {
-            themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+            themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
         }
     }
 
@@ -30,18 +30,18 @@
 
     // Mobile navigation toggle
     function toggleMobileNav() {
-        const navMenu = document.querySelector('.nav-menu');
-        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav__menu');
+        const navToggle = document.querySelector('.nav__toggle');
         
         if (navMenu && navToggle) {
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('nav__menu--active');
+            navToggle.classList.toggle('nav__toggle--active');
         }
     }
 
     // Smooth scrolling for navigation links
     function initSmoothScrolling() {
-        const navLinks = document.querySelectorAll('.nav-link[href^="#"], .nav-logo a[href^="#"]');
+        const navLinks = document.querySelectorAll('.nav__link[href^="#"], .nav__logo-link[href^="#"]');
         
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
@@ -67,8 +67,8 @@
                 }
                 
                 // Close mobile menu if open
-                const navMenu = document.querySelector('.nav-menu');
-                if (navMenu && navMenu.classList.contains('active')) {
+                const navMenu = document.querySelector('.nav__menu');
+                if (navMenu && navMenu.classList.contains('nav__menu--active')) {
                     toggleMobileNav();
                 }
                 
@@ -80,9 +80,9 @@
 
     // Update active navigation link
     function updateActiveNavLink(activeLink) {
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => link.classList.remove('active'));
-        activeLink.classList.add('active');
+        const navLinks = document.querySelectorAll('.nav__link');
+        navLinks.forEach(link => link.classList.remove('nav__link--active'));
+        activeLink.classList.add('nav__link--active');
     }
 
     // Contact form handling (currently no contact form in HTML)
@@ -122,12 +122,12 @@
         }
     }
 
-// Enhanced scroll animations
-function initAdvancedScrollAnimations() {
-    // Initialize interactive elements for use case visuals
-    initInteractiveElements();
-    
-    const observerOptions = {
+    // Enhanced scroll animations
+    function initAdvancedScrollAnimations() {
+        // Initialize interactive elements for use case visuals
+        initInteractiveElements();
+        
+        const observerOptions = {
             threshold: 0.15,
             rootMargin: '0px 0px -100px 0px'
         };
@@ -178,7 +178,7 @@ function initAdvancedScrollAnimations() {
             }, 300); // Small delay to ensure smooth transition
             
             // Animate hero stats with stagger effect
-            const heroStats = document.querySelectorAll('.hero-stats .stat');
+            const heroStats = document.querySelectorAll('.hero__stat');
             heroStats.forEach((stat, index) => {
                 setTimeout(() => {
                     stat.classList.add('animate-in');
@@ -208,33 +208,223 @@ function initAdvancedScrollAnimations() {
         });
     }
 
-// Ensure page loads at the very top - multiple attempts
-if (history.scrollRestoration) {
-    history.scrollRestoration = 'manual';
-}
+    // FAQ Section Toggle
+    function initFAQToggle() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const header = item.querySelector('.faq-item__question');
+            header.addEventListener('click', () => {
+                // Toggle active class on current FAQ item
+                item.classList.toggle('active');
+                
+                // Close other FAQ items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+    }
 
-// Immediate scroll to top
-window.scrollTo(0, 0);
+    // Interactive Elements
+    function initInteractiveElements() {
+        // Initialize use case icon activation
+        initUseCaseIconActivation();
+        
+        // Define all interactive element selectors
+        const interactiveSelectors = [
+            // AI Training Visual
+            '.data-box',
+            '.output-box',
+            '.model-training',
+            '.replay-feature',
+            
+            // Analytics Visual
+            '.metrics-count',
+            '.flow-stage',
+            '.pulse-dot',
+            
+            // Microservices Visual
+            '.service-node',
+            '.event-bus-simple',
+            
+            // Sync Visual
+            '.env-item',
+            '.platform-item',
+            '.sync-status'
+        ];
+        
+        // Add click handlers to all interactive elements
+        interactiveSelectors.forEach(selector => {
+            const elements = document.querySelectorAll(selector);
+            
+            elements.forEach(element => {
+                element.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Toggle clicked state
+                    this.classList.toggle('clicked');
+                    
+                    // Optional: Add a subtle animation effect
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+                
+                // Add keyboard support for accessibility
+                element.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+                
+                // Make elements focusable for keyboard navigation
+                if (!element.hasAttribute('tabindex')) {
+                    element.setAttribute('tabindex', '0');
+                }
+            });
+        });
+        
+        // Optional: Add a "Reset All" function
+        window.resetInteractiveElements = function() {
+            interactiveSelectors.forEach(selector => {
+                const elements = document.querySelectorAll(selector);
+                elements.forEach(element => {
+                    element.classList.remove('clicked');
+                });
+            });
+        };
+        
+        // Optional: Add double-click to reset individual elements
+        interactiveSelectors.forEach(selector => {
+            const elements = document.querySelectorAll(selector);
+            
+            elements.forEach(element => {
+                element.addEventListener('dblclick', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('clicked');
+                    
+                    // Add a subtle "reset" animation
+                    this.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+        });
+    }
 
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Ensure page loads scrolled to the top
+    // Use Case Icon Activation - Click to toggle active state
+    function initUseCaseIconActivation() {
+        // Find all use case icons
+        const useCaseIcons = document.querySelectorAll('.use-case-icon i');
+        
+        useCaseIcons.forEach(icon => {
+            // Add click event listener
+            icon.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Toggle active class
+                this.classList.toggle('active');
+                
+                // Optional: Add a subtle click feedback
+                const originalTransform = this.style.transform;
+                this.style.transform = 'scale(0.9)';
+                
+                setTimeout(() => {
+                    this.style.transform = originalTransform;
+                }, 100);
+                
+                // Optional: Console log for debugging (can be removed)
+                console.log('Use case icon toggled:', this.classList.contains('active') ? 'activated' : 'deactivated');
+            });
+            
+            // Add keyboard support for accessibility
+            icon.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+            
+            // Make icons focusable for keyboard navigation
+            if (!icon.hasAttribute('tabindex')) {
+                icon.setAttribute('tabindex', '0');
+            }
+            
+            // Add proper cursor pointer
+            icon.style.cursor = 'pointer';
+            
+            // Optional: Add aria-label for screen readers
+            if (!icon.hasAttribute('aria-label')) {
+                icon.setAttribute('aria-label', 'Toggle use case activation');
+            }
+        });
+        
+        // Optional: Add a function to reset all use case icons
+        window.resetUseCaseIcons = function() {
+            useCaseIcons.forEach(icon => {
+                icon.classList.remove('active');
+            });
+            console.log('All use case icons reset');
+        };
+        
+        // Optional: Add a function to get currently active icons
+        window.getActiveUseCaseIcons = function() {
+            return Array.from(useCaseIcons).filter(icon => icon.classList.contains('active'));
+        };
+    }
+
+    // Terminal typing animation for getting started section
+    function initTerminalAnimation() {
+        const typingElement = document.querySelector('.command.typing');
+        if (!typingElement) return;
+        
+        const fullText = typingElement.textContent;
+        typingElement.textContent = '';
+        
+        let i = 0;
+        const typeInterval = setInterval(() => {
+            if (i < fullText.length) {
+                typingElement.textContent += fullText.charAt(i);
+                i++;
+            } else {
+                clearInterval(typeInterval);
+            }
+        }, 50);
+    }
+
+    // Ensure page loads at the very top - multiple attempts
+    if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+    }
+
+    // Immediate scroll to top
     window.scrollTo(0, 0);
-    
-    // Reset any existing animations
-    resetAnimations();
-    
-    initializeTheme();
-    initSmoothScrolling();
-    initContactForm();
-    initAdvancedScrollAnimations();
-    initPageLoadAnimations();
-    initFAQToggle();
-    
-    // Additional scroll to top after everything is initialized
-    setTimeout(() => {
+
+    // Initialize everything when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ensure page loads scrolled to the top
         window.scrollTo(0, 0);
-    }, 100);
+        
+        // Reset any existing animations
+        resetAnimations();
+        
+        initializeTheme();
+        initSmoothScrolling();
+        initContactForm();
+        initAdvancedScrollAnimations();
+        initPageLoadAnimations();
+        initFAQToggle();
+        
+        // Additional scroll to top after everything is initialized
+        setTimeout(() => {
+            window.scrollTo(0, 0);
+        }, 100);
 
         // Theme toggle event listener
         const themeToggle = document.getElementById('theme-toggle');
@@ -243,17 +433,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Mobile navigation toggle
-        const navToggle = document.querySelector('.nav-toggle');
+        const navToggle = document.querySelector('.nav__toggle');
         if (navToggle) {
             navToggle.addEventListener('click', toggleMobileNav);
         }
 
         // Close mobile menu when clicking outside
         document.addEventListener('click', function(e) {
-            const navMenu = document.querySelector('.nav-menu');
-            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav__menu');
+            const navToggle = document.querySelector('.nav__toggle');
             
-            if (navMenu && navMenu.classList.contains('active') && 
+            if (navMenu && navMenu.classList.contains('nav__menu--active') && 
                 !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
                 toggleMobileNav();
             }
@@ -262,7 +452,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update active nav link on scroll
         window.addEventListener('scroll', function() {
             const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+            const navLinks = document.querySelectorAll('.nav__link[href^="#"]');
             
             let currentSection = '';
             
@@ -277,9 +467,9 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             navLinks.forEach(link => {
-                link.classList.remove('active');
+                link.classList.remove('nav__link--active');
                 if (link.getAttribute('href') === `#${currentSection}`) {
-                    link.classList.add('active');
+                    link.classList.add('nav__link--active');
                 }
             });
         });
@@ -295,205 +485,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Additional scroll to top when page is fully loaded
+    window.addEventListener('load', function() {
+        window.scrollTo(0, 0);
+    });
+
+    // Prevent scroll restoration on page refresh
+    window.addEventListener('beforeunload', function() {
+        window.scrollTo(0, 0);
+    });
 })();
-
-// Additional scroll to top when page is fully loaded
-window.addEventListener('load', function() {
-    window.scrollTo(0, 0);
-});
-
-// FAQ Section Toggle
-function initFAQToggle() {
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        const header = item.querySelector('.faq-question');
-        header.addEventListener('click', () => {
-            // Toggle active class on current FAQ item
-            item.classList.toggle('active');
-            
-            // Close other FAQ items
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('active');
-                }
-            });
-        });
-    });
-}
-
-
-// Prevent scroll restoration on page refresh
-window.addEventListener('beforeunload', function() {
-    window.scrollTo(0, 0);
-});
-
-// Interactive Elements - From js/interactive-elements.js
-function initInteractiveElements() {
-    // Initialize use case icon activation
-    initUseCaseIconActivation();
-    
-    // Define all interactive element selectors
-    const interactiveSelectors = [
-        // AI Training Visual
-        '.data-box',
-        '.output-box',
-        '.model-training',
-        '.replay-feature',
-        
-        // Analytics Visual
-        '.metrics-count',
-        '.flow-stage',
-        '.pulse-dot',
-        
-        // Microservices Visual
-        '.service-node',
-        '.event-bus-simple',
-        
-        // Sync Visual
-        '.env-item',
-        '.platform-item',
-        '.sync-status'
-    ];
-    
-    // Add click handlers to all interactive elements
-    interactiveSelectors.forEach(selector => {
-        const elements = document.querySelectorAll(selector);
-        
-        elements.forEach(element => {
-            element.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Toggle clicked state
-                this.classList.toggle('clicked');
-                
-                // Optional: Add a subtle animation effect
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
-            });
-            
-            // Add keyboard support for accessibility
-            element.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.click();
-                }
-            });
-            
-            // Make elements focusable for keyboard navigation
-            if (!element.hasAttribute('tabindex')) {
-                element.setAttribute('tabindex', '0');
-            }
-        });
-    });
-    
-    // Optional: Add a "Reset All" function
-    window.resetInteractiveElements = function() {
-        interactiveSelectors.forEach(selector => {
-            const elements = document.querySelectorAll(selector);
-            elements.forEach(element => {
-                element.classList.remove('clicked');
-            });
-        });
-    };
-    
-    // Optional: Add double-click to reset individual elements
-    interactiveSelectors.forEach(selector => {
-        const elements = document.querySelectorAll(selector);
-        
-        elements.forEach(element => {
-            element.addEventListener('dblclick', function(e) {
-                e.preventDefault();
-                this.classList.remove('clicked');
-                
-                // Add a subtle "reset" animation
-                this.style.transform = 'scale(1.1)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
-            });
-        });
-    });
-}
-
-// Use Case Icon Activation - Click to toggle active state
-function initUseCaseIconActivation() {
-    // Find all use case icons
-    const useCaseIcons = document.querySelectorAll('.use-case-icon i');
-    
-    useCaseIcons.forEach(icon => {
-        // Add click event listener
-        icon.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Toggle active class
-            this.classList.toggle('active');
-            
-            // Optional: Add a subtle click feedback
-            const originalTransform = this.style.transform;
-            this.style.transform = 'scale(0.9)';
-            
-            setTimeout(() => {
-                this.style.transform = originalTransform;
-            }, 100);
-            
-            // Optional: Console log for debugging (can be removed)
-            console.log('Use case icon toggled:', this.classList.contains('active') ? 'activated' : 'deactivated');
-        });
-        
-        // Add keyboard support for accessibility
-        icon.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                this.click();
-            }
-        });
-        
-        // Make icons focusable for keyboard navigation
-        if (!icon.hasAttribute('tabindex')) {
-            icon.setAttribute('tabindex', '0');
-        }
-        
-        // Add proper cursor pointer
-        icon.style.cursor = 'pointer';
-        
-        // Optional: Add aria-label for screen readers
-        if (!icon.hasAttribute('aria-label')) {
-            icon.setAttribute('aria-label', 'Toggle use case activation');
-        }
-    });
-    
-    // Optional: Add a function to reset all use case icons
-    window.resetUseCaseIcons = function() {
-        useCaseIcons.forEach(icon => {
-            icon.classList.remove('active');
-        });
-        console.log('All use case icons reset');
-    };
-    
-    // Optional: Add a function to get currently active icons
-    window.getActiveUseCaseIcons = function() {
-        return Array.from(useCaseIcons).filter(icon => icon.classList.contains('active'));
-    };
-}
-
-// Terminal typing animation for getting started section
-function initTerminalAnimation() {
-    const typingElement = document.querySelector('.command.typing');
-    if (!typingElement) return;
-    
-    const fullText = typingElement.textContent;
-    typingElement.textContent = '';
-    
-    let i = 0;
-    const typeInterval = setInterval(() => {
-        if (i < fullText.length) {
-            typingElement.textContent += fullText.charAt(i);
-            i++;
-        } else {
-            clearInterval(typeInterval);
-        }
-    }, 50);
-}

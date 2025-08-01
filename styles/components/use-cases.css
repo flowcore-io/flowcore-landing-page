@@ -1,0 +1,224 @@
+/* Use Cases Component - BEM Structure */
+
+/* Block: use-cases */
+.use-cases {
+    padding: calc(var(--spacing-2xl) + var(--spacing-lg)) 0;
+    background-color: rgba(var(--color-background-rgb), 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Element: use-cases__content */
+.use-cases__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl);
+}
+
+/* Block: use-case-block */
+.use-case-block {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: var(--spacing-2xl);
+    align-items: center;
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-xl);
+    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(255, 0, 255, 0.05) 100%);
+    border: 2px solid var(--color-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.use-case-block.animate-in {
+    animation: slideInUp 0.6s ease-out;
+}
+
+/* Proper alternating layout using CSS Grid order */
+.use-case-block:nth-child(even) {
+    grid-template-columns: 400px 1fr;
+}
+
+.use-case-block:nth-child(even) .use-case-block__text {
+    order: 2;
+}
+
+.use-case-block:nth-child(even) .use-case-block__visual {
+    order: 1;
+}
+
+/* Element: use-case-block__text */
+.use-case-block__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* Element: use-case-block__title */
+.use-case-block__title {
+    font-family: var(--font-family-header);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin: 0;
+    color: var(--color-text);
+    background: var(--color-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Element: use-case-block__description */
+.use-case-block__description {
+    color: var(--color-text-muted);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+}
+
+/* Element: use-case-block__benefits */
+.use-case-block__benefits {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    list-style: none;
+    padding: 0;
+    margin-top: var(--spacing-md);
+}
+
+/* Element: use-case-block__benefit */
+.use-case-block__benefit {
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    padding-left: var(--spacing-lg);
+    position: relative;
+    transition: all var(--transition-fast);
+}
+
+.use-case-block__benefit::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: var(--color-secondary);
+    background: transparent;
+    border: 1px solid var(--color-secondary);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+    position: absolute;
+    left: 0;
+}
+
+/* Element: use-case-block__visual */
+.use-case-block__visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 200px;
+}
+
+.use-case-block__visual::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(var(--color-secondary-rgb), 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: gentle-pulse 3s ease-in-out infinite;
+}
+
+/* Element: use-case-block__icon */
+.use-case-block__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    width: 280px;
+    height: 280px;
+    background: var(--color-surface);
+    border: 2px solid var(--color-secondary);
+    border-radius: var(--border-radius-xl);
+    padding: var(--spacing-sm);
+}
+
+/* Element: use-case-block__icon i */
+.use-case-block__icon i {
+    font-size: 6rem;
+    background: linear-gradient(135deg, #ffa500 0%, #ff00ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+
+@keyframes logoFloat {
+    0%, 100% { 
+        transform: translateY(0px); 
+    }
+    50% { 
+        transform: translateY(-5px); 
+    }
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .use-case-block {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .use-case-block:nth-child(even) {
+        grid-template-columns: 1fr;
+    }
+    
+    .use-case-block:nth-child(even) .use-case-block__text {
+        order: 1;
+    }
+    
+    .use-case-block:nth-child(even) .use-case-block__visual {
+        order: 2;
+    }
+}
+
+@media (max-width: 480px) {
+    .use-case-block__icon {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .use-case-block__icon i {
+        font-size: var(--font-size-3xl);
+    }
+}
+
+@media (max-width: 360px) {
+    .use-case-block__icon {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .use-case-block__icon i {
+        font-size: var(--font-size-2xl);
+    }
+} 

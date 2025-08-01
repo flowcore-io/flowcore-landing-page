@@ -1,0 +1,153 @@
+/* Why Flowcore Component - BEM Structure */
+
+/* Block: why-flowcore */
+.why-flowcore {
+    padding: calc(var(--spacing-2xl) + var(--spacing-lg)) 0;
+    background-color: #0d0f1a; /* Dark background matching production */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Block: features-grid */
+.why-flowcore .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 
+        "card1 card2 card3"
+        ". card4 card5";
+    gap: var(--spacing-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    justify-items: center; /* Center cards horizontally */
+}
+
+/* Position cards using grid areas */
+.why-flowcore .feature-card:nth-child(1) {
+    grid-area: card1;
+}
+
+.why-flowcore .feature-card:nth-child(2) {
+    grid-area: card2;
+}
+
+.why-flowcore .feature-card:nth-child(3) {
+    grid-area: card3;
+}
+
+.why-flowcore .feature-card:nth-child(4) {
+    grid-area: card4;
+}
+
+.why-flowcore .feature-card:nth-child(5) {
+    grid-area: card5;
+}
+
+/* Block: feature-card */
+.why-flowcore .feature-card {
+    background-color: #0d0f1a; /* Same as section background */
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    text-align: center;
+    border: 2px solid var(--color-secondary); /* Vibrant pink border */
+    transition: transform var(--transition-base), border-color var(--transition-base);
+    color: #ffffff; /* White text */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+    width: 100%; /* Ensure full width within grid cell */
+    max-width: 350px; /* Limit maximum width for better proportions */
+}
+
+.why-flowcore .feature-card:hover {
+    border-color: #ff69b4; /* Slightly lighter pink on hover */
+    transform: translateY(-4px);
+}
+
+/* Element: feature-icon */
+.why-flowcore .feature-icon {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.why-flowcore .feature-icon i {
+    background: var(--color-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Element: feature-card h3 */
+.why-flowcore .feature-card h3 {
+    font-family: var(--font-family-header);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    margin: 0 0 var(--spacing-sm) 0;
+    color: #ffffff; /* White text */
+    text-align: center;
+    width: 100%;
+}
+
+/* Element: feature-card p */
+.why-flowcore .feature-card p {
+    color: #a3a3a3; /* Darker gray text for better readability */
+    margin: 0;
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-base);
+    text-align: center;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .why-flowcore .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 
+            "card1 card2"
+            "card3 card4"
+            "card5 .";
+        gap: var(--spacing-lg);
+        justify-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .why-flowcore .features-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "card1"
+            "card2"
+            "card3"
+            "card4"
+            "card5";
+        gap: var(--spacing-lg);
+        justify-items: center;
+    }
+    
+    .why-flowcore .feature-card {
+        min-height: 240px;
+        padding: var(--spacing-lg);
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .why-flowcore .feature-card {
+        padding: var(--spacing-md);
+        min-height: 220px;
+    }
+    
+    .why-flowcore .feature-icon {
+        font-size: var(--font-size-3xl);
+    }
+} 

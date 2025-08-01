@@ -23,55 +23,58 @@
 
     <header class="header">
         <nav class="nav">
-            <div class="nav-container">
-                <div class="nav-logo">
-                    <a href="index.html">
-                        <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="nav-logo-img">
-                        <span>FLOWCORE</span>
+            <div class="nav__container">
+                <div class="nav__logo">
+                    <a href="index.html" class="nav__logo-link">
+                        <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="nav__logo-img">
+                        <span class="nav__logo-text">FLOWCORE</span>
                     </a>
                 </div>
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="index.html#capabilities" class="nav-link">Capabilities</a></li>
-                    <li><a href="index.html#solutions" class="nav-link">Solutions</a></li>
-                    <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
-                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
-                    <li>
+                <ul class="nav__menu">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="index.html#capabilities" class="nav__link">Capabilities</a></li>
+                    <li class="nav__item"><a href="index.html#solutions" class="nav__link">Solutions</a></li>
+                    <li class="nav__item"><a href="index.html#pricing" class="nav__link">Pricing</a></li>
+                    <li class="nav__item"><a href="index.html#contact" class="nav__link">Contact</a></li>
+                    <li class="nav__item">
                         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-                            <span class="theme-icon">🌙</span>
+                            <span class="theme-toggle__icon"><i class="fas fa-sun"></i></span>
                         </button>
                     </li>
+                    <li class="nav__cta">
+                        <a href="https://flowcore.io/" target="_blank" class="btn btn--pink btn--small">Try Platform</a>
+                    </li>
+                    <li class="nav__cta-mobile">
+                        <a href="https://flowcore.io/" target="_blank" class="btn btn--pink btn--small">Try Platform</a>
+                    </li>
                 </ul>
-                <div class="nav-cta">
-                    <a href="https://flowcore.io/" target="_blank" class="btn btn-primary btn-small">Try Platform</a>
-                </div>
-                <button class="nav-toggle" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button class="nav__toggle" aria-label="Toggle navigation">
+                    <span class="nav__toggle-line"></span>
+                    <span class="nav__toggle-line"></span>
+                    <span class="nav__toggle-line"></span>
                 </button>
             </div>
         </nav>
     </header>
 
     <main>
-        <section class="terms-section">
+        <section class="policy-section">
             <div class="container">
-                <div class="terms-container">
-                    <h1 class="terms-title">Terms of Service</h1>
-                    <p class="terms-updated">Last updated: August 5, 2024</p>
+                <div class="policy-container">
+                    <h1 class="policy-title">Terms of Service</h1>
+                    <p class="policy-updated">Last updated: August 5, 2024</p>
                     
-                    <div class="terms-content">
-                        <div class="terms-intro">
+                    <div class="policy-content">
+                        <div class="policy-intro">
                             <p>Welcome to Flowcore. By using our services at flowcore.io, you agree to be bound by these Terms and Conditions. If you do not agree, please do not use our services.</p>
                         </div>
 
-                        <div class="terms-section-block">
+                        <div class="policy-section-block">
                             <h2>Services</h2>
                             <p>Flowcore provides software-as-a-service (SaaS) solutions for data management. These services are subject to the terms detailed herein.</p>
                         </div>
 
-                        <div class="terms-section-block">
+                        <div class="policy-section-block">
                             <h2>Accounts</h2>
                             <ul>
                                 <li><strong>Account Creation:</strong> To use our services, you must create an account. You agree to provide accurate, complete, and current information during the registration process.</li>
@@ -80,7 +83,7 @@
                             </ul>
                         </div>
 
-                        <div class="terms-section-block">
+                        <div class="policy-section-block">
                             <h2>Subscriptions</h2>
                             <ul>
                                 <li><strong>Billing:</strong> Our services are billed on a subscription basis. Payment must be made in advance.</li>
@@ -90,7 +93,7 @@
                             </ul>
                         </div>
 
-                        <div class="terms-section-block">
+                        <div class="policy-section-block">
                             <h2>Acceptable Use</h2>
                             <p>You agree to use our services only for lawful purposes and in accordance with these Terms. You may not:</p>
                             <ul>
@@ -102,7 +105,7 @@
                             </ul>
                         </div>
 
-                        <div class="terms-section-block">
+                        <div class="policy-section-block">
                             <h2>Data and Privacy</h2>
                             <ul>
                                 <li><strong>Data Processing:</strong> We process your data in accordance with our Privacy Policy and applicable data protection laws.</li>
@@ -112,7 +115,7 @@
                             </ul>
                         </div>
 
-                        <div class="terms-section-block">
+                        <div class="policy-section-block">
                             <h2>Intellectual Property</h2>
                             <ul>
                                 <li><strong>Our Rights:</strong> Flowcore retains all rights to our software, documentation, and other materials.</li>
@@ -121,7 +124,7 @@
                             </ul>
                         </div>
 
-                        <div class="terms-section-block">
+                        <div class="policy-section-block">
                             <h2>Service Availability</h2>
                             <ul>
                                 <li><strong>Uptime:</strong> We strive to maintain high service availability but do not guarantee 100% uptime.</li>
@@ -130,12 +133,12 @@
                             </ul>
                         </div>
 
-                        <div class="terms-section-block">
+                        <div class="policy-section-block">
                             <h2>Limitation of Liability</h2>
                             <p>To the maximum extent permitted by law, Flowcore shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses resulting from your use of our services.</p>
                         </div>
 
-                        <div class="terms-section-block">
+                        <div class="policy-section-block">
                             <h2>Termination</h2>
                             <ul>
                                 <li><strong>By You:</strong> You may terminate your account at any time by canceling your subscription.</li>
@@ -144,12 +147,12 @@
                             </ul>
                         </div>
 
-                        <div class="terms-section-block">
+                        <div class="policy-section-block">
                             <h2>Changes to Terms</h2>
                             <p>We reserve the right to modify these Terms at any time. We will notify you of any changes by posting the new Terms on our website. Your continued use of the service after such changes constitutes acceptance of the new Terms.</p>
                         </div>
 
-                        <div class="terms-section-block">
+                        <div class="policy-section-block">
                             <h2>Contact Information</h2>
                             <p>If you have any questions about these Terms of Service, please contact us at:</p>
                             <ul>
@@ -166,23 +169,23 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer__content">
                 <!-- Company Info Section -->
                 <div class="footer-section footer-brand">
-                    <div class="footer-logo">
-                        <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="footer-logo-img">
-                        <h4>FLOWCORE</h4>
+                    <div class="footer-brand__logo">
+                        <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="footer-brand__logo-img">
+                        <h4 class="footer-brand__logo-text">FLOWCORE</h4>
                     </div>
-                    <p class="footer-description">Event storage and processing platform for AI developers. Single source of truth with infinite replay capabilities.</p>
+                    <p class="footer-brand__description">Event storage and processing platform for AI developers. Single source of truth with infinite replay capabilities.</p>
                     
                     <!-- Social Media Links -->
                     <div class="footer-social">
-                        <h5>Follow Us</h5>
-                        <div class="social-links">
+                        <h5 class="footer-social__title">Follow Us</h5>
+                        <div class="footer-social__links">
                             <a href="https://www.linkedin.com/company/flowcore" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                             <a href="https://www.youtube.com/channel/UC-t-FsHqFETCuKzqCb9Ul2Q" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                             <a href="https://discord.gg/k97YWAw8XF" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
-                            <a href="https://www.threads.net/@flowcore.io" target="_blank" aria-label="Threads"><i class="fab fa-threads"></i></a>
+                            <a href="https://www.threads.net/@flowcore.io" target="_blank" aria-label="Threads"><i class="fas fa-at"></i></a>
                             <a href="https://www.instagram.com/flowcore.io/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
@@ -190,32 +193,30 @@
                 
                 <!-- Support & Resources -->
                 <div class="footer-section">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Video Tutorials</a></li>
-                        <li><a href="#">Documentation</a></li>
-                        <li><a href="#">Community Support</a></li>
-                        <li><a href="#">API Reference</a></li>
+                    <h4 class="footer-section__title">Support</h4>
+                    <ul class="footer-section__list">
+                        <li><a href="https://flowcore.io/" target="_blank">Video Tutorials</a></li>
+                        <li><a href="https://flowcore.io/" target="_blank">Documentation</a></li>
+                        <li><a href="https://discord.gg/k97YWAw8XF" target="_blank">Community Support</a></li>
+                        <li><a href="https://flowcore.io/" target="_blank">API Reference</a></li>
                     </ul>
                 </div>
                 
                 <!-- Contact Information -->
                 <div class="footer-section footer-contact">
-                    <h4>Contact Us</h4>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <a href="tel:+298556600">+298 556 600</a>
-                        </div>
-                        <div class="contact-item">
-                            <a href="mailto:flowcore@flowcore.com">flowcore@flowcore.com</a>
-                        </div>
+                    <h4 class="footer-section__title">Contact Us</h4>
+                    <div class="footer-contact__item">
+                        <a href="tel:+298556600" target="_blank">+298 556 600</a>
+                    </div>
+                    <div class="footer-contact__item">
+                        <a href="mailto:flowcore@flowcore.com" target="_blank">flowcore@flowcore.com</a>
                     </div>
                 </div>
                 
                 <!-- Address Information -->
                 <div class="footer-section footer-address">
-                    <h4>Visit Us</h4>
-                    <div class="address-info">
+                    <h4 class="footer-section__title">Visit Us</h4>
+                    <div class="footer-address__info">
                         <p><strong>Flowcore Sp/f</strong></p>
                         <p>Vestara Bryggja 15<br>
                         100 Tórshavn<br>
@@ -225,10 +226,10 @@
             </div>
             
             <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <div class="footer-bottom-content">
-                    <p>&copy; 2025 Flowcore. All rights reserved.</p>
-                    <div class="footer-legal">
+            <div class="footer__bottom">
+                <div class="footer__bottom-content">
+                    <p class="footer__copyright">&copy; 2025 Flowcore. All rights reserved.</p>
+                    <div class="footer__legal">
                         <a href="terms-of-service.html">Terms of Service</a>
                         <a href="privacy-policy.html">Privacy Policy</a>
                         <a href="fulfillment-policy.html">Fulfillment Policy</a>

@@ -57,7 +57,6 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="animations/css-wave-animation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Schema.org structured data -->
@@ -140,38 +139,38 @@
 
     <header class="header">
         <nav class="nav">
-            <div class="nav-container">
-                <div class="nav-logo">
-                    <a href="#home">
-                        <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="nav-logo-img">
-                        <span>FLOWCORE</span>
+            <div class="nav__container">
+                <div class="nav__logo">
+                    <a href="#home" class="nav__logo-link">
+                        <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="nav__logo-img">
+                        <span class="nav__logo-text">FLOWCORE</span>
                     </a>
                 </div>
-                <ul class="nav-menu">
-                    <li><a href="#capabilities" class="nav-link">Capabilities</a></li>
-                    <li><a href="#solutions" class="nav-link">Solutions</a></li>
-                    <li><a href="#use-cases" class="nav-link">Use Cases</a></li>
-                    <li><a href="#why-flowcore" class="nav-link">Why Flowcore</a></li>
-                    <li><a href="#pricing" class="nav-link">Pricing</a></li>
-                    <li><a href="#faq" class="nav-link">FAQ</a></li>
-                    <li><a href="#getting-started" class="nav-link">Get Started</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                    <li>
+                <ul class="nav__menu">
+                    <li class="nav__item"><a href="#capabilities" class="nav__link">Capabilities</a></li>
+                    <li class="nav__item"><a href="#solutions" class="nav__link">Solutions</a></li>
+                    <li class="nav__item"><a href="#use-cases" class="nav__link">Use Cases</a></li>
+                    <li class="nav__item"><a href="#why-flowcore" class="nav__link">Why Flowcore</a></li>
+                    <li class="nav__item"><a href="#pricing" class="nav__link">Pricing</a></li>
+                    <li class="nav__item"><a href="#faq" class="nav__link">FAQ</a></li>
+                    <li class="nav__item"><a href="#getting-started" class="nav__link">Get Started</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                    <li class="nav__item">
                         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-                            <span class="theme-icon"><i class="fas fa-moon"></i></span>
+                            <span class="theme-toggle__icon"><i class="fas fa-sun"></i></span>
                         </button>
                     </li>
-                    <li class="nav-cta">
-                        <a href="https://flowcore.io/" target="_blank" class="btn btn-secondary btn-small">Try Platform</a>
+                    <li class="nav__cta">
+                        <a href="https://flowcore.io/" target="_blank" class="btn btn--pink btn--small">Try Platform</a>
                     </li>
-                    <li class="nav-cta-mobile">
-                        <a href="https://flowcore.io/" target="_blank" class="btn btn-secondary btn-small">Try Platform</a>
+                    <li class="nav__cta-mobile">
+                        <a href="https://flowcore.io/" target="_blank" class="btn btn--pink btn--small">Try Platform</a>
                     </li>
                 </ul>
-                <button class="nav-toggle" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button class="nav__toggle" aria-label="Toggle navigation">
+                    <span class="nav__toggle-line"></span>
+                    <span class="nav__toggle-line"></span>
+                    <span class="nav__toggle-line"></span>
                 </button>
             </div>
         </nav>
@@ -179,28 +178,28 @@
 
     <main>
         <section class="hero" id="home">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <h1 class="hero-title">Event Storage and Processing</h1>
-                    <p class="hero-subtitle">Data Platform for AI Developers</p>
-                    <p class="hero-description">Event-first data platform with single source of truth. Replay events, iterate faster, and scale infinitely with our standardized developer toolbox.</p>
-                    <div class="hero-buttons">
-                        <a href="https://flowcore.io/" target="_blank" class="btn btn-primary">Explore Platform</a>
-                        <a href="https://docs.flowcore.io/" target="_blank" class="btn btn-secondary">Learn More</a>
+            <div class="hero__container">
+                <div class="hero__content">
+                    <h1 class="hero__title">Event Storage and Processing</h1>
+                    <p class="hero__subtitle">Data Platform for AI Developers</p>
+                    <p class="hero__description">Event-first data platform with single source of truth. Replay events, iterate faster, and scale infinitely with our standardized developer toolbox.</p>
+                    <div class="hero__buttons">
+                        <a href="https://flowcore.io/" target="_blank" class="btn btn--primary">Explore Platform</a>
+                        <a href="https://docs.flowcore.io/" target="_blank" class="btn btn--secondary">Learn More</a>
                     </div>
                 </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-number">10M+</div>
-                        <div class="stat-label"><i class="fas fa-bolt"></i> Events/Second</div>
+                <div class="hero__stats">
+                    <div class="hero__stat">
+                        <div class="hero__stat-number">10M+</div>
+                        <div class="hero__stat-label"><i class="fas fa-bolt"></i> Events/Second</div>
                     </div>
-                    <div class="stat">
-                        <div class="stat-number">99.9%</div>
-                        <div class="stat-label"><i class="fas fa-rocket"></i> Uptime</div>
+                    <div class="hero__stat">
+                        <div class="hero__stat-number">99.9%</div>
+                        <div class="hero__stat-label"><i class="fas fa-rocket"></i> Uptime</div>
                     </div>
-                    <div class="stat">
-                        <div class="stat-number">0ms</div>
-                        <div class="stat-label"><i class="fas fa-clock"></i> Latency</div>
+                    <div class="hero__stat">
+                        <div class="hero__stat-number">0ms</div>
+                        <div class="hero__stat-label"><i class="fas fa-clock"></i> Latency</div>
                     </div>
                 </div>
             </div>
@@ -211,19 +210,19 @@
                 <h2 class="section-title animate-on-scroll">Capabilities</h2>
                 <div class="features-grid">
                     <div class="feature-card animate-on-scroll stagger-delay-1">
-                        <div class="feature-icon"><i class="fas fa-edit"></i></div>
-                        <h3>Event-First Architecture</h3>
-                        <p>Everything is written to the event store first, creating a single source of truth for all your data.</p>
+                        <div class="feature-card__icon"><i class="fas fa-edit"></i></div>
+                        <h3 class="feature-card__title">Event-First Architecture</h3>
+                        <p class="feature-card__description">Everything is written to the event store first, creating a single source of truth for all your data.</p>
                     </div>
                     <div class="feature-card animate-on-scroll stagger-delay-2">
-                        <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
-                        <h3>Replay & Iterate</h3>
-                        <p>Replay events infinitely to iterate development faster and test new features without risk.</p>
+                        <div class="feature-card__icon"><i class="fas fa-sync-alt"></i></div>
+                        <h3 class="feature-card__title">Replay & Iterate</h3>
+                        <p class="feature-card__description">Replay events infinitely to iterate development faster and test new features without risk.</p>
                     </div>
                     <div class="feature-card animate-on-scroll stagger-delay-3">
-                        <div class="feature-icon"><i class="fas fa-rocket"></i></div>
-                        <h3>Auto-Managed Storage</h3>
-                        <p>Automatic hot and cold data management - no manual intervention required from developers.</p>
+                        <div class="feature-card__icon"><i class="fas fa-rocket"></i></div>
+                        <h3 class="feature-card__title">Auto-Managed Storage</h3>
+                        <p class="feature-card__description">Automatic hot and cold data management - no manual intervention required from developers.</p>
                     </div>
                 </div>
             </div>
@@ -234,60 +233,60 @@
         <section class="solutions" id="solutions">
             <div class="container">
                 <h2 class="section-title animate-on-scroll">Solutions</h2>
-                <div class="solutions-content">
-                    <div class="solutions-text fade-in-left">
+                <div class="solutions__content">
+                    <div class="solutions__text fade-in-left">
                         <p>Stream events to any destination with parallel processing. Our standardized toolbox supports all major databases, storage systems, and communication channels.</p>
-                        <div class="solutions-list">
+                        <div class="solutions__list">
                             <div class="solution-item">
-                                <div class="solution-icon"><i class="fas fa-database"></i></div>
-                                <div class="solution-content">
+                                <div class="solution-item__icon"><i class="fas fa-database"></i></div>
+                                <div class="solution-item__content">
                                     <h4>Universal Database Support</h4>
                                     <p>Relational, graph, time series, vector, key-value, column-based, document, and more</p>
                                 </div>
                             </div>
                             <div class="solution-item">
-                                <div class="solution-icon"><i class="fas fa-warehouse"></i></div>
-                                <div class="solution-content">
+                                <div class="solution-item__icon"><i class="fas fa-warehouse"></i></div>
+                                <div class="solution-item__content">
                                     <h4>Data Warehouses & Storage</h4>
                                     <p>Object storage, CSV, Parquet files, and enterprise data warehouse integration</p>
                                 </div>
                             </div>
                             <div class="solution-item">
-                                <div class="solution-icon"><i class="fas fa-envelope"></i></div>
-                                <div class="solution-content">
+                                <div class="solution-item__icon"><i class="fas fa-envelope"></i></div>
+                                <div class="solution-item__content">
                                     <h4>Communication & Notifications</h4>
                                     <p>Email, SMS, message queues, push notifications, webhooks, and more</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="solutions-visual fade-in-right">
+                    <div class="solutions-visual fade-in-right animate-in">
                         <div class="data-visualization">
-                            <div class="logo-container logo-1">
+                            <div class="logo-container solutions-logo--1">
                                 <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
-                            <div class="logo-container logo-2">
+                            <div class="logo-container solutions-logo--2">
                                 <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
-                            <div class="logo-container logo-3">
+                            <div class="logo-container solutions-logo--3">
                                 <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
-                            <div class="logo-container logo-4">
+                            <div class="logo-container solutions-logo--4">
                                 <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
-                            <div class="logo-container logo-5">
+                            <div class="logo-container solutions-logo--5">
                                 <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
-                            <div class="logo-container logo-6">
+                            <div class="logo-container solutions-logo--6">
                                 <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
-                            <div class="logo-container logo-7">
+                            <div class="logo-container solutions-logo--7">
                                 <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
-                            <div class="logo-container logo-8">
+                            <div class="logo-container solutions-logo--8">
                                 <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
-                            <div class="logo-container logo-9">
+                            <div class="logo-container solutions-logo--9">
                                 <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
                             <a href="https://flowcore.io/" target="_blank" class="visualization-text">
@@ -303,67 +302,67 @@
         <section class="use-cases" id="use-cases">
             <div class="container">
                 <h2 class="section-title animate-on-scroll">Use Cases</h2>
-                <div class="use-case-content">
+                <div class="use-cases__content">
                     <div class="use-case-block animate-on-scroll">
-                        <div class="use-case-text">
-                            <h3>AI Model Training</h3>
-                            <p>Feed consistent, structured event data to your AI models. Replay historical events to train new models without data corruption or missing information.</p>
-                            <ul class="use-case-benefits">
-                                <li>Consistent Data</li>
-                                <li>Historical Replay</li>
-                                <li>Model Versioning</li>
+                        <div class="use-case-block__text">
+                            <h3 class="use-case-block__title">AI Model Training</h3>
+                            <p class="use-case-block__description">Feed consistent, structured event data to your AI models. Replay historical events to train new models without data corruption or missing information.</p>
+                            <ul class="use-case-block__benefits">
+                                <li class="use-case-block__benefit">Consistent Data</li>
+                                <li class="use-case-block__benefit">Historical Replay</li>
+                                <li class="use-case-block__benefit">Model Versioning</li>
                             </ul>
                         </div>
-                        <div class="use-case-visual">
-                            <div class="use-case-icon">
+                        <div class="use-case-block__visual">
+                            <div class="use-case-block__icon">
                                 <i class="fas fa-brain"></i>
                             </div>
                         </div>
                     </div>
                     <div class="use-case-block animate-on-scroll">
-                        <div class="use-case-text">
-                            <h3>Real-time Analytics</h3>
-                            <p>Process millions of events per second for real-time dashboards, monitoring, and alerting systems with guaranteed event ordering and delivery.</p>
-                            <ul class="use-case-benefits">
-                                <li>Real-time Processing</li>
-                                <li>Event Ordering</li>
-                                <li>Scalable Analytics</li>
+                        <div class="use-case-block__text">
+                            <h3 class="use-case-block__title">Real-time Analytics</h3>
+                            <p class="use-case-block__description">Process millions of events per second for real-time dashboards, monitoring, and alerting systems with guaranteed event ordering and delivery.</p>
+                            <ul class="use-case-block__benefits">
+                                <li class="use-case-block__benefit">Real-time Processing</li>
+                                <li class="use-case-block__benefit">Event Ordering</li>
+                                <li class="use-case-block__benefit">Scalable Analytics</li>
                             </ul>
                         </div>
-                        <div class="use-case-visual">
-                            <div class="use-case-icon">
+                        <div class="use-case-block__visual">
+                            <div class="use-case-block__icon">
                                 <i class="fas fa-chart-line"></i>
                             </div>
                         </div>
                     </div>
                     <div class="use-case-block animate-on-scroll">
-                        <div class="use-case-text">
-                            <h3>Microservices Architecture</h3>
-                            <p>Build resilient microservices with event-driven communication. Each service can replay events to rebuild state and recover from failures.</p>
-                            <ul class="use-case-benefits">
-                                <li>Event-Driven</li>
-                                <li>Fault Tolerance</li>
-                                <li>State Recovery</li>
+                        <div class="use-case-block__text">
+                            <h3 class="use-case-block__title">Microservices Architecture</h3>
+                            <p class="use-case-block__description">Build resilient microservices with event-driven communication. Each service can replay events to rebuild state and recover from failures.</p>
+                            <ul class="use-case-block__benefits">
+                                <li class="use-case-block__benefit">Event-Driven</li>
+                                <li class="use-case-block__benefit">Fault Tolerance</li>
+                                <li class="use-case-block__benefit">State Recovery</li>
                             </ul>
                         </div>
-                        <div class="use-case-visual">
-                            <div class="use-case-icon">
+                        <div class="use-case-block__visual">
+                            <div class="use-case-block__icon">
                                 <i class="fas fa-project-diagram"></i>
                             </div>
                         </div>
                     </div>
                     <div class="use-case-block animate-on-scroll">
-                        <div class="use-case-text">
-                            <h3>Data Synchronization</h3>
-                            <p>Keep multiple systems in sync across different environments, databases, and cloud providers with eventual consistency guarantees.</p>
-                            <ul class="use-case-benefits">
-                                <li>Multi-Environment</li>
-                                <li>Cross-Platform</li>
-                                <li>Consistency</li>
+                        <div class="use-case-block__text">
+                            <h3 class="use-case-block__title">Data Synchronization</h3>
+                            <p class="use-case-block__description">Keep multiple systems in sync across different environments, databases, and cloud providers with eventual consistency guarantees.</p>
+                            <ul class="use-case-block__benefits">
+                                <li class="use-case-block__benefit">Multi-Environment</li>
+                                <li class="use-case-block__benefit">Cross-Platform</li>
+                                <li class="use-case-block__benefit">Consistency</li>
                             </ul>
                         </div>
-                        <div class="use-case-visual">
-                            <div class="use-case-icon">
+                        <div class="use-case-block__visual">
+                            <div class="use-case-block__icon">
                                 <i class="fas fa-sync-alt"></i>
                             </div>
                         </div>
@@ -376,6 +375,7 @@
             <div class="container">
                 <h2 class="section-title animate-on-scroll">Why Choose Flowcore?</h2>
                 <div class="features-grid">
+                    <!-- Top Row - 3 Cards -->
                     <div class="feature-card animate-on-scroll stagger-delay-1">
                         <div class="feature-icon"><i class="fas fa-infinity"></i></div>
                         <h3>Infinite Event Replay</h3>
@@ -391,6 +391,7 @@
                         <h3>Enterprise Security</h3>
                         <p>GDPR compliance, data obfuscation, permission management, and audit trails ensure your data meets the highest security standards.</p>
                     </div>
+                    <!-- Bottom Row - 2 Cards (centered) -->
                     <div class="feature-card animate-on-scroll stagger-delay-4">
                         <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
                         <h3>Unmatched Performance</h3>
@@ -407,18 +408,18 @@
 
         <section class="pricing" id="pricing">
             <div class="container">
-                <div class="pricing-header">
+                <div class="pricing__header">
                     <h2 class="section-title animate-on-scroll">Pricing</h2>
                 </div>
-                <div class="pricing-grid">
-                    <a href="https://aws.amazon.com/marketplace/seller-profile?id=seller-ry27bw735byia" target="_blank" class="pricing-card standard animate-on-scroll stagger-delay-1">
-                        <div class="pricing-card-content">
-                            <div class="pricing-card-header">
-                                <h3 class="pricing-card-title">STANDARD</h3>
-                                <div class="pricing-card-price">$400/month</div>
+                <div class="pricing__grid">
+                    <a href="https://aws.amazon.com/marketplace/seller-profile?id=seller-ry27bw735byia" target="_blank" class="pricing-card pricing-card--standard animate-on-scroll stagger-delay-1">
+                        <div class="pricing-card__content">
+                            <div class="pricing-card__header">
+                                <h3 class="pricing-card__title">STANDARD</h3>
+                                <div class="pricing-card__price">$400/month</div>
                             </div>
-                            <div class="pricing-card-details">
-                                <div class="pricing-card-features">
+                            <div class="pricing-card__details">
+                                <div class="pricing-card__features">
                                     <div class="pricing-feature">✓ 100 GB storage</div>
                                     <div class="pricing-feature">✓ 1,000 events/second</div>
                                     <div class="pricing-feature">✓ Unlimited number of data cores, users, events and proxy transformers</div>
@@ -426,14 +427,14 @@
                             </div>
                         </div>
                     </a>
-                    <a href="https://aws.amazon.com/marketplace/seller-profile?id=seller-ry27bw735byia" target="_blank" class="pricing-card medium animate-on-scroll stagger-delay-2">
-                        <div class="pricing-card-content">
-                            <div class="pricing-card-header">
-                                <h3 class="pricing-card-title">MEDIUM</h3>
-                                <div class="pricing-card-price">$1,000/month</div>
+                    <a href="https://aws.amazon.com/marketplace/seller-profile?id=seller-ry27bw735byia" target="_blank" class="pricing-card pricing-card--medium animate-on-scroll stagger-delay-2">
+                        <div class="pricing-card__content">
+                            <div class="pricing-card__header">
+                                <h3 class="pricing-card__title">MEDIUM</h3>
+                                <div class="pricing-card__price">$1,000/month</div>
                             </div>
-                            <div class="pricing-card-details">
-                                <div class="pricing-card-features">
+                            <div class="pricing-card__details">
+                                <div class="pricing-card__features">
                                     <div class="pricing-feature">✓ 1 TB storage</div>
                                     <div class="pricing-feature">✓ 10,000 events/second</div>
                                     <div class="pricing-feature">✓ Unlimited number of data cores, users, events and proxy transformers</div>
@@ -443,14 +444,14 @@
                             </div>
                         </div>
                     </a>
-                    <a href="https://aws.amazon.com/marketplace/seller-profile?id=seller-ry27bw735byia" target="_blank" class="pricing-card large animate-on-scroll stagger-delay-3">
-                        <div class="pricing-card-content">
-                            <div class="pricing-card-header">
-                                <h3 class="pricing-card-title">LARGE</h3>
-                                <div class="pricing-card-price">$2,000/month</div>
+                    <a href="https://aws.amazon.com/marketplace/seller-profile?id=seller-ry27bw735byia" target="_blank" class="pricing-card pricing-card--large animate-on-scroll stagger-delay-3">
+                        <div class="pricing-card__content">
+                            <div class="pricing-card__header">
+                                <h3 class="pricing-card__title">LARGE</h3>
+                                <div class="pricing-card__price">$2,000/month</div>
                             </div>
-                            <div class="pricing-card-details">
-                                <div class="pricing-card-features">
+                            <div class="pricing-card__details">
+                                <div class="pricing-card__features">
                                     <div class="pricing-feature">✓ 2 TB storage</div>
                                     <div class="pricing-feature">✓ 20,000 events/second</div>
                                     <div class="pricing-feature">✓ Unlimited number of data cores, users, events and proxy transformers</div>
@@ -461,14 +462,14 @@
                             </div>
                         </div>
                     </a>
-                    <a href="https://aws.amazon.com/marketplace/seller-profile?id=seller-ry27bw735byia" target="_blank" class="pricing-card cluster animate-on-scroll stagger-delay-4">
-                        <div class="pricing-card-content">
-                            <div class="pricing-card-header">
-                                <h3 class="pricing-card-title">CLUSTER</h3>
-                                <div class="pricing-card-price">$2,000/month</div>
+                    <a href="https://aws.amazon.com/marketplace/seller-profile?id=seller-ry27bw735byia" target="_blank" class="pricing-card pricing-card--cluster animate-on-scroll stagger-delay-4">
+                        <div class="pricing-card__content">
+                            <div class="pricing-card__header">
+                                <h3 class="pricing-card__title">CLUSTER</h3>
+                                <div class="pricing-card__price">$2,000/month</div>
                             </div>
-                            <div class="pricing-card-details">
-                                <div class="pricing-card-features">
+                            <div class="pricing-card__details">
+                                <div class="pricing-card__features">
                                     <div class="pricing-feature">✓ On your own servers</div>
                                     <div class="pricing-feature">✓ License for 20 vCPUs included</div>
                                     <div class="pricing-feature">✓ Extra: $100/vCPU/month</div>
@@ -480,10 +481,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="pricing-footer">
-                    <p class="pricing-notes animate-on-scroll">Extra storage $0.10/GB/month. Extra transformers $20/unit/month. All prices exclusive of sales tax.</p>
-                    <p class="pricing-subtitle animate-on-scroll">Discover the plan that aligns perfectly with your needs.</p>
-                    <p class="pricing-disclaimer animate-on-scroll">Note: all plans come with 'fair usage' limitations and will incur additional fees for managed read models.</p>
+                <div class="pricing__footer">
+                    <p class="pricing__notes animate-on-scroll">Extra storage $0.10/GB/month. Extra transformers $20/unit/month. All prices exclusive of sales tax.</p>
+                    <p class="pricing__subtitle animate-on-scroll">Discover the plan that aligns perfectly with your needs.</p>
+                    <p class="pricing__disclaimer animate-on-scroll">Note: all plans come with 'fair usage' limitations and will incur additional fees for managed read models.</p>
                 </div>
             </div>
         </section>
@@ -491,59 +492,59 @@
         <section class="faq" id="faq">
             <div class="container">
                 <h2 class="section-title animate-on-scroll">Frequently Asked Questions</h2>
-                <div class="faq-content">
+                <div class="faq__content">
                     <div class="faq-item animate-on-scroll stagger-delay-1">
-                        <div class="faq-question">
-                            <h3>What makes Flowcore different from traditional databases?</h3>
-                            <span class="faq-toggle">+</span>
+                        <div class="faq-item__question">
+                            <h3 class="faq-item__title">What makes Flowcore different from traditional databases?</h3>
+                            <span class="faq-item__toggle">+</span>
                         </div>
-                        <div class="faq-answer">
-                            <p>Flowcore uses event-first architecture where everything is written to the event store first, creating a single source of truth. Unlike traditional databases, we offer infinite event replay capabilities, allowing you to debug issues, test features, and train AI models with historical data at any point in time.</p>
+                        <div class="faq-item__answer">
+                            <p class="faq-item__text">Flowcore uses event-first architecture where everything is written to the event store first, creating a single source of truth. Unlike traditional databases, we offer infinite event replay capabilities, allowing you to debug issues, test features, and train AI models with historical data at any point in time.</p>
                         </div>
                     </div>
                     <div class="faq-item animate-on-scroll stagger-delay-2">
-                        <div class="faq-question">
-                            <h3>How does the infinite replay feature work?</h3>
-                            <span class="faq-toggle">+</span>
+                        <div class="faq-item__question">
+                            <h3 class="faq-item__title">How does the infinite replay feature work?</h3>
+                            <span class="faq-item__toggle">+</span>
                         </div>
-                        <div class="faq-answer">
-                            <p>Every event in Flowcore is preserved forever with immutable timestamps. You can replay events from any point in time to any destination, rebuild application state, test new features against historical data, or train AI models. This is perfect for debugging, auditing, and development iteration.</p>
+                        <div class="faq-item__answer">
+                            <p class="faq-item__text">Every event in Flowcore is preserved forever with immutable timestamps. You can replay events from any point in time to any destination, rebuild application state, test new features against historical data, or train AI models. This is perfect for debugging, auditing, and development iteration.</p>
                         </div>
                     </div>
                     <div class="faq-item animate-on-scroll stagger-delay-3">
-                        <div class="faq-question">
-                            <h3>What databases and systems does Flowcore support?</h3>
-                            <span class="faq-toggle">+</span>
+                        <div class="faq-item__question">
+                            <h3 class="faq-item__title">What databases and systems does Flowcore support?</h3>
+                            <span class="faq-item__toggle">+</span>
                         </div>
-                        <div class="faq-answer">
-                            <p>Flowcore supports all major database types including relational, graph, time series, vector, key-value, column-based, and document databases. We also integrate with data warehouses, object storage, CSV/Parquet files, and communication systems like email, SMS, webhooks, and message queues.</p>
+                        <div class="faq-item__answer">
+                            <p class="faq-item__text">Flowcore supports all major database types including relational, graph, time series, vector, key-value, column-based, and document databases. We also integrate with data warehouses, object storage, CSV/Parquet files, and communication systems like email, SMS, webhooks, and message queues.</p>
                         </div>
                     </div>
                     <div class="faq-item animate-on-scroll stagger-delay-4">
-                        <div class="faq-question">
-                            <h3>How quickly can I get started with Flowcore?</h3>
-                            <span class="faq-toggle">+</span>
+                        <div class="faq-item__question">
+                            <h3 class="faq-item__title">How quickly can I get started with Flowcore?</h3>
+                            <span class="faq-item__toggle">+</span>
                         </div>
-                        <div class="faq-answer">
-                            <p>You can get your first data core running in under 5 minutes. Simply install our CLI with <code>npm install -g @flowcore/cli</code>, create a data core with <code>flowcore datacore create my-app</code>, and start sending events. Our developer-friendly APIs and comprehensive documentation make integration seamless.</p>
+                        <div class="faq-item__answer">
+                            <p class="faq-item__text">You can get your first data core running in under 5 minutes. Simply install our CLI with <code class="faq-item__code">npm install -g @flowcore/cli</code>, create a data core with <code class="faq-item__code">flowcore datacore create my-app</code>, and start sending events. Our developer-friendly APIs and comprehensive documentation make integration seamless.</p>
                         </div>
                     </div>
                     <div class="faq-item animate-on-scroll stagger-delay-5">
-                        <div class="faq-question">
-                            <h3>Is Flowcore suitable for production workloads?</h3>
-                            <span class="faq-toggle">+</span>
+                        <div class="faq-item__question">
+                            <h3 class="faq-item__title">Is Flowcore suitable for production workloads?</h3>
+                            <span class="faq-item__toggle">+</span>
                         </div>
-                        <div class="faq-answer">
-                            <p>Absolutely! Flowcore processes over 10 million events per second with sub-millisecond latency and 99.9% uptime. We offer enterprise-grade security with GDPR compliance, data obfuscation, permission management, and audit trails. Our auto-scaling infrastructure handles traffic spikes seamlessly.</p>
+                        <div class="faq-item__answer">
+                            <p class="faq-item__text">Absolutely! Flowcore processes over 10 million events per second with sub-millisecond latency and 99.9% uptime. We offer enterprise-grade security with GDPR compliance, data obfuscation, permission management, and audit trails. Our auto-scaling infrastructure handles traffic spikes seamlessly.</p>
                         </div>
                     </div>
                     <div class="faq-item animate-on-scroll stagger-delay-6">
-                        <div class="faq-question">
-                            <h3>What are the pricing options and how do they scale?</h3>
-                            <span class="faq-toggle">+</span>
+                        <div class="faq-item__question">
+                            <h3 class="faq-item__title">What are the pricing options and how do they scale?</h3>
+                            <span class="faq-item__toggle">+</span>
                         </div>
-                        <div class="faq-answer">
-                            <p>We offer flexible pricing starting at $400/month for the Standard plan with 100GB storage and 1,000 events/second. Our Medium and Large plans provide more storage and processing power, while our Cluster plan runs on your own servers. Extra storage is $0.10/GB/month and extra transformers are $20/unit/month.</p>
+                        <div class="faq-item__answer">
+                            <p class="faq-item__text">We offer flexible pricing starting at $400/month for the Standard plan with 100GB storage and 1,000 events/second. Our Medium and Large plans provide more storage and processing power, while our Cluster plan runs on your own servers. Extra storage is $0.10/GB/month and extra transformers are $20/unit/month.</p>
                         </div>
                     </div>
                 </div>
@@ -552,74 +553,74 @@
 
         <section class="getting-started" id="getting-started">
             <div class="container">
-                <div class="getting-started-header">
+                <div class="getting-started__header">
                     <h2 class="section-title animate-on-scroll">Get Started in Minutes</h2>
-                    <p class="section-subtitle animate-on-scroll">Build your first event-driven application with our simple, powerful tools</p>
+                    <p class="getting-started__subtitle animate-on-scroll">Build your first event-driven application with our simple, powerful tools</p>
                 </div>
                 
-                <div class="getting-started-demo animate-on-scroll">
+                <div class="getting-started__demo animate-on-scroll">
                     <div class="demo-terminal">
-                        <div class="terminal-header">
-                            <div class="terminal-controls">
-                                <span class="control close"></span>
-                                <span class="control minimize"></span>
-                                <span class="control maximize"></span>
+                        <div class="demo-terminal__header">
+                            <div class="demo-terminal__controls">
+                                <span class="demo-terminal__control demo-terminal__control--close"></span>
+                                <span class="demo-terminal__control demo-terminal__control--minimize"></span>
+                                <span class="demo-terminal__control demo-terminal__control--maximize"></span>
                             </div>
-                            <span class="terminal-title">Terminal</span>
+                            <span class="demo-terminal__title">Terminal</span>
                         </div>
-                        <div class="terminal-content">
+                        <div class="demo-terminal__content">
                             <div class="terminal-line">
-                                <span class="prompt">$</span>
-                                <span class="command">npm install -g @flowcore/cli</span>
+                                <span class="terminal-line__prompt">$</span>
+                                <span class="terminal-line__command">npm install -g @flowcore/cli</span>
                             </div>
-                            <div class="terminal-line output">
-                                <span class="success">✓ Flowcore CLI installed successfully</span>
-                            </div>
-                            <div class="terminal-line">
-                                <span class="prompt">$</span>
-                                <span class="command">flowcore datacore create my-app</span>
-                            </div>
-                            <div class="terminal-line output">
-                                <span class="success">✓ Data core 'my-app' created</span>
+                            <div class="terminal-line terminal-line--output">
+                                <span class="terminal-line__success">✓ Flowcore CLI installed successfully</span>
                             </div>
                             <div class="terminal-line">
-                                <span class="prompt">$</span>
-                                <span class="command typing">flowcore events send --data '{"user": "john", "action": "login"}'</span>
+                                <span class="terminal-line__prompt">$</span>
+                                <span class="terminal-line__command">flowcore datacore create my-app</span>
+                            </div>
+                            <div class="terminal-line terminal-line--output">
+                                <span class="terminal-line__success">✓ Data core 'my-app' created</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-line__prompt">$</span>
+                                <span class="terminal-line__command terminal-line__command--typing">flowcore events send --data '{"user": "john", "action": "login"}'</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="getting-started-features">
+                <div class="getting-started__features">
                     <div class="feature-item animate-on-scroll stagger-delay-1">
-                        <div class="feature-icon">
+                        <div class="feature-item__icon">
                             <i class="fas fa-rocket"></i>
                         </div>
-                        <h3>Quick Setup</h3>
-                        <p>Get your first data core running in under 5 minutes with our CLI tools</p>
+                        <h3 class="feature-item__title">Quick Setup</h3>
+                        <p class="feature-item__description">Get your first data core running in under 5 minutes with our CLI tools</p>
                     </div>
                     <div class="feature-item animate-on-scroll stagger-delay-2">
-                        <div class="feature-icon">
+                        <div class="feature-item__icon">
                             <i class="fas fa-code"></i>
                         </div>
-                        <h3>Developer Friendly</h3>
-                        <p>Clean APIs, comprehensive docs, and SDK support for all major languages</p>
+                        <h3 class="feature-item__title">Developer Friendly</h3>
+                        <p class="feature-item__description">Clean APIs, comprehensive docs, and SDK support for all major languages</p>
                     </div>
                     <div class="feature-item animate-on-scroll stagger-delay-3">
-                        <div class="feature-icon">
+                        <div class="feature-item__icon">
                             <i class="fas fa-play"></i>
                         </div>
-                        <h3>Start Building</h3>
-                        <p>Real-time event processing with guaranteed ordering and infinite replay</p>
+                        <h3 class="feature-item__title">Start Building</h3>
+                        <p class="feature-item__description">Real-time event processing with guaranteed ordering and infinite replay</p>
                     </div>
                 </div>
 
-                <div class="getting-started-actions animate-on-scroll">
-                    <a href="https://docs.flowcore.io/" target="_blank" class="btn btn-primary btn-large">
+                <div class="getting-started__actions animate-on-scroll">
+                    <a href="https://docs.flowcore.io/" target="_blank" class="btn btn--primary btn--large">
                         <i class="fas fa-book"></i>
                         Read Documentation
                     </a>
-                    <a href="https://flowcore.io/" target="_blank" class="btn btn-secondary">
+                    <a href="https://flowcore.io/" target="_blank" class="btn btn--secondary">
                         <i class="fas fa-play"></i>
                         Start Free Trial
                     </a>
@@ -629,35 +630,35 @@
 
         <section class="contact" id="contact">
             <div class="container">
-                <div class="contact-header">
+                <div class="contact__header">
                     <h2 class="section-title animate-on-scroll">Get in Touch</h2>
-                    <p class="contact-subtitle animate-on-scroll">Ready to revolutionize your data architecture? Let's connect and explore how Flowcore can transform your event processing.</p>
+                    <p class="contact__subtitle animate-on-scroll">Ready to revolutionize your data architecture? Let's connect and explore how Flowcore can transform your event processing.</p>
                 </div>
-                <div class="contact-content">
-                    <div class="contact-cards">
-                        <a href="mailto:flowcore@flowcore.com" target="_blank" class="contact-card contact-card-link animate-on-scroll stagger-delay-1">
-                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                            <h3>Email Us</h3>
-                            <p>Send us a message and we'll get back to you within 24 hours.</p>
-                            <span class="contact-link">flowcore@flowcore.com</span>
+                <div class="contact__content">
+                    <div class="contact__cards">
+                        <a href="mailto:flowcore@flowcore.com" target="_blank" class="contact-card animate-on-scroll stagger-delay-1">
+                            <div class="contact-card__icon"><i class="fas fa-envelope"></i></div>
+                            <h3 class="contact-card__title">Email Us</h3>
+                            <p class="contact-card__description">Send us a message and we'll get back to you within 24 hours.</p>
+                            <span class="contact-card__link">flowcore@flowcore.com</span>
                         </a>
-                        <a href="tel:+298556600" target="_blank" class="contact-card contact-card-link animate-on-scroll stagger-delay-2">
-                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                            <h3>Call Us</h3>
-                            <p>Speak directly with our team for immediate assistance.</p>
-                            <span class="contact-link">+298 556 600</span>
+                        <a href="tel:+298556600" target="_blank" class="contact-card animate-on-scroll stagger-delay-2">
+                            <div class="contact-card__icon"><i class="fas fa-phone"></i></div>
+                            <h3 class="contact-card__title">Call Us</h3>
+                            <p class="contact-card__description">Speak directly with our team for immediate assistance.</p>
+                            <span class="contact-card__link">+298 556 600</span>
                         </a>
-                        <a href="https://maps.app.goo.gl/5czHaR9F8Een7D94A" target="_blank" class="contact-card contact-card-link animate-on-scroll stagger-delay-3">
-                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <h3>Visit Us</h3>
-                            <p>Located in the heart of Tórshavn, Faroe Islands.</p>
-                            <span class="contact-link">Flowcore Sp/f<br>Vestara Bryggja 15<br>100 Tórshavn</span>
+                        <a href="https://maps.app.goo.gl/5czHaR9F8Een7D94A" target="_blank" class="contact-card animate-on-scroll stagger-delay-3">
+                            <div class="contact-card__icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <h3 class="contact-card__title">Visit Us</h3>
+                            <p class="contact-card__description">Located in the heart of Tórshavn, Faroe Islands.</p>
+                            <span class="contact-card__link">Flowcore Sp/f<br>Vestara Bryggja 15<br>100 Tórshavn</span>
                         </a>
-                        <a href="https://discord.gg/k97YWAw8XF" target="_blank" class="contact-card contact-card-link discord-card animate-on-scroll stagger-delay-4">
-                            <div class="contact-icon"><i class="fab fa-discord"></i></div>
-                            <h3>Join Our Community</h3>
-                            <p>Connect with other developers and get real-time support.</p>
-                            <span class="contact-link">Join Discord Community</span>
+                        <a href="https://discord.gg/k97YWAw8XF" target="_blank" class="contact-card contact-card--discord animate-on-scroll stagger-delay-4">
+                            <div class="contact-card__icon"><i class="fab fa-discord"></i></div>
+                            <h3 class="contact-card__title">Join Our Community</h3>
+                            <p class="contact-card__description">Connect with other developers and get real-time support.</p>
+                            <span class="contact-card__link">Join Discord Community</span>
                         </a>
                     </div>
                 </div>
@@ -668,23 +669,23 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer__content">
                 <!-- Company Info Section -->
                 <div class="footer-section footer-brand">
-                    <div class="footer-logo">
-                        <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="footer-logo-img">
-                        <h4>FLOWCORE</h4>
+                    <div class="footer-brand__logo">
+                        <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="footer-brand__logo-img">
+                        <h4 class="footer-brand__logo-text">FLOWCORE</h4>
                     </div>
-                    <p class="footer-description">Event storage and processing platform for AI developers. Single source of truth with infinite replay capabilities.</p>
+                    <p class="footer-brand__description">Event storage and processing platform for AI developers. Single source of truth with infinite replay capabilities.</p>
                     
                     <!-- Social Media Links -->
                     <div class="footer-social">
-                        <h5>Follow Us</h5>
-                        <div class="social-links">
+                        <h5 class="footer-social__title">Follow Us</h5>
+                        <div class="footer-social__links">
                         <a href="https://www.linkedin.com/company/flowcore" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                         <a href="https://www.youtube.com/channel/UC-t-FsHqFETCuKzqCb9Ul2Q" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                         <a href="https://discord.gg/k97YWAw8XF" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
-                        <a href="https://www.threads.net/@flowcore.io" target="_blank" aria-label="Threads"><i class="fab fa-threads"></i></a>
+                        <a href="https://www.threads.net/@flowcore.io" target="_blank" aria-label="Threads"><i class="fas fa-at"></i></a>
                         <a href="https://www.instagram.com/flowcore.io/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
@@ -692,8 +693,8 @@
                 
                 <!-- Support & Resources -->
                 <div class="footer-section">
-                    <h4>Support</h4>
-                    <ul>
+                    <h4 class="footer-section__title">Support</h4>
+                    <ul class="footer-section__list">
                         <li><a href="https://flowcore.io/" target="_blank">Video Tutorials</a></li>
                         <li><a href="https://flowcore.io/" target="_blank">Documentation</a></li>
                         <li><a href="https://discord.gg/k97YWAw8XF" target="_blank">Community Support</a></li>
@@ -703,21 +704,19 @@
                 
                 <!-- Contact Information -->
                 <div class="footer-section footer-contact">
-                    <h4>Contact Us</h4>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <a href="tel:+298556600" target="_blank">+298 556 600</a>
-                        </div>
-                        <div class="contact-item">
-                            <a href="mailto:flowcore@flowcore.com" target="_blank">flowcore@flowcore.com</a>
-                        </div>
+                    <h4 class="footer-section__title">Contact Us</h4>
+                    <div class="footer-contact__item">
+                        <a href="tel:+298556600" target="_blank">+298 556 600</a>
+                    </div>
+                    <div class="footer-contact__item">
+                        <a href="mailto:flowcore@flowcore.com" target="_blank">flowcore@flowcore.com</a>
                     </div>
                 </div>
                 
                 <!-- Address Information -->
                 <div class="footer-section footer-address">
-                    <h4>Visit Us</h4>
-                    <div class="address-info">
+                    <h4 class="footer-section__title">Visit Us</h4>
+                    <div class="footer-address__info">
                         <p><strong>Flowcore Sp/f</strong></p>
                         <p>Vestara Bryggja 15<br>
                         100 Tórshavn<br>
@@ -727,10 +726,10 @@
             </div>
             
             <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <div class="footer-bottom-content">
-                    <p>&copy; 2025 Flowcore. All rights reserved.</p>
-                    <div class="footer-legal">
+            <div class="footer__bottom">
+                <div class="footer__bottom-content">
+                    <p class="footer__copyright">&copy; 2025 Flowcore. All rights reserved.</p>
+                    <div class="footer__legal">
                         <a href="terms-of-service.html">Terms of Service</a>
                         <a href="privacy-policy.html">Privacy Policy</a>
                         <a href="fulfillment-policy.html">Fulfillment Policy</a>

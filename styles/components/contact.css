@@ -1,0 +1,161 @@
+/* Contact Component - BEM Structure */
+
+/* Block: contact */
+.contact {
+    padding: calc(var(--spacing-2xl) + var(--spacing-lg)) 0;
+    background-color: rgba(var(--color-background-rgb), 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Element: contact__header */
+.contact__header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+/* Element: contact__subtitle */
+.contact__subtitle {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Element: contact__content */
+.contact__content {
+    margin-top: var(--spacing-xl);
+}
+
+/* Element: contact__cards */
+.contact__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Block: contact-card */
+.contact-card {
+    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(255, 0, 255, 0.05) 100%);
+    border-radius: var(--border-radius-xl);
+    padding: var(--spacing-xl);
+    border: 2px solid var(--color-border);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--color-text);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-secondary);
+    box-shadow: 0 20px 40px rgba(var(--color-secondary-rgb), 0.1);
+}
+
+.contact-card:hover::before {
+    left: 100%;
+}
+
+/* Element: contact-card__icon */
+.contact-card__icon {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--spacing-md);
+    display: inline-block;
+}
+
+.contact-card__icon i {
+    background: var(--color-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Element: contact-card__title */
+.contact-card__title {
+    font-family: var(--font-family-header);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin: 0 0 var(--spacing-sm) 0;
+    color: var(--color-text);
+}
+
+/* Element: contact-card__description */
+.contact-card__description {
+    color: var(--color-text-muted);
+    margin: 0 0 var(--spacing-md) 0;
+    line-height: var(--line-height-relaxed);
+}
+
+/* Element: contact-card__link */
+.contact-card__link {
+    color: var(--color-secondary);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    transition: color var(--transition-base);
+}
+
+.contact-card__link:hover {
+    color: var(--color-primary-hover);
+}
+
+/* Contact card variants */
+.contact-card--discord {
+    background: linear-gradient(135deg, #5865f2 0%, #7289da 100%);
+    border-color: #5865f2;
+    color: white;
+}
+
+.contact-card--discord .contact-card__icon i,
+.contact-card--discord .contact-card__title,
+.contact-card--discord .contact-card__description,
+.contact-card--discord .contact-card__link {
+    color: white;
+}
+
+.contact-card--discord .contact-card__icon i {
+    -webkit-text-fill-color: white;
+    background: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .contact__cards {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .contact {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .contact__cards {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto var(--spacing-xl);
+    }
+    
+    .contact-card {
+        padding: var(--spacing-lg);
+    }
+} 

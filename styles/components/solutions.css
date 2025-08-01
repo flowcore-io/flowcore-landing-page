@@ -1,0 +1,327 @@
+/* Solutions Component - BEM Structure */
+
+/* ==========================================================================
+   CSS Custom Properties for Solutions
+   ========================================================================== */
+:root {
+    --solutions-logo-animation-duration: 6s;
+    --solutions-logo-float-distance: 10px;
+    --solutions-visualization-max-width: 600px;
+    --solutions-visualization-height: 500px;
+    --solutions-logo-hover-opacity: 1;
+}
+
+/* ==========================================================================
+   Main Solutions Block
+   ========================================================================== */
+
+/* Block: solutions */
+.solutions {
+    padding: calc(var(--spacing-2xl) + var(--spacing-lg)) 0;
+    background-color: rgba(var(--color-background-rgb), 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Element: solutions__content */
+.solutions__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: center;
+}
+
+/* ==========================================================================
+   Solutions Text Content
+   ========================================================================== */
+
+/* Element: solutions__text */
+.solutions__text > p {
+    color: var(--color-text-muted);
+    margin: 0 0 var(--spacing-xl) 0;
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-lg);
+}
+
+/* Element: solutions__list */
+.solutions__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+/* ==========================================================================
+   Solution Items
+   ========================================================================== */
+
+/* Block: solution-item */
+.solution-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-lg);
+    transition: background-color var(--transition-base);
+}
+
+.solution-item:hover {
+    background-color: var(--color-surface);
+}
+
+/* Element: solution-item__icon */
+.solution-item__icon {
+    font-size: var(--font-size-2xl);
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    color: var(--color-text);
+    border: 2px solid var(--color-secondary);
+    border-radius: var(--border-radius-lg);
+}
+
+.solution-item__icon i {
+    background: var(--color-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Element: solution-item__content */
+.solution-item__content h4 {
+    font-family: var(--font-family-header);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin: 0 0 var(--spacing-xs) 0;
+    color: var(--color-text);
+}
+
+.solution-item__content p {
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: var(--line-height-relaxed);
+}
+
+/* ==========================================================================
+   Solutions Visual Section
+   ========================================================================== */
+
+/* Element: solutions-visual */
+.solutions-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Block: data-visualization */
+.data-visualization {
+    position: relative;
+    width: 100%;
+    max-width: var(--solutions-visualization-max-width);
+    height: var(--solutions-visualization-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   Logo Container and Individual Logos
+   ========================================================================== */
+
+/* Block: logo-container */
+.logo-container {
+    position: absolute;
+    animation: logoFloat var(--solutions-logo-animation-duration) ease-in-out infinite;
+}
+
+/* Individual logo positioning and styling */
+.solutions-logo--1 {
+    width: 65px;
+    height: 65px;
+    top: 18%;
+    right: 12%;
+    z-index: 3;
+    animation-delay: 0s;
+    opacity: 0.85;
+}
+
+.solutions-logo--2 {
+    width: 30px;
+    height: 30px;
+    top: 8%;
+    left: 55%;
+    z-index: 1;
+    animation-delay: 1s;
+    opacity: 0.45;
+}
+
+.solutions-logo--3 {
+    width: 55px;
+    height: 55px;
+    top: 12%;
+    left: 18%;
+    z-index: 1;
+    animation-delay: 2s;
+    opacity: 0.7;
+}
+
+.solutions-logo--4 {
+    width: 25px;
+    height: 25px;
+    bottom: 8%;
+    left: 55%;
+    z-index: 1;
+    animation-delay: 3s;
+    opacity: 0.35;
+}
+
+.solutions-logo--5 {
+    width: 45px;
+    height: 45px;
+    top: 55%;
+    right: 20%;
+    z-index: 1;
+    animation-delay: 4s;
+    opacity: 0.6;
+}
+
+.solutions-logo--6 {
+    width: 60px;
+    height: 60px;
+    bottom: 18%;
+    left: 22%;
+    z-index: 1;
+    animation-delay: 5s;
+    opacity: 0.8;
+}
+
+.solutions-logo--7 {
+    width: 35px;
+    height: 35px;
+    top: 45%;
+    left: 8%;
+    z-index: 2;
+    animation-delay: 6s;
+    opacity: 0.5;
+}
+
+.solutions-logo--8 {
+    width: 70px;
+    height: 70px;
+    bottom: 12%;
+    right: 5%;
+    z-index: 3;
+    animation-delay: 7s;
+    opacity: 0.9;
+}
+
+.solutions-logo--9 {
+    width: 75px;
+    height: 75px;
+    top: 30%;
+    left: 35%;
+    z-index: 4;
+    animation-delay: 8s;
+    opacity: 1.0;
+}
+
+/* Element: logo-image */
+.logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity var(--transition-base);
+}
+
+.logo-container:hover .logo-image {
+    opacity: var(--solutions-logo-hover-opacity);
+}
+
+/* ==========================================================================
+   Visualization Text (Flowcore Platform Box)
+   ========================================================================== */
+
+/* Block: visualization-text */
+.visualization-text {
+    text-align: center;
+    z-index: 2;
+    background: rgba(var(--color-surface-rgb), 0.6);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-xl);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--color-secondary);
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.visualization-text:hover {
+    transform: scale(1.05);
+}
+
+.visualization-text h3 {
+    font-family: var(--font-family-header);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin: 0 0 var(--spacing-xs) 0;
+    background: var(--color-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.visualization-text p {
+    color: var(--color-text-muted);
+    margin: 0;
+    font-size: var(--font-size-sm);
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+
+@keyframes logoFloat {
+    0%, 100% { 
+        transform: translateY(0px); 
+    }
+    50% { 
+        transform: translateY(calc(-1 * var(--solutions-logo-float-distance))); 
+    }
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+    .solutions__content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+}
+
+@media (max-width: 768px) {
+    .solutions {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .data-visualization {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .logo-container {
+        width: 50px;
+        height: 50px;
+    }
+} 
