@@ -15,10 +15,15 @@
     --color-surface: #f8fafc;
     --color-surface-rgb: 248, 250, 252;
     --color-text: #1a1d30;
-    --color-text-muted: #6b7280;
+    --color-text-muted: #666666;
     --color-border: #e5e7eb;
     --color-border-rgb: 229, 229, 229;
     --color-shadow: rgba(255, 204, 0, 0.15);
+    
+    /* Focus styles for accessibility */
+    --color-focus: #ff44aa;
+    --focus-outline: 2px solid var(--color-focus);
+    --focus-outline-offset: 2px;
     
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -75,6 +80,7 @@
     --color-border-rgb: 229, 229, 229;
     --color-secondary-rgb: 255, 68, 170;
     --color-shadow: rgba(255, 204, 0, 0.08);
+    --color-focus: #ff44aa;
 }
 
 [data-theme="light"] .feature-card {
@@ -91,17 +97,20 @@
     --color-nav-footer: #131726;
     --color-nav-footer-rgb: 19, 23, 38;
     --color-text: #ffffff;
-    --color-text-muted: #a3a3a3;
+    --color-text-muted: #ffffff;
     --color-border: #1a1d30;
     --color-border-rgb: 26, 29, 48;
     --color-secondary-rgb: 255, 68, 170;
     --color-shadow: rgba(255, 204, 0, 0.15);
+    --color-focus: #ff66cc;
 }
 
 /* Reset and base styles */
 * {
     box-sizing: border-box;
 }
+
+
 
 /* Prevent horizontal scrolling */
 html, body {
@@ -114,11 +123,47 @@ html, body {
 a {
     color: inherit;
     text-decoration: none;
-    transition: opacity var(--transition-base);
 }
 
-a:hover {
-    opacity: 0.8;
+/* Focus styles for accessibility - Orlando's accessibility-first approach */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+[tabindex]:focus {
+    outline: none;
+    outline-offset: 0;
+}
+
+/* Skip to main content link for screen readers */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--color-secondary);
+    color: var(--color-text);
+    padding: 8px;
+    text-decoration: none;
+    border-radius: var(--border-radius-sm);
+    z-index: 1001;
+    transition: top var(--transition-base);
+    /* Hide visually but keep accessible to screen readers */
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.skip-link:focus {
+    top: 6px;
+    /* Show when focused for keyboard navigation */
+    clip: auto;
+    clip-path: none;
+    width: auto;
+    height: auto;
+    overflow: visible;
 }
 
 /* Body styles */
@@ -152,31 +197,33 @@ body > .wave-container {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 var(--spacing-md);
+    width: 100%;
 }
 
-/* Main content */
+/* Main content area */
 main {
     position: relative;
     z-index: 2;
+    min-height: 100vh;
 }
 
 /* Section titles */
 .section-title {
     font-family: var(--font-family-header);
-    font-size: var(--font-size-4xl);
-    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-5xl);
+    font-weight: var(--font-weight-normal);
     text-align: center;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
     color: var(--color-text);
     line-height: var(--line-height-tight);
 }
 
-/* Animation utilities */
+/* Animation classes */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.6s ease-out;
+    transition: opacity var(--transition-slow), transform var(--transition-slow);
 }
 
 .animate-on-scroll.animate-in {
@@ -184,11 +231,10 @@ main {
     transform: translateY(0);
 }
 
-/* Fade in animations */
 .fade-in-up {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-out;
+    transform: translateY(20px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
 }
 
 .fade-in-up.animate-in {
@@ -199,7 +245,7 @@ main {
 .fade-in-left {
     opacity: 0;
     transform: translateX(-30px);
-    transition: all 0.6s ease-out;
+    transition: opacity var(--transition-base), transform var(--transition-base);
 }
 
 .fade-in-left.animate-in {
@@ -210,7 +256,7 @@ main {
 .fade-in-right {
     opacity: 0;
     transform: translateX(30px);
-    transition: all 0.6s ease-out;
+    transition: opacity var(--transition-base), transform var(--transition-base);
 }
 
 .fade-in-right.animate-in {
@@ -221,7 +267,7 @@ main {
 .scale-in {
     opacity: 0;
     transform: scale(0.9);
-    transition: all 0.6s ease-out;
+    transition: opacity var(--transition-base), transform var(--transition-base);
 }
 
 .scale-in.animate-in {
@@ -229,13 +275,15 @@ main {
     transform: scale(1);
 }
 
-/* Stagger delays */
+/* Stagger delays for animations */
 .stagger-delay-1 { transition-delay: 0.1s; }
 .stagger-delay-2 { transition-delay: 0.2s; }
 .stagger-delay-3 { transition-delay: 0.3s; }
 .stagger-delay-4 { transition-delay: 0.4s; }
+.stagger-delay-5 { transition-delay: 0.5s; }
+.stagger-delay-6 { transition-delay: 0.6s; }
 
-/* Reduced motion support */
+/* Respect user's motion preferences - Orlando's accessibility-first approach */
 @media (prefers-reduced-motion: reduce) {
     .animate-on-scroll,
     .fade-in-up,
@@ -243,28 +291,28 @@ main {
     .fade-in-right,
     .scale-in {
         transition: none;
-        animation: none;
+        transform: none;
+        opacity: 1;
     }
-
+    
     .animate-on-scroll.animate-in,
     .fade-in-up.animate-in,
     .fade-in-left.animate-in,
     .fade-in-right.animate-in,
     .scale-in.animate-in {
-        opacity: 1;
         transform: none;
     }
 }
 
-/* Responsive utilities */
+/* Responsive design - Orlando's mobile-first approach */
 @media (max-width: 768px) {
     .section-title {
-        font-size: var(--font-size-3xl);
+        font-size: var(--font-size-4xl);
     }
 }
 
 @media (max-width: 480px) {
     .section-title {
-        font-size: var(--font-size-2xl);
+        font-size: var(--font-size-3xl);
     }
 } 

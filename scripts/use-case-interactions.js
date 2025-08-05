@@ -31,14 +31,7 @@ function initializeInteractiveElements() {
             triggerSpecificInteraction(this);
         });
         
-        // Add hover effects
-        element.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-2px) scale(1.05)';
-        });
-        
-        element.addEventListener('mouseleave', function() {
-            this.style.transform = '';
-        });
+        // Hover effects removed as requested
     });
 }
 

@@ -1,6 +1,6 @@
 /* Navigation Component - BEM Structure */
 
-/* Block: nav */
+/* Block: nav - Updated to remove border */
 .nav {
     background-color: rgba(var(--color-nav-footer-rgb), 0.95);
     position: fixed;
@@ -11,7 +11,7 @@
     z-index: 1000;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(var(--color-border-rgb), 0.1);
+    border-bottom: none !important;
 }
 
 /* Element: nav__container */
@@ -21,7 +21,7 @@
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0.75rem 1rem;
+    padding: var(--spacing-sm) var(--spacing-sm);
     width: 100%;
     box-sizing: border-box;
 }
@@ -47,7 +47,7 @@
 }
 
 .nav__logo-link:hover {
-    opacity: 1; /* Override the general a:hover opacity */
+    /* Hover effects removed as requested */
 }
 
 /* Element: nav__logo-img */
@@ -62,7 +62,7 @@
 .nav__logo-text {
     transform: translateY(4px);
     color: var(--color-text);
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-normal);
 }
 
 /* Element: nav__menu */
@@ -71,7 +71,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 1.5rem;
+    gap: 1rem;
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
@@ -88,7 +88,7 @@
     color: var(--color-text);
     font-weight: var(--font-weight-medium);
     font-size: var(--font-size-sm);
-    padding: 0.5rem 0.75rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: var(--border-radius-md);
     transition: all var(--transition-base);
     position: relative;
@@ -98,6 +98,14 @@
 .nav__link:hover,
 .nav__link--active {
     color: var(--color-secondary);
+}
+
+/* Remove focus outline from navbar items */
+.nav__link:focus,
+.nav__logo-link:focus,
+.nav__toggle:focus {
+    outline: none;
+    outline-offset: 0;
 }
 
 /* Modifier: nav__link--active */
@@ -231,7 +239,7 @@
 
 @media (max-width: 768px) {
     .nav__container {
-        padding: 0.5rem 1rem;
+        padding: var(--spacing-xs) var(--spacing-sm);
     }
 
     .nav__logo-link {

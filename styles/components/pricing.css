@@ -12,9 +12,7 @@
 /* Block: pricing */
 .pricing {
     padding: calc(var(--spacing-2xl) + var(--spacing-lg)) 0;
-    background-color: rgba(var(--color-background-rgb), 0.6);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    background-color: rgba(var(--color-background-rgb), 0.65);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -32,7 +30,6 @@
     grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-lg);
     margin-bottom: var(--spacing-xl);
-    overflow-x: auto;
     padding-bottom: var(--spacing-sm);
 }
 
@@ -142,10 +139,10 @@
 /* Element: pricing-card__title */
 .pricing-card__title {
     font-family: var(--font-family-header);
-    font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-normal);
     margin: 0 0 var(--spacing-sm) 0;
-    color: white;
+    color: var(--color-text);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -155,7 +152,7 @@
     font-family: var(--font-family-header);
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-normal);
-    color: white;
+    color: var(--color-text);
     margin: 0;
 }
 
@@ -196,21 +193,21 @@
 
 /* Element: pricing__notes */
 .pricing__notes {
-    color: var(--color-text-muted);
+    color: #a3a3a3; /* Keep grey for pricing notes */
     font-size: var(--font-size-sm);
     margin-bottom: var(--spacing-md);
 }
 
 /* Element: pricing__subtitle */
 .pricing__subtitle {
-    color: var(--color-text-muted);
+    color: var(--color-text);
     font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-sm);
 }
 
 /* Element: pricing__disclaimer */
 .pricing__disclaimer {
-    color: var(--color-text-muted);
+    color: #a3a3a3; /* Keep grey for pricing disclaimer */
     font-size: var(--font-size-xs);
     font-style: italic;
 }
@@ -245,6 +242,6 @@
     }
     
     .pricing-card__price {
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-base);
     }
 } 

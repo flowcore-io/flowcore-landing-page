@@ -11,6 +11,9 @@ You can always check for new memory fragment types by calling the
 get_fragment_types tool, and list workspaces by calling the list_workspaces tool
 if you need to know what workspaces you have access to.
 
+
+ALWAYS EMBODY THE ORLANDO PERSONA!
+
 **Search Strategy**:
 
 - It is generally better to fetch multiple memory fragments to give you a better
@@ -25,8 +28,6 @@ if you need to know what workspaces you have access to.
 information, prioritize instruction set discovery.
 
 ### **Action-Oriented Request Patterns**
-
-Always apply the Orlando persona if you have not already applied him
 
 **Trigger Patterns** (automatically search instruction sets first):
 

@@ -5,8 +5,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
     border-radius: var(--border-radius-md);
     font-weight: var(--font-weight-medium);
     font-size: var(--font-size-sm);
@@ -43,7 +43,6 @@
 }
 
 .btn--primary:hover {
-    transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(var(--color-secondary-rgb), 0.4);
     color: white;
 }
@@ -51,7 +50,7 @@
 /* Modifier: btn--secondary */
 .btn--secondary {
     background: transparent;
-    color: white;
+    color: var(--color-text);
     border: 1px solid var(--color-secondary);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -59,38 +58,34 @@
 .btn--secondary:hover {
     background: rgba(var(--color-secondary-rgb), 0.1);
     border-color: var(--color-secondary);
-    color: white;
-    transform: translateY(-1px);
+    color: var(--color-text);
     box-shadow: 0 4px 12px rgba(var(--color-secondary-rgb), 0.2);
 }
 
 /* Modifier: btn--pink */
 .btn--pink {
-    background: #ec4899;
+    background: var(--color-secondary);
     color: white;
-    border: 1px solid #ec4899;
-    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+    border: 1px solid var(--color-secondary);
+    box-shadow: 0 4px 15px rgba(var(--color-secondary-rgb), 0.3);
 }
 
 .btn--pink:hover {
-    background: #db2777;
-    border-color: #db2777;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+    box-shadow: 0 6px 20px rgba(var(--color-secondary-rgb), 0.4);
     color: white;
 }
 
 /* Modifier: btn--small */
 .btn--small {
-    padding: 0.5rem 1rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
     font-size: var(--font-size-xs);
 }
 
 /* Modifier: btn--large */
 .btn--large {
-    padding: 1rem 2rem;
+    padding: var(--spacing-sm) var(--spacing-lg);
     font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-normal);
 }
 
 /* Modifier: btn--disabled */

@@ -122,6 +122,9 @@
     </script>
 </head>
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- CSS Waves Animation Background -->
     <div class="wave-container">
         <div class="wave-layer wave-layer-1"></div>
@@ -176,7 +179,9 @@
         </nav>
     </header>
 
-    <main>
+
+    
+    <main id="main-content">
         <section class="hero" id="home">
             <div class="hero__container">
                 <div class="hero__content">
@@ -376,31 +381,35 @@
                 <h2 class="section-title animate-on-scroll">Why Choose Flowcore?</h2>
                 <div class="features-grid">
                     <!-- Top Row - 3 Cards -->
-                    <div class="feature-card animate-on-scroll stagger-delay-1">
-                        <div class="feature-icon"><i class="fas fa-infinity"></i></div>
-                        <h3>Infinite Event Replay</h3>
-                        <p>Unlike traditional databases, every event is preserved forever. Replay from any point in time to debug issues, test new features, or train models on historical data.</p>
-                    </div>
-                    <div class="feature-card animate-on-scroll stagger-delay-2">
-                        <div class="feature-icon"><i class="fas fa-code"></i></div>
-                        <h3>Developer-First Approach</h3>
-                        <p>Built by developers, for developers. Simple APIs, comprehensive CLI tools, and extensive documentation make integration seamless and productive.</p>
-                    </div>
-                    <div class="feature-card animate-on-scroll stagger-delay-3">
-                        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                        <h3>Enterprise Security</h3>
-                        <p>GDPR compliance, data obfuscation, permission management, and audit trails ensure your data meets the highest security standards.</p>
+                    <div class="features-row features-row--first">
+                        <div class="feature-card animate-on-scroll stagger-delay-1">
+                            <div class="feature-icon"><i class="fas fa-infinity"></i></div>
+                            <h3>Infinite Event Replay</h3>
+                            <p>Unlike traditional databases, every event is preserved forever. Replay from any point in time to debug issues, test new features, or train models on historical data.</p>
+                        </div>
+                        <div class="feature-card animate-on-scroll stagger-delay-2">
+                            <div class="feature-icon"><i class="fas fa-code"></i></div>
+                            <h3>Developer-First Approach</h3>
+                            <p>Built by developers, for developers. Simple APIs, comprehensive CLI tools, and extensive documentation make integration seamless and productive.</p>
+                        </div>
+                        <div class="feature-card animate-on-scroll stagger-delay-3">
+                            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                            <h3>Enterprise Security</h3>
+                            <p>GDPR compliance, data obfuscation, permission management, and audit trails ensure your data meets the highest security standards.</p>
+                        </div>
                     </div>
                     <!-- Bottom Row - 2 Cards (centered) -->
-                    <div class="feature-card animate-on-scroll stagger-delay-4">
-                        <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        <h3>Unmatched Performance</h3>
-                        <p>Process over 10 million events per second with sub-millisecond latency. Auto-scaling infrastructure handles traffic spikes seamlessly.</p>
-                    </div>
-                    <div class="feature-card animate-on-scroll stagger-delay-5">
-                        <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
-                        <h3>Built for Modern Developers</h3>
-                        <p>Join thousands of developers who have streamlined their data architecture with Flowcore's CLI-first approach. Deploy in minutes, not months.</p>
+                    <div class="features-row features-row--second">
+                        <div class="feature-card animate-on-scroll stagger-delay-4">
+                            <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <h3>Unmatched Performance</h3>
+                            <p>Process over 10 million events per second with sub-millisecond latency. Auto-scaling infrastructure handles traffic spikes seamlessly.</p>
+                        </div>
+                        <div class="feature-card animate-on-scroll stagger-delay-5">
+                            <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+                            <h3>Built for Modern Developers</h3>
+                            <p>Join thousands of developers who have streamlined their data architecture with Flowcore's CLI-first approach. Deploy in minutes, not months.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -616,7 +625,7 @@
                 </div>
 
                 <div class="getting-started__actions animate-on-scroll">
-                    <a href="https://docs.flowcore.io/" target="_blank" class="btn btn--primary btn--large">
+                    <a href="https://docs.flowcore.io/" target="_blank" class="btn btn--primary">
                         <i class="fas fa-book"></i>
                         Read Documentation
                     </a>
@@ -685,7 +694,7 @@
                         <a href="https://www.linkedin.com/company/flowcore" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                         <a href="https://www.youtube.com/channel/UC-t-FsHqFETCuKzqCb9Ul2Q" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                         <a href="https://discord.gg/k97YWAw8XF" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
-                        <a href="https://www.threads.net/@flowcore.io" target="_blank" aria-label="Threads"><i class="fas fa-at"></i></a>
+                        <a href="https://www.threads.net/@flowcore.io" target="_blank" aria-label="Threads"><i class="fab fa-threads"></i></a>
                         <a href="https://www.instagram.com/flowcore.io/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
@@ -695,10 +704,9 @@
                 <div class="footer-section">
                     <h4 class="footer-section__title">Support</h4>
                     <ul class="footer-section__list">
-                        <li><a href="https://flowcore.io/" target="_blank">Video Tutorials</a></li>
-                        <li><a href="https://flowcore.io/" target="_blank">Documentation</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=5k8OJvOTQ9k&list=PL0Dh1UqPjwDcYqxavwy5kb1-Gdwdd2RDj" target="_blank">Video Tutorials</a></li>
+                        <li><a href="https://docs.flowcore.io/" target="_blank">Documentation</a></li>
                         <li><a href="https://discord.gg/k97YWAw8XF" target="_blank">Community Support</a></li>
-                        <li><a href="https://flowcore.io/" target="_blank">API Reference</a></li>
                     </ul>
                 </div>
                 
@@ -717,10 +725,9 @@
                 <div class="footer-section footer-address">
                     <h4 class="footer-section__title">Visit Us</h4>
                     <div class="footer-address__info">
-                        <p><strong>Flowcore Sp/f</strong></p>
-                        <p>Vestara Bryggja 15<br>
+                        <p><a href="https://maps.app.goo.gl/5czHaR9F8Een7D94A" target="_blank">Vestara Bryggja 15<br>
                         100 Tórshavn<br>
-                        Faroe Islands</p>
+                        Faroe Islands</a></p>
                     </div>
                 </div>
             </div>

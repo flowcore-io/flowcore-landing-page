@@ -1,3 +1,5 @@
+
+
 // Theme management
 (function() {
     // Initialize theme on page load
@@ -82,7 +84,11 @@
     function updateActiveNavLink(activeLink) {
         const navLinks = document.querySelectorAll('.nav__link');
         navLinks.forEach(link => link.classList.remove('nav__link--active'));
-        activeLink.classList.add('nav__link--active');
+        
+        // Only add active class if it's a navigation link, not the logo
+        if (activeLink.classList.contains('nav__link')) {
+            activeLink.classList.add('nav__link--active');
+        }
     }
 
     // Contact form handling (currently no contact form in HTML)

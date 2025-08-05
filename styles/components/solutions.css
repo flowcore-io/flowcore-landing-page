@@ -8,7 +8,7 @@
     --solutions-logo-float-distance: 10px;
     --solutions-visualization-max-width: 600px;
     --solutions-visualization-height: 500px;
-    --solutions-logo-hover-opacity: 1;
+
 }
 
 /* ==========================================================================
@@ -18,7 +18,7 @@
 /* Block: solutions */
 .solutions {
     padding: calc(var(--spacing-2xl) + var(--spacing-lg)) 0;
-    background-color: rgba(var(--color-background-rgb), 0.6);
+    background-color: rgba(var(--color-surface-rgb), 0.65);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     min-height: 100vh;
@@ -97,7 +97,7 @@
 .solution-item__content h4 {
     font-family: var(--font-family-header);
     font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-normal);
     margin: 0 0 var(--spacing-xs) 0;
     color: var(--color-text);
 }
@@ -236,11 +236,6 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: opacity var(--transition-base);
-}
-
-.logo-container:hover .logo-image {
-    opacity: var(--solutions-logo-hover-opacity);
 }
 
 /* ==========================================================================
@@ -272,7 +267,7 @@
 .visualization-text h3 {
     font-family: var(--font-family-header);
     font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-normal);
     margin: 0 0 var(--spacing-xs) 0;
     background: var(--color-gradient);
     -webkit-background-clip: text;

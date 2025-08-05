@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 6rem 0 4rem;
+    padding: var(--spacing-2xl) 0 var(--spacing-xl);
     overflow: hidden;
     /* Dark theme background with gradient transition - matches production */
     background: linear-gradient(180deg, rgba(var(--color-surface-rgb), 0.95) 0%, rgba(var(--color-surface-rgb), 0.75) 100%);
@@ -19,7 +19,7 @@
 .hero__container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 var(--spacing-sm);
     text-align: center;
     position: relative;
     z-index: 2;
@@ -35,7 +35,7 @@
 .hero__title {
     font-family: var(--font-family-header);
     font-size: var(--font-size-5xl);
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-normal);
     color: var(--color-text);
     margin-bottom: var(--spacing-md);
     line-height: var(--line-height-tight);
@@ -90,18 +90,13 @@
 .hero__stat {
     text-align: center;
     padding: var(--spacing-md);
-    background: rgba(var(--color-surface-rgb), 0.5);
-    border-radius: var(--border-radius-lg);
-    border: 1px solid rgba(var(--color-border-rgb), 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     transition: all var(--transition-base);
 }
 
 /* Element: hero__stat-number */
 .hero__stat-number {
     font-size: var(--font-size-3xl);
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-normal);
     background: var(--color-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -144,7 +139,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero {
-        padding: 5rem 0 3rem;
+        padding: var(--spacing-xl) 0 var(--spacing-lg);
         min-height: 90vh;
     }
 

@@ -3,7 +3,9 @@
 /* Block: why-flowcore */
 .why-flowcore {
     padding: calc(var(--spacing-2xl) + var(--spacing-lg)) 0;
-    background-color: #0d0f1a; /* Dark background matching production */
+    background-color: rgba(var(--color-surface-rgb), 0.65);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -11,48 +13,43 @@
 
 /* Block: features-grid */
 .why-flowcore .features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: 
-        "card1 card2 card3"
-        ". card4 card5";
+    display: flex;
+    flex-direction: column;
     gap: var(--spacing-xl);
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
-    justify-items: center; /* Center cards horizontally */
 }
 
-/* Position cards using grid areas */
-.why-flowcore .feature-card:nth-child(1) {
-    grid-area: card1;
+/* Block: features-row */
+.why-flowcore .features-row {
+    display: flex;
+    gap: var(--spacing-xl);
+    justify-content: center;
 }
 
-.why-flowcore .feature-card:nth-child(2) {
-    grid-area: card2;
+/* Modifier: features-row--first */
+.why-flowcore .features-row--first {
+    justify-content: space-between;
 }
 
-.why-flowcore .feature-card:nth-child(3) {
-    grid-area: card3;
-}
-
-.why-flowcore .feature-card:nth-child(4) {
-    grid-area: card4;
-}
-
-.why-flowcore .feature-card:nth-child(5) {
-    grid-area: card5;
+/* Modifier: features-row--second */
+.why-flowcore .features-row--second {
+    justify-content: center;
+    gap: var(--spacing-xl);
 }
 
 /* Block: feature-card */
 .why-flowcore .feature-card {
-    background-color: #0d0f1a; /* Same as section background */
+    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(255, 0, 255, 0.05) 100%);
     padding: var(--spacing-xl);
-    border-radius: var(--border-radius-lg);
+    border-radius: var(--border-radius-xl);
     text-align: center;
-    border: 2px solid var(--color-secondary); /* Vibrant pink border */
+    border: 2px solid var(--color-secondary);
     transition: transform var(--transition-base), border-color var(--transition-base);
-    color: #ffffff; /* White text */
+    color: var(--color-text);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -64,9 +61,24 @@
     max-width: 350px; /* Limit maximum width for better proportions */
 }
 
+.why-flowcore .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--color-gradient);
+    transform: scaleX(0);
+    transition: transform var(--transition-base);
+}
+
 .why-flowcore .feature-card:hover {
-    border-color: #ff69b4; /* Slightly lighter pink on hover */
-    transform: translateY(-4px);
+    border-color: var(--color-secondary);
+}
+
+.why-flowcore .feature-card:hover::before {
+    transform: scaleX(1);
 }
 
 /* Element: feature-icon */
@@ -91,16 +103,16 @@
 .why-flowcore .feature-card h3 {
     font-family: var(--font-family-header);
     font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-normal);
     margin: 0 0 var(--spacing-sm) 0;
-    color: #ffffff; /* White text */
+    color: var(--color-text);
     text-align: center;
     width: 100%;
 }
 
 /* Element: feature-card p */
 .why-flowcore .feature-card p {
-    color: #a3a3a3; /* Darker gray text for better readability */
+    color: var(--color-text-muted);
     margin: 0;
     line-height: var(--line-height-relaxed);
     font-size: var(--font-size-base);

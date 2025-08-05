@@ -2,10 +2,10 @@
 
 /* Block: theme-toggle */
 .theme-toggle {
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: var(--border-radius-md);
-    padding: 0.5rem;
+    padding: var(--spacing-xs);
     cursor: pointer;
     transition: all var(--transition-base);
     display: flex;
@@ -15,6 +15,8 @@
     height: 2.5rem;
     position: relative;
     overflow: hidden;
+    --focus-outline: none;
+    --focus-outline-offset: 0;
 }
 
 .theme-toggle::before {
@@ -32,9 +34,10 @@
     left: 100%;
 }
 
-.theme-toggle:hover {
-    background: rgba(0, 0, 0, 0.5);
-    border-color: rgba(255, 255, 255, 0.2);
+.theme-toggle:hover,
+.theme-toggle:focus {
+    background: var(--color-background);
+    border-color: var(--color-secondary);
     transform: scale(1.05);
 }
 
@@ -44,13 +47,11 @@
     align-items: center;
     justify-content: center;
     font-size: var(--font-size-sm);
-    color: #fbbf24;
+    color: var(--color-secondary);
     transition: all var(--transition-base);
 }
 
-.theme-toggle:hover .theme-toggle__icon {
-    color: #f59e0b;
-}
+
 
 /* Element: theme-toggle__icon i */
 .theme-toggle__icon i {
@@ -61,9 +62,23 @@
     transform: rotate(15deg);
 }
 
+
+
 /* Modifier: theme-toggle--active */
 .theme-toggle--active .theme-toggle__icon i {
     transform: rotate(180deg);
+}
+
+/* Nuclear option - remove all possible outlines */
+button.theme-toggle,
+button.theme-toggle:focus,
+button.theme-toggle:hover,
+button.theme-toggle:active,
+button.theme-toggle:focus-visible {
+    outline: none !important;
+    outline-offset: 0 !important;
+    box-shadow: none !important;
+    border: 1px solid var(--color-border) !important;
 }
 
 /* Responsive Design */
@@ -71,10 +86,12 @@
     .theme-toggle {
         width: 2.25rem;
         height: 2.25rem;
-        padding: 0.375rem;
+        padding: var(--spacing-xs);
     }
 
     .theme-toggle__icon {
         font-size: var(--font-size-xs);
     }
-} 
+}
+
+ 

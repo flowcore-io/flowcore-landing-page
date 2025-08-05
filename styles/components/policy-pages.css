@@ -23,7 +23,7 @@
 .policy-title {
     font-family: var(--font-family-header);
     font-size: var(--font-size-5xl);
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-normal);
     background: var(--color-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -82,7 +82,7 @@
 .policy-section-block h2 {
     font-family: var(--font-family-body);
     font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-normal);
     color: var(--color-text);
     margin-bottom: var(--spacing-md);
     position: relative;
@@ -127,14 +127,14 @@
     position: absolute;
     left: 0;
     color: var(--color-secondary);
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-normal);
     font-size: var(--font-size-lg);
 }
 
 /* Policy Strong Elements */
 .policy-section-block strong {
     color: var(--color-secondary);
-    font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-normal);
 }
 
 /* Policy Links */
@@ -143,11 +143,6 @@
     text-decoration: underline;
     text-decoration-color: var(--color-secondary);
     text-underline-offset: 2px;
-    transition: opacity var(--transition-base);
-}
-
-.policy-section-block a:hover {
-    opacity: 0.8;
 }
 
 /* Responsive Design */
