@@ -36,7 +36,7 @@
 /* Block: pricing-card */
 .pricing-card {
     background: linear-gradient(135deg, var(--color-surface) 0%, rgba(255, 0, 255, 0.05) 100%);
-    border: 2px solid var(--color-border);
+    border: 2px solid var(--color-secondary);
     border-radius: var(--border-radius-lg);
     overflow: hidden;
     transition: transform var(--transition-base), box-shadow var(--transition-base);
@@ -85,7 +85,7 @@
 .pricing-card__content {
     position: relative;
     z-index: 2;
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg); /* Reduced from var(--spacing-xl) */
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -94,11 +94,10 @@
 /* Element: pricing-card__header */
 .pricing-card__header {
     text-align: center;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md); /* Reduced from var(--spacing-lg) */
     position: relative;
-    padding: var(--spacing-lg);
-    margin: calc(-1 * var(--spacing-xl)) calc(-1 * var(--spacing-xl)) var(--spacing-lg) calc(-1 * var(--spacing-xl));
-    overflow: hidden;
+    padding: var(--spacing-md); /* Reduced from var(--spacing-lg) */
+    margin: calc(-1 * var(--spacing-lg)) calc(-1 * var(--spacing-lg)) var(--spacing-md) calc(-1 * var(--spacing-lg)); /* Adjusted margins */
 }
 
 /* Gradient line hover effect */
@@ -139,12 +138,12 @@
 /* Element: pricing-card__title */
 .pricing-card__title {
     font-family: var(--font-family-header);
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-3xl); /* Increased from var(--font-size-2xl) */
     font-weight: var(--font-weight-normal);
-    margin: 0 0 var(--spacing-sm) 0;
-    color: var(--color-text);
+    color: white; /* Changed from var(--color-text) to white */
+    margin: 0;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.05em;
 }
 
 /* Element: pricing-card__price */
@@ -152,7 +151,7 @@
     font-family: var(--font-family-header);
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-normal);
-    color: var(--color-text);
+    color: white; /* Changed from var(--color-text) to white */
     margin: 0;
 }
 
@@ -167,6 +166,9 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs); /* Reduced from var(--spacing-sm) */
 }
 
 /* Element: pricing-feature */
@@ -174,7 +176,32 @@
     padding: var(--spacing-xs) 0;
     color: var(--color-text);
     font-size: var(--font-size-sm);
-    border-bottom: 1px solid rgba(var(--color-border-rgb), 0.3);
+    border-bottom: 1px solid rgba(var(--color-border-rgb), 0.2);
+    position: relative;
+    padding-left: 1.5rem;
+    line-height: 1.4;
+    list-style: none; /* Explicitly remove list markers */
+    list-style-type: none; /* Explicitly remove list markers */
+    display: flex;
+    align-items: center; /* Center the span vertically */
+}
+
+.pricing-feature span {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+.pricing-feature::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-secondary);
+    font-weight: bold;
+    font-size: 0.9em;
+    line-height: 1.4; /* Match the parent line-height */
+    display: flex;
+    align-items: center; /* Center vertically within the line height */
+    height: 1.4em; /* Match the line height */
 }
 
 .pricing-feature:last-child {

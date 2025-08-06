@@ -25,7 +25,7 @@
     padding: var(--spacing-xl);
     border-radius: var(--border-radius-xl);
     background: linear-gradient(135deg, var(--color-surface) 0%, rgba(255, 0, 255, 0.05) 100%);
-    border: 2px solid var(--color-border);
+    border: none;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
@@ -37,6 +37,7 @@
 /* Proper alternating layout using CSS Grid order */
 .use-case-block:nth-child(even) {
     grid-template-columns: 400px 1fr;
+    background: linear-gradient(315deg, var(--color-surface) 0%, rgba(255, 0, 255, 0.05) 100%);
 }
 
 .use-case-block:nth-child(even) .use-case-block__text {
@@ -61,10 +62,6 @@
     font-weight: var(--font-weight-normal);
     margin: 0;
     color: var(--color-text);
-    background: var(--color-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 /* Element: use-case-block__description */
@@ -151,12 +148,69 @@
     border: 2px solid var(--color-secondary);
     border-radius: var(--border-radius-xl);
     padding: var(--spacing-sm);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Gradient top line effect on hover */
+.use-case-block__icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--color-gradient);
+    transform: scaleX(0);
+    transition: transform var(--transition-base);
+}
+
+.use-case-block__icon:hover::before {
+    transform: scaleX(1);
+}
+
+/* Glowing effect when clicked - applies only to the icon */
+.use-case-block__icon.clicked i {
+    animation: logoFloat 3s ease-in-out infinite, iconGlow 2s ease-in-out infinite 0.3s;
+    transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Fade-out effect when removing glow */
+.use-case-block__icon i.fade-out {
+    animation: logoFloat 3s ease-in-out infinite, iconGlowFadeOut 0.6s ease-out forwards;
+}
+
+@keyframes iconGlow {
+    0% {
+        filter: drop-shadow(0 0 0px rgba(255, 165, 0, 0)) drop-shadow(0 0 0px rgba(255, 0, 255, 0));
+    }
+    20% {
+        filter: drop-shadow(0 0 5px rgba(255, 165, 0, 0.3)) drop-shadow(0 0 10px rgba(255, 0, 255, 0.2));
+    }
+    50% {
+        filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.5)) drop-shadow(0 0 20px rgba(255, 0, 255, 0.3));
+    }
+    80% {
+        filter: drop-shadow(0 0 5px rgba(255, 165, 0, 0.3)) drop-shadow(0 0 10px rgba(255, 0, 255, 0.2));
+    }
+    100% {
+        filter: drop-shadow(0 0 0px rgba(255, 165, 0, 0)) drop-shadow(0 0 0px rgba(255, 0, 255, 0));
+    }
+}
+
+@keyframes iconGlowFadeOut {
+    0% {
+        filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.5)) drop-shadow(0 0 20px rgba(255, 0, 255, 0.3));
+    }
+    100% {
+        filter: drop-shadow(0 0 0px rgba(255, 165, 0, 0)) drop-shadow(0 0 0px rgba(255, 0, 255, 0));
+    }
 }
 
 /* Element: use-case-block__icon i */
 .use-case-block__icon i {
     font-size: 6rem;
-    background: linear-gradient(135deg, #ffa500 0%, #ff00ff 100%);
+    background: linear-gradient(45deg, #ffa500 0%, #ff00ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -184,39 +238,94 @@
     .use-case-block {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
+        padding: var(--spacing-lg);
     }
-    
+
     .use-case-block:nth-child(even) {
         grid-template-columns: 1fr;
     }
-    
+
     .use-case-block:nth-child(even) .use-case-block__text {
         order: 1;
     }
-    
+
     .use-case-block:nth-child(even) .use-case-block__visual {
         order: 2;
+    }
+
+    .use-case-block__title {
+        font-size: var(--font-size-2xl);
+    }
+
+    .use-case-block__icon {
+        width: 100%;
+        max-width: 320px;
+        height: 320px;
+        margin: 0 auto;
+        font-size: 7rem;
+    }
+
+    .use-case-block__icon i {
+        font-size: 7rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .use-case-block__icon {
+        width: 100%;
+        max-width: 280px;
+        height: 280px;
+        font-size: 6rem;
+    }
+
+    .use-case-block__icon i {
+        font-size: 6rem;
+    }
+
+    .use-case-block__title {
+        font-size: var(--font-size-xl);
     }
 }
 
 @media (max-width: 480px) {
     .use-case-block__icon {
-        width: 100px;
-        height: 100px;
+        width: 100%;
+        max-width: 250px;
+        height: 250px;
+        font-size: 5.5rem;
     }
-    
+
     .use-case-block__icon i {
-        font-size: var(--font-size-3xl);
+        font-size: 5.5rem;
+    }
+
+    .use-case-block__title {
+        font-size: var(--font-size-lg);
+    }
+}
+
+@media (max-width: 400px) {
+    .use-case-block__icon {
+        width: 100%;
+        max-width: 220px;
+        height: 220px;
+        font-size: 5rem;
+    }
+
+    .use-case-block__icon i {
+        font-size: 5rem;
     }
 }
 
 @media (max-width: 360px) {
     .use-case-block__icon {
-        width: 80px;
-        height: 80px;
+        width: 100%;
+        max-width: 200px;
+        height: 200px;
+        font-size: 4.5rem;
     }
-    
+
     .use-case-block__icon i {
-        font-size: var(--font-size-2xl);
+        font-size: 4.5rem;
     }
 } 

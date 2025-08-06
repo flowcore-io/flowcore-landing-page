@@ -145,8 +145,7 @@
             <div class="nav__container">
                 <div class="nav__logo">
                     <a href="#home" class="nav__logo-link">
-                        <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="nav__logo-img">
-                        <span class="nav__logo-text">FLOWCORE</span>
+                        <img src="public/images/logo-text-sidebyside-white.png" alt="Flowcore Logo" class="nav__logo-img" data-light-src="public/images/logo-text-sidebyside-dark.png" data-dark-src="public/images/logo-text-sidebyside-white.png">
                     </a>
                 </div>
                 <ul class="nav__menu">
@@ -158,18 +157,23 @@
                     <li class="nav__item"><a href="#faq" class="nav__link">FAQ</a></li>
                     <li class="nav__item"><a href="#getting-started" class="nav__link">Get Started</a></li>
                     <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
-                    <li class="nav__item">
-                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <li class="nav__item nav__item--mobile-only">
+                        <button id="theme-toggle-mobile" class="theme-toggle theme-toggle--mobile" aria-label="Toggle theme">
                             <span class="theme-toggle__icon"><i class="fas fa-sun"></i></span>
                         </button>
                     </li>
-                    <li class="nav__cta">
-                        <a href="https://flowcore.io/" target="_blank" class="btn btn--pink btn--small">Try Platform</a>
-                    </li>
-                    <li class="nav__cta-mobile">
-                        <a href="https://flowcore.io/" target="_blank" class="btn btn--pink btn--small">Try Platform</a>
+                    <li class="nav__item nav__item--mobile-only">
+                        <div class="nav__cta-mobile">
+                            <a href="https://flowcore.io/" target="_blank" class="btn btn--pink btn--small">Try Platform</a>
+                        </div>
                     </li>
                 </ul>
+                <div class="nav__right">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                        <span class="theme-toggle__icon"><i class="fas fa-sun"></i></span>
+                    </button>
+                    <a href="https://flowcore.io/" target="_blank" class="btn btn--pink btn--small">Try Platform</a>
+                </div>
                 <button class="nav__toggle" aria-label="Toggle navigation">
                     <span class="nav__toggle-line"></span>
                     <span class="nav__toggle-line"></span>
@@ -382,17 +386,17 @@
                 <div class="features-grid">
                     <!-- Top Row - 3 Cards -->
                     <div class="features-row features-row--first">
-                        <div class="feature-card animate-on-scroll stagger-delay-1">
+                        <div class="feature-card fade-in-up">
                             <div class="feature-icon"><i class="fas fa-infinity"></i></div>
                             <h3>Infinite Event Replay</h3>
                             <p>Unlike traditional databases, every event is preserved forever. Replay from any point in time to debug issues, test new features, or train models on historical data.</p>
                         </div>
-                        <div class="feature-card animate-on-scroll stagger-delay-2">
+                        <div class="feature-card fade-in-up">
                             <div class="feature-icon"><i class="fas fa-code"></i></div>
                             <h3>Developer-First Approach</h3>
                             <p>Built by developers, for developers. Simple APIs, comprehensive CLI tools, and extensive documentation make integration seamless and productive.</p>
                         </div>
-                        <div class="feature-card animate-on-scroll stagger-delay-3">
+                        <div class="feature-card fade-in-up">
                             <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
                             <h3>Enterprise Security</h3>
                             <p>GDPR compliance, data obfuscation, permission management, and audit trails ensure your data meets the highest security standards.</p>
@@ -400,12 +404,12 @@
                     </div>
                     <!-- Bottom Row - 2 Cards (centered) -->
                     <div class="features-row features-row--second">
-                        <div class="feature-card animate-on-scroll stagger-delay-4">
+                        <div class="feature-card fade-in-up">
                             <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
                             <h3>Unmatched Performance</h3>
                             <p>Process over 10 million events per second with sub-millisecond latency. Auto-scaling infrastructure handles traffic spikes seamlessly.</p>
                         </div>
-                        <div class="feature-card animate-on-scroll stagger-delay-5">
+                        <div class="feature-card fade-in-up">
                             <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
                             <h3>Built for Modern Developers</h3>
                             <p>Join thousands of developers who have streamlined their data architecture with Flowcore's CLI-first approach. Deploy in minutes, not months.</p>
@@ -429,9 +433,9 @@
                             </div>
                             <div class="pricing-card__details">
                                 <div class="pricing-card__features">
-                                    <div class="pricing-feature">✓ 100 GB storage</div>
-                                    <div class="pricing-feature">✓ 1,000 events/second</div>
-                                    <div class="pricing-feature">✓ Unlimited number of data cores, users, events and proxy transformers</div>
+                                    <div class="pricing-feature"><span>100 GB storage</span></div>
+                                    <div class="pricing-feature"><span>1,000 events/second</span></div>
+                                    <div class="pricing-feature"><span>Unlimited number of data cores, users, events and proxy transformers</span></div>
                                 </div>
                             </div>
                         </div>
@@ -444,11 +448,11 @@
                             </div>
                             <div class="pricing-card__details">
                                 <div class="pricing-card__features">
-                                    <div class="pricing-feature">✓ 1 TB storage</div>
-                                    <div class="pricing-feature">✓ 10,000 events/second</div>
-                                    <div class="pricing-feature">✓ Unlimited number of data cores, users, events and proxy transformers</div>
-                                    <div class="pricing-feature">✓ 50 transformer units</div>
-                                    <div class="pricing-feature">✓ Permission management</div>
+                                    <div class="pricing-feature"><span>1 TB storage</span></div>
+                                    <div class="pricing-feature"><span>10,000 events/second</span></div>
+                                    <div class="pricing-feature"><span>Unlimited number of data cores, users, events and proxy transformers</span></div>
+                                    <div class="pricing-feature"><span>50 transformer units</span></div>
+                                    <div class="pricing-feature"><span>Permission management</span></div>
                                 </div>
                             </div>
                         </div>
@@ -461,12 +465,12 @@
                             </div>
                             <div class="pricing-card__details">
                                 <div class="pricing-card__features">
-                                    <div class="pricing-feature">✓ 2 TB storage</div>
-                                    <div class="pricing-feature">✓ 20,000 events/second</div>
-                                    <div class="pricing-feature">✓ Unlimited number of data cores, users, events and proxy transformers</div>
-                                    <div class="pricing-feature">✓ 100 transformer units</div>
-                                    <div class="pricing-feature">✓ Permission management</div>
-                                    <div class="pricing-feature">✓ Obfuscation/GDPR-management</div>
+                                    <div class="pricing-feature"><span>2 TB storage</span></div>
+                                    <div class="pricing-feature"><span>20,000 events/second</span></div>
+                                    <div class="pricing-feature"><span>Unlimited number of data cores, users, events and proxy transformers</span></div>
+                                    <div class="pricing-feature"><span>100 transformer units</span></div>
+                                    <div class="pricing-feature"><span>Permission management</span></div>
+                                    <div class="pricing-feature"><span>Obfuscation/GDPR-management</span></div>
                                 </div>
                             </div>
                         </div>
@@ -479,12 +483,12 @@
                             </div>
                             <div class="pricing-card__details">
                                 <div class="pricing-card__features">
-                                    <div class="pricing-feature">✓ On your own servers</div>
-                                    <div class="pricing-feature">✓ License for 20 vCPUs included</div>
-                                    <div class="pricing-feature">✓ Extra: $100/vCPU/month</div>
-                                    <div class="pricing-feature">✓ Unlimited number of data cores, users, events and proxy transformers</div>
-                                    <div class="pricing-feature">✓ Permission management</div>
-                                    <div class="pricing-feature">✓ Obfuscation/GDPR-management</div>
+                                    <div class="pricing-feature"><span>On your own servers</span></div>
+                                    <div class="pricing-feature"><span>License for 20 vCPUs included</span></div>
+                                    <div class="pricing-feature"><span>Extra: $100/vCPU/month</span></div>
+                                    <div class="pricing-feature"><span>Unlimited number of data cores, users, events and proxy transformers</span></div>
+                                    <div class="pricing-feature"><span>Permission management</span></div>
+                                    <div class="pricing-feature"><span>Obfuscation/GDPR-management</span></div>
                                 </div>
                             </div>
                         </div>
@@ -682,8 +686,7 @@
                 <!-- Company Info Section -->
                 <div class="footer-section footer-brand">
                     <div class="footer-brand__logo">
-                        <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="footer-brand__logo-img">
-                        <h4 class="footer-brand__logo-text">FLOWCORE</h4>
+                        <img src="public/images/logo-text-sidebyside-white.png" alt="Flowcore Logo" class="footer-brand__logo-img" data-light-src="public/images/logo-text-sidebyside-dark.png" data-dark-src="public/images/logo-text-sidebyside-white.png">
                     </div>
                     <p class="footer-brand__description">Event storage and processing platform for AI developers. Single source of truth with infinite replay capabilities.</p>
                     

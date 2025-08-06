@@ -311,12 +311,165 @@
     }
     
     .data-visualization {
-        width: 250px;
-        height: 250px;
+        width: 100%;
+        max-width: 400px;
+        height: 400px;
     }
     
     .logo-container {
         width: 50px;
         height: 50px;
+    }
+    
+    /* Original pattern with smaller sizes for better spacing */
+    .solutions-logo--1 {
+        width: 45px;
+        height: 45px;
+        top: 18%;
+        right: 12%;
+    }
+    
+    .solutions-logo--2 {
+        width: 25px;
+        height: 25px;
+        top: 8%;
+        left: 55%;
+    }
+    
+    .solutions-logo--3 {
+        width: 35px;
+        height: 35px;
+        top: 12%;
+        left: 18%;
+    }
+    
+    .solutions-logo--4 {
+        width: 20px;
+        height: 20px;
+        bottom: 8%;
+        left: 55%;
+    }
+    
+    .solutions-logo--5 {
+        width: 30px;
+        height: 30px;
+        top: 55%;
+        right: 20%;
+    }
+    
+    .solutions-logo--6 {
+        width: 40px;
+        height: 40px;
+        bottom: 18%;
+        left: 22%;
+    }
+    
+    .solutions-logo--7 {
+        width: 25px;
+        height: 25px;
+        top: 45%;
+        left: 8%;
+    }
+    
+    .solutions-logo--8 {
+        width: 50px;
+        height: 50px;
+        bottom: 12%;
+        right: 5%;
+    }
+    
+    .solutions-logo--9 {
+        width: 55px;
+        height: 55px;
+        top: 30%;
+        left: 35%;
+    }
+    
+    .visualization-text {
+        padding: var(--spacing-lg);
+    }
+    
+    .visualization-text h3 {
+        font-size: var(--font-size-2xl);
+    }
+}
+
+@media (max-width: 480px) {
+    .data-visualization {
+        width: 100%;
+        max-width: 350px;
+        height: 350px;
+    }
+    
+    /* Original pattern with even smaller sizes */
+    .solutions-logo--1 {
+        width: 35px;
+        height: 35px;
+        top: 18%;
+        right: 12%;
+    }
+    
+    .solutions-logo--2 {
+        width: 20px;
+        height: 20px;
+        top: 8%;
+        left: 55%;
+    }
+    
+    .solutions-logo--3 {
+        width: 30px;
+        height: 30px;
+        top: 12%;
+        left: 18%;
+    }
+    
+    .solutions-logo--4 {
+        width: 15px;
+        height: 15px;
+        bottom: 8%;
+        left: 55%;
+    }
+    
+    .solutions-logo--5 {
+        width: 25px;
+        height: 25px;
+        top: 55%;
+        right: 20%;
+    }
+    
+    .solutions-logo--6 {
+        width: 35px;
+        height: 35px;
+        bottom: 18%;
+        left: 22%;
+    }
+    
+    .solutions-logo--7 {
+        width: 20px;
+        height: 20px;
+        top: 45%;
+        left: 8%;
+    }
+    
+    .solutions-logo--8 {
+        width: 40px;
+        height: 40px;
+        bottom: 12%;
+        right: 5%;
+    }
+    
+    .solutions-logo--9 {
+        width: 45px;
+        height: 45px;
+        top: 30%;
+        left: 35%;
+    }
+    
+    .visualization-text {
+        padding: var(--spacing-md);
+    }
+    
+    .visualization-text h3 {
+        font-size: var(--font-size-xl);
     }
 } 

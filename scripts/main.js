@@ -10,24 +10,72 @@
         
         document.documentElement.setAttribute('data-theme', theme);
         updateThemeIcon(theme);
+        updateLogo(theme);
     }
 
-    // Update theme toggle icon
+    // Update theme icon based on current theme
     function updateThemeIcon(theme) {
-        const themeIcon = document.querySelector('.theme-toggle__icon i');
-        if (themeIcon) {
-            themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        const themeToggle = document.querySelector('#theme-toggle');
+        const themeToggleMobile = document.querySelector('#theme-toggle-mobile');
+        
+        const iconClass = theme === 'light' ? 'fa-sun' : 'fa-moon';
+        
+        if (themeToggle) {
+            const icon = themeToggle.querySelector('.theme-toggle__icon i');
+            if (icon) {
+                icon.className = `fas ${iconClass}`;
+            }
         }
+        
+        if (themeToggleMobile) {
+            const icon = themeToggleMobile.querySelector('.theme-toggle__icon i');
+            if (icon) {
+                icon.className = `fas ${iconClass}`;
+            }
+        }
+    }
+
+    // Update logo based on theme
+    function updateLogo(theme) {
+        const logos = document.querySelectorAll('.nav__logo-img, .footer-brand__logo-img');
+        
+        logos.forEach(logo => {
+            const lightSrc = logo.getAttribute('data-light-src');
+            const darkSrc = logo.getAttribute('data-dark-src');
+            
+            if (lightSrc && darkSrc) {
+                logo.src = theme === 'light' ? lightSrc : darkSrc;
+            }
+        });
     }
 
     // Toggle theme function
     function toggleTheme() {
         const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
+        
+        // Update both theme toggles
         updateThemeIcon(newTheme);
+        updateLogo(newTheme);
+        
+        // Remove any active/pressed/clicked classes from both toggles
+        const themeToggle = document.querySelector('#theme-toggle');
+        const themeToggleMobile = document.querySelector('#theme-toggle-mobile');
+        
+        if (themeToggle) {
+            themeToggle.classList.remove('theme-toggle--active', 'pressed', 'clicked');
+            themeToggle.offsetHeight; // Force reflow
+            themeToggle.blur();
+        }
+        
+        if (themeToggleMobile) {
+            themeToggleMobile.classList.remove('theme-toggle--active', 'pressed', 'clicked');
+            themeToggleMobile.offsetHeight; // Force reflow
+            themeToggleMobile.blur();
+        }
     }
 
     // Mobile navigation toggle
@@ -134,8 +182,8 @@
         initInteractiveElements();
         
         const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -100px 0px'
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -167,6 +215,7 @@
 
         // Handle staggered animations separately
         const staggeredElements = document.querySelectorAll('[class*="stagger-delay-"]');
+        
         staggeredElements.forEach(el => {
             if (!el.classList.contains('animate-in')) {
                 observer.observe(el);
@@ -404,6 +453,45 @@
         }, 50);
     }
 
+    // Initialize icon click effects
+    function initIconClickEffects() {
+        const iconBoxes = document.querySelectorAll('.use-case-block__icon');
+        
+        iconBoxes.forEach(box => {
+            box.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                
+                if (this.classList.contains('clicked')) {
+                    // Removing glow - add fade-out class first
+                    icon.classList.add('fade-out');
+                    
+                    // Remove clicked class after fade-out transition
+                    setTimeout(() => {
+                        this.classList.remove('clicked');
+                        icon.classList.remove('fade-out');
+                    }, 600); // Match the CSS transition duration
+                } else {
+                    // Adding glow - immediate toggle
+                    this.classList.add('clicked');
+                }
+            });
+        });
+    }
+
+    // Theme toggle functionality
+    function initThemeToggle() {
+        const themeToggle = document.querySelector('#theme-toggle');
+        const themeToggleMobile = document.querySelector('#theme-toggle-mobile');
+        
+        if (themeToggle) {
+            themeToggle.addEventListener('click', toggleTheme);
+        }
+        
+        if (themeToggleMobile) {
+            themeToggleMobile.addEventListener('click', toggleTheme);
+        }
+    }
+
     // Ensure page loads at the very top - multiple attempts
     if (history.scrollRestoration) {
         history.scrollRestoration = 'manual';
@@ -426,6 +514,8 @@
         initAdvancedScrollAnimations();
         initPageLoadAnimations();
         initFAQToggle();
+        initIconClickEffects(); // Initialize the new function
+        initThemeToggle(); // Initialize the new function
         
         // Additional scroll to top after everything is initialized
         setTimeout(() => {
@@ -433,10 +523,10 @@
         }, 100);
 
         // Theme toggle event listener
-        const themeToggle = document.getElementById('theme-toggle');
-        if (themeToggle) {
-            themeToggle.addEventListener('click', toggleTheme);
-        }
+        // const themeToggle = document.getElementById('theme-toggle'); // This line is now handled by initThemeToggle
+        // if (themeToggle) {
+        //     themeToggle.addEventListener('click', toggleTheme);
+        // }
 
         // Mobile navigation toggle
         const navToggle = document.querySelector('.nav__toggle');

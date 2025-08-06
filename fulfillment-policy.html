@@ -26,28 +26,37 @@
             <div class="nav__container">
                 <div class="nav__logo">
                     <a href="index.html" class="nav__logo-link">
-                        <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="nav__logo-img">
-                        <span class="nav__logo-text">FLOWCORE</span>
+                        <img src="public/images/logo-text-sidebyside-white.png" alt="Flowcore Logo" class="nav__logo-img" data-light-src="public/images/logo-text-sidebyside-dark.png" data-dark-src="public/images/logo-text-sidebyside-white.png">
                     </a>
                 </div>
                 <ul class="nav__menu">
-                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
                     <li class="nav__item"><a href="index.html#capabilities" class="nav__link">Capabilities</a></li>
                     <li class="nav__item"><a href="index.html#solutions" class="nav__link">Solutions</a></li>
+                    <li class="nav__item"><a href="index.html#use-cases" class="nav__link">Use Cases</a></li>
+                    <li class="nav__item"><a href="index.html#why-flowcore" class="nav__link">Why Flowcore</a></li>
                     <li class="nav__item"><a href="index.html#pricing" class="nav__link">Pricing</a></li>
+                    <li class="nav__item"><a href="index.html#faq" class="nav__link">FAQ</a></li>
+                    <li class="nav__item"><a href="index.html#getting-started" class="nav__link">Get Started</a></li>
                     <li class="nav__item"><a href="index.html#contact" class="nav__link">Contact</a></li>
-                    <li class="nav__item">
-                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <li class="nav__item nav__item--mobile-only">
+                        <button id="theme-toggle-mobile" class="theme-toggle theme-toggle--mobile" aria-label="Toggle theme">
                             <span class="theme-toggle__icon"><i class="fas fa-sun"></i></span>
                         </button>
                     </li>
-                    <li class="nav__cta">
-                        <a href="https://flowcore.io/" target="_blank" class="btn btn--pink btn--small">Try Platform</a>
-                    </li>
-                    <li class="nav__cta-mobile">
-                        <a href="https://flowcore.io/" target="_blank" class="btn btn--pink btn--small">Try Platform</a>
+                    <li class="nav__item nav__item--mobile-only">
+                        <div class="nav__cta-mobile">
+                            <a href="https://flowcore.io/" target="_blank" class="btn btn--pink btn--small">Try Platform</a>
+                        </div>
                     </li>
                 </ul>
+                <div class="nav__right">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                        <span class="theme-toggle__icon"><i class="fas fa-sun"></i></span>
+                    </button>
+                    <div class="nav__cta">
+                        <a href="https://flowcore.io/" target="_blank" class="btn btn--pink btn--small">Try Platform</a>
+                    </div>
+                </div>
                 <button class="nav__toggle" aria-label="Toggle navigation">
                     <span class="nav__toggle-line"></span>
                     <span class="nav__toggle-line"></span>
@@ -140,8 +149,7 @@
                 <!-- Company Info Section -->
                 <div class="footer-section footer-brand">
                     <div class="footer-brand__logo">
-                        <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="footer-brand__logo-img">
-                        <h4 class="footer-brand__logo-text">FLOWCORE</h4>
+                        <img src="public/images/logo-text-sidebyside-white.png" alt="Flowcore Logo" class="footer-brand__logo-img" data-light-src="public/images/logo-text-sidebyside-dark.png" data-dark-src="public/images/logo-text-sidebyside-white.png">
                     </div>
                     <p class="footer-brand__description">Event storage and processing platform for AI developers. Single source of truth with infinite replay capabilities.</p>
                     

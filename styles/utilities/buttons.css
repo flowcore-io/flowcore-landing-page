@@ -6,15 +6,18 @@
     align-items: center;
     justify-content: center;
     gap: var(--spacing-xs);
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--border-radius-md);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-base);
     font-weight: var(--font-weight-medium);
-    font-size: var(--font-size-sm);
     text-decoration: none;
-    border: none;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius-lg);
     cursor: pointer;
     transition: all var(--transition-base);
     white-space: nowrap;
+    min-height: 44px; /* Minimum touch target */
+    min-width: 44px; /* Minimum touch target */
     position: relative;
     overflow: hidden;
 }
@@ -38,12 +41,10 @@
 .btn--primary {
     background: var(--color-secondary);
     color: white;
-    box-shadow: 0 4px 15px rgba(var(--color-secondary-rgb), 0.3);
-    border: 1px solid transparent;
+    border: 2px solid transparent;
 }
 
 .btn--primary:hover {
-    box-shadow: 0 6px 20px rgba(var(--color-secondary-rgb), 0.4);
     color: white;
 }
 
@@ -51,27 +52,23 @@
 .btn--secondary {
     background: transparent;
     color: var(--color-text);
-    border: 1px solid var(--color-secondary);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--color-secondary);
 }
 
 .btn--secondary:hover {
     background: rgba(var(--color-secondary-rgb), 0.1);
     border-color: var(--color-secondary);
     color: var(--color-text);
-    box-shadow: 0 4px 12px rgba(var(--color-secondary-rgb), 0.2);
 }
 
 /* Modifier: btn--pink */
 .btn--pink {
     background: var(--color-secondary);
     color: white;
-    border: 1px solid var(--color-secondary);
-    box-shadow: 0 4px 15px rgba(var(--color-secondary-rgb), 0.3);
+    border: 2px solid var(--color-secondary);
 }
 
 .btn--pink:hover {
-    box-shadow: 0 6px 20px rgba(var(--color-secondary-rgb), 0.4);
     color: white;
 }
 
@@ -79,6 +76,8 @@
 .btn--small {
     padding: var(--spacing-xs) var(--spacing-sm);
     font-size: var(--font-size-xs);
+    height: 2.5rem;
+    min-height: 2.5rem;
 }
 
 /* Modifier: btn--large */
@@ -103,24 +102,34 @@
 /* Responsive Design */
 @media (max-width: 768px) {
     .btn {
-        padding: 0.625rem 1.25rem;
-        font-size: var(--font-size-sm);
-    }
-
-    .btn--large {
-        padding: 0.875rem 1.75rem;
+        min-height: 44px; /* Reduced from 48px */
+        padding: var(--spacing-sm) var(--spacing-lg);
         font-size: var(--font-size-base);
+    }
+    
+    .btn--small {
+        min-height: 40px; /* Reduced from 44px */
+        padding: var(--spacing-xs) var(--spacing-md);
     }
 }
 
 @media (max-width: 480px) {
     .btn {
-        padding: 0.5rem 1rem;
-        font-size: var(--font-size-xs);
+        min-height: 48px; /* Reduced from 52px */
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-size: var(--font-size-base);
     }
+}
 
-    .btn--large {
-        padding: 0.75rem 1.5rem;
-        font-size: var(--font-size-sm);
+@media (max-width: 360px) {
+    .btn {
+        min-height: 40px; /* Further reduced for smallest screens */
+        padding: var(--spacing-xs) var(--spacing-md);
+        font-size: var(--font-size-sm); /* Smaller font for smallest screens */
+    }
+    
+    .btn--small {
+        min-height: 36px; /* Even smaller for small buttons */
+        padding: var(--spacing-xs) var(--spacing-sm);
     }
 } 

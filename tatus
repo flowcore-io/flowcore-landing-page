@@ -1,0 +1,10 @@
+[33m883113b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Complete Flowcore landing page redesign with design system consistency and accessibility improvements
+[33md28b1c7[m Update landing page with latest changes
+[33me28e194[m Fixed pricing card colors and FAQ visibility
+[33m6167188[m Comprehensive code cleanup and optimization
+[33macc8831[m Fix link preload warning by removing unnecessary CSS preload
+[33m67841fe[m Implement robust mobile background fix using large viewport height
+[33m8be6255[m Fix mobile layout and background animation
+[33md83d641[m Adjust mobile hero section spacing for better visual balance
+[33m24b176e[m Add robust scroll-to-top functionality with multiple triggers and scroll restoration disabled
+[33m7feb621[m Fix mobile issues: page scroll position, hero margins, and background viewport handling

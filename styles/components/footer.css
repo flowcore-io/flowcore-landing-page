@@ -75,14 +75,13 @@
 .footer-brand__logo {
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
+    gap: 0.25rem;
 }
 
 /* Element: footer-brand__logo-img */
 .footer-brand__logo-img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
+    width: 120px;
+    height: auto;
 }
 
 /* Element: footer-brand__logo-text */
@@ -92,6 +91,11 @@
     font-weight: var(--font-weight-normal);
     color: var(--color-text);
     margin: 0;
+    padding: 0;
+    display: inline-block;
+    vertical-align: baseline;
+    line-height: 1;
+    border: 1px solid #00ff00;
 }
 
 /* Element: footer-brand__description */
@@ -252,7 +256,7 @@
     
     .footer__content {
         grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
+        gap: var(--spacing-xl);
     }
     
     .footer-brand,
@@ -260,16 +264,72 @@
         text-align: center;
     }
     
+    .footer-brand__logo-img {
+        width: 120px;
+        height: auto;
+    }
+    
     .footer-social__links {
         justify-content: center;
+    }
+    
+    .footer-contact__item {
+        justify-content: center;
+    }
+    
+    .footer-address__info {
+        text-align: center;
+    }
+    
+    .footer-address__info p {
+        text-align: center;
     }
     
     .footer__bottom-content {
         flex-direction: column;
         text-align: center;
+        gap: var(--spacing-md);
     }
     
     .footer__legal {
         justify-content: center;
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: var(--spacing-lg) 0 var(--spacing-md);
+    }
+    
+    .footer__content {
+        gap: var(--spacing-lg);
+    }
+    
+    .footer-brand__logo-img {
+        width: 100px;
+        height: auto;
+    }
+    
+    .footer-section__title {
+        font-size: var(--font-size-base);
+    }
+    
+    .footer-social__links {
+        gap: var(--spacing-xs);
+    }
+    
+    .footer-social__links a {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .footer__legal {
+        gap: var(--spacing-sm);
+    }
+    
+    .footer__legal a {
+        font-size: var(--font-size-xs);
     }
 } 

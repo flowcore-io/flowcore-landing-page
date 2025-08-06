@@ -75,7 +75,7 @@
     --color-nav-footer: #fdf3ef;
     --color-nav-footer-rgb: 253, 243, 239;
     --color-text: #1a1a1a;
-    --color-text-muted: #666666;
+    --color-text-muted: #1a1a1a; /* Changed from #666666 to dark */
     --color-border: #e5e5e5;
     --color-border-rgb: 229, 229, 229;
     --color-secondary-rgb: 255, 68, 170;
@@ -125,7 +125,7 @@ a {
     text-decoration: none;
 }
 
-/* Focus styles for accessibility - Orlando's accessibility-first approach */
+/* Focus states for accessibility - Orlando's accessibility-first approach */
 a:focus,
 button:focus,
 input:focus,
@@ -134,6 +134,57 @@ select:focus,
 [tabindex]:focus {
     outline: none;
     outline-offset: 0;
+}
+
+/* Button focus states */
+.btn:focus {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    transform: translateY(-1px);
+}
+
+/* Link focus states */
+a:focus {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}
+
+/* Form element focus states */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    border-color: var(--color-secondary);
+}
+
+/* Navigation focus states */
+.nav__link:focus {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    background-color: rgba(var(--color-surface-rgb), 0.1);
+    border-radius: var(--border-radius-lg);
+}
+
+/* Theme toggle focus states */
+.theme-toggle:focus {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}
+
+/* Mobile focus improvements */
+@media (max-width: 768px) {
+    *:focus {
+        outline-width: 3px;
+        outline-offset: 3px;
+    }
+    
+    .btn:focus,
+    .nav__link:focus,
+    .theme-toggle:focus {
+        outline-width: 3px;
+        outline-offset: 3px;
+    }
 }
 
 /* Skip to main content link for screen readers */
@@ -187,9 +238,16 @@ body > .wave-container {
     pointer-events: none;
 }
 
+/* Mobile wave container adjustments */
 @media (max-width: 768px) {
     body > .wave-container {
-        height: 100vh;
+        height: 100vh; /* Ensure full viewport height on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    body > .wave-container {
+        height: 100vh; /* Maintain full viewport height on smaller screens */
     }
 }
 
@@ -219,90 +277,7 @@ main {
     line-height: var(--line-height-tight);
 }
 
-/* Animation classes */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity var(--transition-slow), transform var(--transition-slow);
-}
-
-.animate-on-scroll.animate-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.fade-in-up {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity var(--transition-base), transform var(--transition-base);
-}
-
-.fade-in-up.animate-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.fade-in-left {
-    opacity: 0;
-    transform: translateX(-30px);
-    transition: opacity var(--transition-base), transform var(--transition-base);
-}
-
-.fade-in-left.animate-in {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.fade-in-right {
-    opacity: 0;
-    transform: translateX(30px);
-    transition: opacity var(--transition-base), transform var(--transition-base);
-}
-
-.fade-in-right.animate-in {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.scale-in {
-    opacity: 0;
-    transform: scale(0.9);
-    transition: opacity var(--transition-base), transform var(--transition-base);
-}
-
-.scale-in.animate-in {
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* Stagger delays for animations */
-.stagger-delay-1 { transition-delay: 0.1s; }
-.stagger-delay-2 { transition-delay: 0.2s; }
-.stagger-delay-3 { transition-delay: 0.3s; }
-.stagger-delay-4 { transition-delay: 0.4s; }
-.stagger-delay-5 { transition-delay: 0.5s; }
-.stagger-delay-6 { transition-delay: 0.6s; }
-
-/* Respect user's motion preferences - Orlando's accessibility-first approach */
-@media (prefers-reduced-motion: reduce) {
-    .animate-on-scroll,
-    .fade-in-up,
-    .fade-in-left,
-    .fade-in-right,
-    .scale-in {
-        transition: none;
-        transform: none;
-        opacity: 1;
-    }
-    
-    .animate-on-scroll.animate-in,
-    .fade-in-up.animate-in,
-    .fade-in-left.animate-in,
-    .fade-in-right.animate-in,
-    .scale-in.animate-in {
-        transform: none;
-    }
-}
+/* Animation classes - Consolidated in utilities/animations.css */
 
 /* Responsive design - Orlando's mobile-first approach */
 @media (max-width: 768px) {
@@ -314,5 +289,77 @@ main {
 @media (max-width: 480px) {
     .section-title {
         font-size: var(--font-size-3xl);
+    }
+} 
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    :root {
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size-base: 1rem;
+        --font-size-lg: 1.125rem;
+        --font-size-xl: 1.25rem;
+        --font-size-2xl: 1.75rem;
+        --font-size-3xl: 2.25rem;
+        --font-size-4xl: 2.75rem;
+        --line-height-base: 1.6;
+        --line-height-relaxed: 1.7;
+    }
+    
+    .container {
+        max-width: 100%;
+        padding: 0 var(--spacing-md);
+    }
+    
+    .section-title {
+        font-size: var(--font-size-3xl);
+        line-height: 1.3;
+        margin-bottom: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size-base: 1rem;
+        --font-size-lg: 1.125rem;
+        --font-size-xl: 1.25rem;
+        --font-size-2xl: 1.625rem;
+        --font-size-3xl: 2rem;
+        --font-size-4xl: 2.5rem;
+        --line-height-base: 1.7;
+        --line-height-relaxed: 1.8;
+    }
+    
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .section-title {
+        font-size: var(--font-size-2xl);
+        line-height: 1.4;
+        margin-bottom: var(--spacing-md);
+    }
+}
+
+@media (max-width: 360px) {
+    :root {
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size-base: 0.875rem; /* Reduced from 1rem */
+        --font-size-lg: 1rem; /* Reduced from 1.125rem */
+        --font-size-xl: 1.125rem; /* Reduced from 1.25rem */
+        --font-size-2xl: 1.5rem;
+        --font-size-3xl: 1.875rem;
+        --font-size-4xl: 2.25rem;
+        --line-height-base: 1.8;
+        --line-height-relaxed: 1.9;
+    }
+    
+    .section-title {
+        font-size: var(--font-size-xl);
+        line-height: 1.5;
     }
 } 

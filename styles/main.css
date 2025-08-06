@@ -23,7 +23,7 @@
 @import url('utilities/animations.css');
 
 /* Import animation styles */
-@import url('../animations/css-wave-animation.css');
+@import url('wave-animation.css');
 
 /* All component styles have been extracted to individual component files */
 
@@ -74,6 +74,69 @@
 @media (max-width: 360px) {
     .section-title {
         font-size: var(--font-size-xl);
+    }
+}
+
+/* Mobile spacing optimizations */
+@media (max-width: 768px) {
+    .hero,
+    .capabilities,
+    .solutions,
+    .use-cases,
+    .why-flowcore,
+    .pricing,
+    .faq,
+    .getting-started,
+    .contact {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .section-title {
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero,
+    .capabilities,
+    .solutions,
+    .use-cases,
+    .why-flowcore,
+    .pricing,
+    .faq,
+    .getting-started,
+    .contact {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .section-title {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+}
+
+@media (max-width: 360px) {
+    .hero,
+    .capabilities,
+    .solutions,
+    .use-cases,
+    .why-flowcore,
+    .pricing,
+    .faq,
+    .getting-started,
+    .contact {
+        padding: var(--spacing-md) 0;
+    }
+    
+    .section-title {
+        margin-bottom: var(--spacing-sm);
     }
 }
 

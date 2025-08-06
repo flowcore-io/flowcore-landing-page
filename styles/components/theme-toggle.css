@@ -2,8 +2,8 @@
 
 /* Block: theme-toggle */
 .theme-toggle {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: var(--border-radius-md);
     padding: var(--spacing-xs);
     cursor: pointer;
@@ -15,30 +15,16 @@
     height: 2.5rem;
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
     --focus-outline: none;
     --focus-outline-offset: 0;
 }
 
-.theme-toggle::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.3s;
-}
-
-.theme-toggle:hover::before {
-    left: 100%;
-}
-
 .theme-toggle:hover,
 .theme-toggle:focus {
-    background: var(--color-background);
-    border-color: var(--color-secondary);
-    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    transform: scale(1.02);
 }
 
 /* Element: theme-toggle__icon */
@@ -47,26 +33,42 @@
     align-items: center;
     justify-content: center;
     font-size: var(--font-size-sm);
-    color: var(--color-secondary);
+    color: rgba(255, 255, 255, 0.7) !important;
     transition: all var(--transition-base);
 }
-
-
 
 /* Element: theme-toggle__icon i */
 .theme-toggle__icon i {
     transition: transform var(--transition-base);
+    color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .theme-toggle:hover .theme-toggle__icon i {
     transform: rotate(15deg);
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
+/* Active state only during click */
+.theme-toggle:active {
+    background: rgba(255, 255, 255, 0.1) !important;
+    transform: scale(0.98);
+}
 
+.theme-toggle:active .theme-toggle__icon i {
+    transform: rotate(30deg);
+    color: rgba(255, 255, 255, 0.9) !important;
+}
 
-/* Modifier: theme-toggle--active */
-.theme-toggle--active .theme-toggle__icon i {
-    transform: rotate(180deg);
+/* Force reset all states */
+.theme-toggle:not(:active):not(:hover):not(:focus) {
+    background: transparent !important;
+    transform: scale(1) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.theme-toggle:not(:active):not(:hover):not(:focus) .theme-toggle__icon i {
+    transform: rotate(0deg) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
 }
 
 /* Nuclear option - remove all possible outlines */
@@ -78,7 +80,48 @@ button.theme-toggle:focus-visible {
     outline: none !important;
     outline-offset: 0 !important;
     box-shadow: none !important;
-    border: 1px solid var(--color-border) !important;
+}
+
+/* Light mode overrides */
+[data-theme="light"] .theme-toggle {
+    background: rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] .theme-toggle:hover,
+[data-theme="light"] .theme-toggle:focus {
+    background: rgba(0, 0, 0, 0.1) !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="light"] .theme-toggle__icon {
+    color: rgba(0, 0, 0, 0.7) !important;
+}
+
+[data-theme="light"] .theme-toggle__icon i {
+    color: rgba(0, 0, 0, 0.7) !important;
+}
+
+[data-theme="light"] .theme-toggle:hover .theme-toggle__icon i {
+    color: rgba(0, 0, 0, 0.9) !important;
+}
+
+[data-theme="light"] .theme-toggle:active {
+    background: rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme="light"] .theme-toggle:active .theme-toggle__icon i {
+    color: rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Light mode explicit reset */
+[data-theme="light"] .theme-toggle:not(:active):not(:hover):not(:focus) {
+    background: rgba(0, 0, 0, 0.05) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] .theme-toggle:not(:active):not(:hover):not(:focus) .theme-toggle__icon i {
+    color: rgba(0, 0, 0, 0.7) !important;
 }
 
 /* Responsive Design */

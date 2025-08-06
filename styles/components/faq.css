@@ -20,9 +20,9 @@
 /* Block: faq-item */
 .faq-item {
     background: linear-gradient(135deg, var(--color-surface) 0%, rgba(255, 0, 255, 0.05) 100%);
+    border: none;
     border-radius: var(--border-radius-lg);
     margin-bottom: var(--spacing-md);
-    border: 2px solid var(--color-border);
     transition: all var(--transition-base);
     overflow: hidden;
     backdrop-filter: blur(10px);

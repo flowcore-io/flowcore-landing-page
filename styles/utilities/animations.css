@@ -3,9 +3,9 @@
 /* Base Animation Classes */
 .animate-on-scroll {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(50px);
     transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     will-change: opacity, transform;
 }
 
@@ -39,50 +39,50 @@
     transition-delay: 0.6s;
 }
 
-/* Fade Animations */
+/* Fade Animations - Higher specificity to override component styles */
 .fade-in-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    opacity: 0 !important;
+    transform: translateY(40px) !important;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out !important;
 }
 
 .fade-in-up.animate-in {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
 
 .fade-in-left {
-    opacity: 0;
-    transform: translateX(-30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    opacity: 0 !important;
+    transform: translateX(-40px) !important;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out !important;
 }
 
 .fade-in-left.animate-in {
-    opacity: 1;
-    transform: translateX(0);
+    opacity: 1 !important;
+    transform: translateX(0) !important;
 }
 
 .fade-in-right {
-    opacity: 0;
-    transform: translateX(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    opacity: 0 !important;
+    transform: translateX(40px) !important;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out !important;
 }
 
 .fade-in-right.animate-in {
-    opacity: 1;
-    transform: translateX(0);
+    opacity: 1 !important;
+    transform: translateX(0) !important;
 }
 
 /* Scale Animations */
 .scale-in {
-    opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    opacity: 0 !important;
+    transform: scale(0.8) !important;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out !important;
 }
 
 .scale-in.animate-in {
-    opacity: 1;
-    transform: scale(1);
+    opacity: 1 !important;
+    transform: scale(1) !important;
 }
 
 /* Performance Optimizations */
@@ -101,9 +101,17 @@
     .fade-in-left,
     .fade-in-right,
     .scale-in {
-        transition: none;
-        transform: none;
-        opacity: 1;
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+    
+    .animate-on-scroll.animate-in,
+    .fade-in-up.animate-in,
+    .fade-in-left.animate-in,
+    .fade-in-right.animate-in,
+    .scale-in.animate-in {
+        transform: none !important;
     }
     
     .stagger-delay-1,
@@ -113,5 +121,73 @@
     .stagger-delay-5,
     .stagger-delay-6 {
         transition-delay: 0s;
+    }
+} 
+
+/* Mobile animation optimizations */
+@media (max-width: 768px) {
+    /* Reduce animation complexity on mobile for better performance */
+    .animate-on-scroll {
+        animation-duration: 0.4s;
+    }
+    
+    .stagger-delay-1 {
+        animation-delay: 0.1s;
+    }
+    
+    .stagger-delay-2 {
+        animation-delay: 0.2s;
+    }
+    
+    .stagger-delay-3 {
+        animation-delay: 0.3s;
+    }
+    
+    /* Optimize floating animations */
+    .logo-container {
+        animation-duration: 4s;
+    }
+    
+    /* Reduce transform complexity */
+    .use-case-block__icon i {
+        animation-duration: 2s;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further reduce animations on very small screens */
+    .animate-on-scroll {
+        animation-duration: 0.3s;
+    }
+    
+    .stagger-delay-1 {
+        animation-delay: 0.05s;
+    }
+    
+    .stagger-delay-2 {
+        animation-delay: 0.1s;
+    }
+    
+    .stagger-delay-3 {
+        animation-delay: 0.15s;
+    }
+    
+    .logo-container {
+        animation-duration: 3s;
+    }
+    
+    .use-case-block__icon i {
+        animation-duration: 1.5s;
+    }
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 } 
