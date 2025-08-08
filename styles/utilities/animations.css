@@ -154,6 +154,84 @@
     }
 }
 
+/* Subtle floating animation for card icons (consistent across sections) */
+@keyframes floatSubtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+/* Mobile-tuned variant with lower amplitude */
+@keyframes floatSubtleMobile {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2.5px); }
+}
+
+/* Apply to all card icon elements without touching non-card icons */
+.feature-card__icon i,
+.use-case-block__icon i,
+.solution-item__icon i,
+.contact-card__icon i,
+.feature-item__icon i,
+.why-flowcore .feature-icon i {
+    animation: floatSubtle 3.5s ease-in-out infinite;
+    will-change: transform;
+}
+
+/* Tune durations on small screens for smoother feel and battery life */
+@media (max-width: 768px) {
+    .feature-card__icon i,
+    .use-case-block__icon i,
+    .solution-item__icon i,
+    .contact-card__icon i,
+    .feature-item__icon i,
+    .why-flowcore .feature-icon i {
+        animation-name: floatSubtleMobile;
+        animation-duration: 4s;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-card__icon i,
+    .use-case-block__icon i,
+    .solution-item__icon i,
+    .contact-card__icon i,
+    .feature-item__icon i,
+    .why-flowcore .feature-icon i {
+        animation-name: floatSubtleMobile;
+        animation-duration: 5s;
+    }
+}
+
+/* Desync floating animations so icons don't move in unison */
+/* Capabilities (feature cards) */
+.features-grid .feature-card:nth-child(3n+1) .feature-card__icon i { animation-delay: -0.2s; animation-duration: 3.4s; }
+.features-grid .feature-card:nth-child(3n+2) .feature-card__icon i { animation-delay: -0.6s; animation-duration: 3.7s; }
+.features-grid .feature-card:nth-child(3n)   .feature-card__icon i { animation-delay: -1.0s; animation-duration: 3.2s; }
+
+/* Use Cases */
+.use-cases__content .use-case-block:nth-child(2n+1) .use-case-block__icon i { animation-delay: -0.3s; animation-duration: 3.6s; }
+.use-cases__content .use-case-block:nth-child(2n)   .use-case-block__icon i { animation-delay: -0.8s; animation-duration: 3.3s; }
+
+/* Solutions list */
+.solutions__list .solution-item:nth-child(3n+1) .solution-item__icon i { animation-delay: -0.25s; animation-duration: 3.6s; }
+.solutions__list .solution-item:nth-child(3n+2) .solution-item__icon i { animation-delay: -0.7s;  animation-duration: 3.3s; }
+.solutions__list .solution-item:nth-child(3n)   .solution-item__icon i { animation-delay: -1.1s;  animation-duration: 3.8s; }
+
+/* Getting Started feature items */
+.getting-started__features .feature-item:nth-child(3n+1) .feature-item__icon i { animation-delay: -0.2s; animation-duration: 3.5s; }
+.getting-started__features .feature-item:nth-child(3n+2) .feature-item__icon i { animation-delay: -0.6s; animation-duration: 3.1s; }
+.getting-started__features .feature-item:nth-child(3n)   .feature-item__icon i { animation-delay: -0.9s; animation-duration: 3.7s; }
+
+/* Contact cards */
+.contact__cards .contact-card:nth-child(3n+1) .contact-card__icon i { animation-delay: -0.3s; animation-duration: 3.4s; }
+.contact__cards .contact-card:nth-child(3n+2) .contact-card__icon i { animation-delay: -0.7s; animation-duration: 3.9s; }
+.contact__cards .contact-card:nth-child(3n)   .contact-card__icon i { animation-delay: -1.2s; animation-duration: 3.2s; }
+
+/* Why Flowcore cards */
+.why-flowcore .features-row .feature-card:nth-child(3n+1) .feature-icon i { animation-delay: -0.2s; animation-duration: 3.6s; }
+.why-flowcore .features-row .feature-card:nth-child(3n+2) .feature-icon i { animation-delay: -0.5s; animation-duration: 3.2s; }
+.why-flowcore .features-row .feature-card:nth-child(3n)   .feature-icon i { animation-delay: -0.9s; animation-duration: 3.8s; }
+
 @media (max-width: 480px) {
     /* Further reduce animations on very small screens */
     .animate-on-scroll {

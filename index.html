@@ -111,12 +111,12 @@
       },
       "featureList": [
         "Event-First Architecture",
-        "Infinite Event Replay", 
+        "Infinite Event Replay",
         "Auto-Managed Storage",
         "Universal Database Support",
         "10M+ Events/Second Processing",
         "99.9% Uptime",
-        "0ms Latency"
+        "Kubernetes Deployment"
       ]
     }
     </script>
@@ -126,6 +126,7 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
     <!-- CSS Waves Animation Background -->
+    <div class="background-glow" aria-hidden="true"></div>
     <div class="wave-container">
         <div class="wave-layer wave-layer-1"></div>
         <div class="wave-layer wave-layer-2"></div>
@@ -144,8 +145,8 @@
         <nav class="nav">
             <div class="nav__container">
                 <div class="nav__logo">
-                    <a href="#home" class="nav__logo-link">
-                        <img src="public/images/logo-text-sidebyside-white.png" alt="Flowcore Logo" class="nav__logo-img" data-light-src="public/images/logo-text-sidebyside-dark.png" data-dark-src="public/images/logo-text-sidebyside-white.png">
+                     <a href="#home" class="nav__logo-link">
+                         <img src="public/images/logo-text-sidebyside-white.png" alt="Flowcore Logo" class="nav__logo-img" data-light-src="public/images/logo-text-sidebyside-dark.png" data-dark-src="public/images/logo-text-sidebyside-white.png">
                     </a>
                 </div>
                 <ul class="nav__menu">
@@ -158,21 +159,21 @@
                     <li class="nav__item"><a href="#getting-started" class="nav__link">Get Started</a></li>
                     <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
                     <li class="nav__item nav__item--mobile-only">
-                        <button id="theme-toggle-mobile" class="theme-toggle theme-toggle--mobile" aria-label="Toggle theme">
+                        <button id="theme-toggle-mobile" class="theme-toggle theme-toggle--mobile" aria-label="Toggle theme" aria-pressed="false">
                             <span class="theme-toggle__icon"><i class="fas fa-sun"></i></span>
                         </button>
                     </li>
                     <li class="nav__item nav__item--mobile-only">
                         <div class="nav__cta-mobile">
-                            <a href="https://flowcore.io/" target="_blank" class="btn btn--pink btn--small">Try Platform</a>
+                        <a href="https://flowcore.io/" target="_blank" rel="noopener noreferrer" class="btn btn--pink btn--small">Try Platform</a>
                         </div>
                     </li>
                 </ul>
                 <div class="nav__right">
-                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" aria-pressed="false">
                         <span class="theme-toggle__icon"><i class="fas fa-sun"></i></span>
                     </button>
-                    <a href="https://flowcore.io/" target="_blank" class="btn btn--pink btn--small">Try Platform</a>
+                    <a href="https://flowcore.io/" target="_blank" rel="noopener noreferrer" class="btn btn--pink btn--small">Try Platform</a>
                 </div>
                 <button class="nav__toggle" aria-label="Toggle navigation">
                     <span class="nav__toggle-line"></span>
@@ -191,10 +192,10 @@
                 <div class="hero__content">
                     <h1 class="hero__title">Event Storage and Processing</h1>
                     <p class="hero__subtitle">Data Platform for AI Developers</p>
-                    <p class="hero__description">Event-first data platform with single source of truth. Replay events, iterate faster, and scale infinitely with our standardized developer toolbox.</p>
+                    <p class="hero__description">Preserve every change event with full context for a single source of truth. Replay anywhere, transform in real time, and deploy fully managed or self‑hosted on Kubernetes.</p>
                     <div class="hero__buttons">
-                        <a href="https://flowcore.io/" target="_blank" class="btn btn--primary">Explore Platform</a>
-                        <a href="https://docs.flowcore.io/" target="_blank" class="btn btn--secondary">Learn More</a>
+                        <a href="https://flowcore.io/" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Explore Platform</a>
+                        <a href="https://docs.flowcore.io/" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">Learn More</a>
                     </div>
                 </div>
                 <div class="hero__stats">
@@ -203,12 +204,12 @@
                         <div class="hero__stat-label"><i class="fas fa-bolt"></i> Events/Second</div>
                     </div>
                     <div class="hero__stat">
-                        <div class="hero__stat-number">99.9%</div>
-                        <div class="hero__stat-label"><i class="fas fa-rocket"></i> Uptime</div>
+                        <div class="hero__stat-number">∞</div>
+                        <div class="hero__stat-label"><i class="fas fa-redo"></i> Event Replay</div>
                     </div>
                     <div class="hero__stat">
-                        <div class="hero__stat-number">0ms</div>
-                        <div class="hero__stat-label"><i class="fas fa-clock"></i> Latency</div>
+                        <div class="hero__stat-number">99.9%</div>
+                        <div class="hero__stat-label"><i class="fas fa-rocket"></i> Uptime</div>
                     </div>
                 </div>
             </div>
@@ -244,7 +245,7 @@
                 <h2 class="section-title animate-on-scroll">Solutions</h2>
                 <div class="solutions__content">
                     <div class="solutions__text fade-in-left">
-                        <p>Stream events to any destination with parallel processing. Our standardized toolbox supports all major databases, storage systems, and communication channels.</p>
+                        <p>Stream events to any destination with parallel processing. Our standardized toolbox supports all major databases, storage systems, and communication channels. Deploy fully managed or self‑hosted on Kubernetes (BYOI supported).</p>
                         <div class="solutions__list">
                             <div class="solution-item">
                                 <div class="solution-item__icon"><i class="fas fa-database"></i></div>
@@ -298,7 +299,7 @@
                             <div class="logo-container solutions-logo--9">
                                 <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
                             </div>
-                            <a href="https://flowcore.io/" target="_blank" class="visualization-text">
+                            <a href="https://flowcore.io/" target="_blank" rel="noopener noreferrer" class="visualization-text">
                                 <h3>Flowcore Platform</h3>
                                 <p>Event storage and processing made simple</p>
                             </a>
@@ -495,9 +496,9 @@
                     </a>
                 </div>
                 <div class="pricing__footer">
-                    <p class="pricing__notes animate-on-scroll">Extra storage $0.10/GB/month. Extra transformers $20/unit/month. All prices exclusive of sales tax.</p>
+                    <p class="pricing__notes animate-on-scroll">Usage‑based options also available on AWS Marketplace (storage and compute metered). Prices shown here exclude sales tax.</p>
                     <p class="pricing__subtitle animate-on-scroll">Discover the plan that aligns perfectly with your needs.</p>
-                    <p class="pricing__disclaimer animate-on-scroll">Note: all plans come with 'fair usage' limitations and will incur additional fees for managed read models.</p>
+                    <p class="pricing__disclaimer animate-on-scroll">Performance and throughput depend on deployment and infrastructure. Contact us for benchmarks and SLAs.</p>
                 </div>
             </div>
         </section>
@@ -508,56 +509,74 @@
                 <div class="faq__content">
                     <div class="faq-item animate-on-scroll stagger-delay-1">
                         <div class="faq-item__question">
-                            <h3 class="faq-item__title">What makes Flowcore different from traditional databases?</h3>
+                            <h3 class="faq-item__title">What is Flowcore and how is it different?</h3>
                             <span class="faq-item__toggle">+</span>
                         </div>
                         <div class="faq-item__answer">
-                            <p class="faq-item__text">Flowcore uses event-first architecture where everything is written to the event store first, creating a single source of truth. Unlike traditional databases, we offer infinite event replay capabilities, allowing you to debug issues, test features, and train AI models with historical data at any point in time.</p>
+                            <p class="faq-item__text">Flowcore is an event‑first data platform. All changes are captured as events, giving you a single source of truth and the ability to replay history on demand.</p>
                         </div>
                     </div>
                     <div class="faq-item animate-on-scroll stagger-delay-2">
                         <div class="faq-item__question">
-                            <h3 class="faq-item__title">How does the infinite replay feature work?</h3>
+                            <h3 class="faq-item__title">How does replay work?</h3>
                             <span class="faq-item__toggle">+</span>
                         </div>
                         <div class="faq-item__answer">
-                            <p class="faq-item__text">Every event in Flowcore is preserved forever with immutable timestamps. You can replay events from any point in time to any destination, rebuild application state, test new features against historical data, or train AI models. This is perfect for debugging, auditing, and development iteration.</p>
+                            <p class="faq-item__text">Events are stored immutably with timestamps. You can stream them from any point in time to rebuild state, test features, or train models—without touching production data. See the <a href="https://docs.flowcore.io/" target="_blank" rel="noopener noreferrer">docs</a> for details.</p>
                         </div>
                     </div>
                     <div class="faq-item animate-on-scroll stagger-delay-3">
                         <div class="faq-item__question">
-                            <h3 class="faq-item__title">What databases and systems does Flowcore support?</h3>
+                            <h3 class="faq-item__title">How do I deploy Flowcore?</h3>
                             <span class="faq-item__toggle">+</span>
                         </div>
                         <div class="faq-item__answer">
-                            <p class="faq-item__text">Flowcore supports all major database types including relational, graph, time series, vector, key-value, column-based, and document databases. We also integrate with data warehouses, object storage, CSV/Parquet files, and communication systems like email, SMS, webhooks, and message queues.</p>
+                            <p class="faq-item__text">Choose fully managed or self‑hosted on Kubernetes (<a href="https://docs.flowcore.io/" target="_blank" rel="noopener noreferrer">docs</a>). You can also subscribe via <a href="https://aws.amazon.com/marketplace/seller-profile?id=seller-ry27bw735byia" target="_blank" rel="noopener noreferrer">AWS Marketplace</a>. <a href="#contact">Contact Us</a> for help picking the right option.</p>
                         </div>
                     </div>
                     <div class="faq-item animate-on-scroll stagger-delay-4">
                         <div class="faq-item__question">
-                            <h3 class="faq-item__title">How quickly can I get started with Flowcore?</h3>
+                            <h3 class="faq-item__title">What does it integrate with?</h3>
                             <span class="faq-item__toggle">+</span>
                         </div>
                         <div class="faq-item__answer">
-                            <p class="faq-item__text">You can get your first data core running in under 5 minutes. Simply install our CLI with <code class="faq-item__code">npm install -g @flowcore/cli</code>, create a data core with <code class="faq-item__code">flowcore datacore create my-app</code>, and start sending events. Our developer-friendly APIs and comprehensive documentation make integration seamless.</p>
+                            <p class="faq-item__text">Major database categories (relational, graph, time‑series, vector, key‑value, column, document), warehouses and object storage, plus messaging and webhooks. See the <a href="https://docs.flowcore.io/" target="_blank" rel="noopener noreferrer">docs</a> for the latest connectors.</p>
                         </div>
                     </div>
                     <div class="faq-item animate-on-scroll stagger-delay-5">
                         <div class="faq-item__question">
-                            <h3 class="faq-item__title">Is Flowcore suitable for production workloads?</h3>
+                            <h3 class="faq-item__title">Is it ready for production?</h3>
                             <span class="faq-item__toggle">+</span>
                         </div>
                         <div class="faq-item__answer">
-                            <p class="faq-item__text">Absolutely! Flowcore processes over 10 million events per second with sub-millisecond latency and 99.9% uptime. We offer enterprise-grade security with GDPR compliance, data obfuscation, permission management, and audit trails. Our auto-scaling infrastructure handles traffic spikes seamlessly.</p>
+                            <p class="faq-item__text">Yes. We provide permission management, obfuscation/GDPR tooling, audit trails, and SLAs. Benchmarks depend on your deployment—see the <a href="https://docs.flowcore.io/" target="_blank" rel="noopener noreferrer">docs</a> or <a href="#contact">Contact Us</a>.</p>
                         </div>
                     </div>
                     <div class="faq-item animate-on-scroll stagger-delay-6">
                         <div class="faq-item__question">
-                            <h3 class="faq-item__title">What are the pricing options and how do they scale?</h3>
+                            <h3 class="faq-item__title">How long is data retained?</h3>
                             <span class="faq-item__toggle">+</span>
                         </div>
                         <div class="faq-item__answer">
-                            <p class="faq-item__text">We offer flexible pricing starting at $400/month for the Standard plan with 100GB storage and 1,000 events/second. Our Medium and Large plans provide more storage and processing power, while our Cluster plan runs on your own servers. Extra storage is $0.10/GB/month and extra transformers are $20/unit/month.</p>
+                            <p class="faq-item__text">Events are designed for long‑term retention with tiered storage. You keep history for replay and audit as your policies allow. See retention options in the <a href="https://docs.flowcore.io/" target="_blank" rel="noopener noreferrer">docs</a>.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item animate-on-scroll stagger-delay-7">
+                        <div class="faq-item__question">
+                            <h3 class="faq-item__title">How do I get started?</h3>
+                            <span class="faq-item__toggle">+</span>
+                        </div>
+                        <div class="faq-item__answer">
+                            <p class="faq-item__text">Install the CLI, create a data core, and send your first events—usually in minutes. See the <a href="https://docs.flowcore.io/" target="_blank" rel="noopener noreferrer">docs</a> for quickstart commands or jump to <a href="#getting-started">Get Started</a>.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item animate-on-scroll stagger-delay-8">
+                        <div class="faq-item__question">
+                            <h3 class="faq-item__title">What does it cost?</h3>
+                            <span class="faq-item__toggle">+</span>
+                        </div>
+                        <div class="faq-item__answer">
+                            <p class="faq-item__text">Plans start at $400/month, with higher tiers and a self‑hosted license available. Usage‑based options exist on AWS Marketplace. See the <a href="#pricing">Pricing</a> section for details.</p>
                         </div>
                     </div>
                 </div>
@@ -693,12 +712,12 @@
                     <!-- Social Media Links -->
                     <div class="footer-social">
                         <h5 class="footer-social__title">Follow Us</h5>
-                        <div class="footer-social__links">
-                        <a href="https://www.linkedin.com/company/flowcore" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://www.youtube.com/channel/UC-t-FsHqFETCuKzqCb9Ul2Q" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="https://discord.gg/k97YWAw8XF" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
-                        <a href="https://www.threads.net/@flowcore.io" target="_blank" aria-label="Threads"><i class="fab fa-threads"></i></a>
-                        <a href="https://www.instagram.com/flowcore.io/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <div class="footer-social__links">
+                            <a href="https://www.linkedin.com/company/flowcore" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.youtube.com/channel/UC-t-FsHqFETCuKzqCb9Ul2Q" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://discord.gg/k97YWAw8XF" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                            <a href="https://www.threads.net/@flowcore.io" target="_blank" rel="noopener noreferrer" aria-label="Threads"><i class="fab fa-threads"></i></a>
+                            <a href="https://www.instagram.com/flowcore.io/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -707,9 +726,9 @@
                 <div class="footer-section">
                     <h4 class="footer-section__title">Support</h4>
                     <ul class="footer-section__list">
-                        <li><a href="https://www.youtube.com/watch?v=5k8OJvOTQ9k&list=PL0Dh1UqPjwDcYqxavwy5kb1-Gdwdd2RDj" target="_blank">Video Tutorials</a></li>
-                        <li><a href="https://docs.flowcore.io/" target="_blank">Documentation</a></li>
-                        <li><a href="https://discord.gg/k97YWAw8XF" target="_blank">Community Support</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=5k8OJvOTQ9k&list=PL0Dh1UqPjwDcYqxavwy5kb1-Gdwdd2RDj" target="_blank" rel="noopener noreferrer">Video Tutorials</a></li>
+                        <li><a href="https://docs.flowcore.io/" target="_blank" rel="noopener noreferrer">Documentation</a></li>
+                        <li><a href="https://discord.gg/k97YWAw8XF" target="_blank" rel="noopener noreferrer">Community Support</a></li>
                     </ul>
                 </div>
                 
@@ -717,10 +736,10 @@
                 <div class="footer-section footer-contact">
                     <h4 class="footer-section__title">Contact Us</h4>
                     <div class="footer-contact__item">
-                        <a href="tel:+298556600" target="_blank">+298 556 600</a>
+                        <a href="tel:+298556600" target="_blank" rel="noopener noreferrer">+298 556 600</a>
                     </div>
                     <div class="footer-contact__item">
-                        <a href="mailto:flowcore@flowcore.com" target="_blank">flowcore@flowcore.com</a>
+                        <a href="mailto:flowcore@flowcore.com" target="_blank" rel="noopener noreferrer">flowcore@flowcore.com</a>
                     </div>
                 </div>
                 
@@ -728,7 +747,7 @@
                 <div class="footer-section footer-address">
                     <h4 class="footer-section__title">Visit Us</h4>
                     <div class="footer-address__info">
-                        <p><a href="https://maps.app.goo.gl/5czHaR9F8Een7D94A" target="_blank">Vestara Bryggja 15<br>
+                        <p><a href="https://maps.app.goo.gl/5czHaR9F8Een7D94A" target="_blank" rel="noopener noreferrer">Vestara Bryggja 15<br>
                         100 Tórshavn<br>
                         Faroe Islands</a></p>
                     </div>
@@ -751,5 +770,63 @@
 
     <script src="scripts/main.js"></script>
     <script src="scripts/use-case-interactions.js"></script>
+
+    <!-- FAQPage structured data for SEO (describes the visible FAQ content) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What makes Flowcore different from traditional databases?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Flowcore is event‑first: all changes are written as events to create a single source of truth, with infinite replay for debugging, testing and model training."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the infinite replay feature work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every event is preserved with immutable timestamps. You can replay from any point in time to any destination to rebuild state, test features or train AI models."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What databases and systems does Flowcore support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Flowcore supports major database categories (relational, graph, time series, vector, key‑value, column and document), plus warehouses, object storage, CSV/Parquet and communication systems such as email, SMS, webhooks and queues."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How quickly can I get started with Flowcore?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Install the CLI, create a data core and start sending events. First setup typically takes only a few minutes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Flowcore suitable for production workloads?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Flowcore targets high throughput with low latency and enterprise features such as GDPR compliance, permission management, obfuscation and audit trails."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the pricing options and how do they scale?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Plans start at $400/month with higher‑tier options for more storage and throughput, plus a cluster license for self‑hosted. Extras include additional storage and transformer units."
+          }
+        }
+      ]
+    }
+    </script>
 </body>
 </html>

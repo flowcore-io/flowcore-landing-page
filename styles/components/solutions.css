@@ -303,11 +303,36 @@
         grid-template-columns: 1fr;
         gap: var(--spacing-xl);
     }
+
+    /* Match burger menu breakpoint: increase side gutters and center intro text */
+    .solutions .container {
+        padding-left: var(--spacing-lg);
+        padding-right: var(--spacing-lg);
+    }
+
+    .solutions__text > p {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 @media (max-width: 768px) {
     .solutions {
         padding: var(--spacing-xl) 0;
+    }
+    
+    /* Increase side spacing only for Solutions on small screens */
+    .solutions .container {
+        padding-left: var(--spacing-lg);
+        padding-right: var(--spacing-lg);
+    }
+    
+    /* Center the intro paragraph for better readability on mobile */
+    .solutions__text > p {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .data-visualization {
@@ -401,6 +426,12 @@
         height: 350px;
     }
     
+    /* Maintain comfortable side padding at the smallest breakpoint */
+    .solutions .container {
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+    }
+    
     /* Original pattern with even smaller sizes */
     .solutions-logo--1 {
         width: 35px;
@@ -461,7 +492,7 @@
     .solutions-logo--9 {
         width: 45px;
         height: 45px;
-        top: 30%;
+        top: calc(30% - 8px);
         left: 35%;
     }
     

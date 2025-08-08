@@ -9,8 +9,8 @@
     justify-content: center;
     padding: var(--spacing-2xl) 0 var(--spacing-xl);
     overflow: hidden;
-    /* Dark theme background with gradient transition - matches production */
-    background: linear-gradient(180deg, rgba(var(--color-surface-rgb), 0.95) 0%, rgba(var(--color-surface-rgb), 0.75) 100%);
+    /* Unified Type A background to match alternating pattern */
+    background-color: rgba(var(--color-surface-rgb), 0.65);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 }
@@ -97,10 +97,7 @@
 .hero__stat-number {
     font-size: var(--font-size-3xl);
     font-weight: var(--font-weight-normal);
-    background: var(--color-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-text);
     margin-bottom: var(--spacing-xs);
     display: block;
 }
@@ -150,13 +147,13 @@
     }
     
     .hero__title {
-        font-size: var(--font-size-3xl);
+        font-size: var(--font-size-4xl);
         line-height: 1.2;
         margin-bottom: var(--spacing-md);
     }
     
     .hero__subtitle {
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-2xl);
         margin-bottom: var(--spacing-md);
     }
     
@@ -204,12 +201,12 @@
 
 @media (max-width: 480px) {
     .hero__title {
-        font-size: var(--font-size-2xl);
+        font-size: var(--font-size-3xl);
         line-height: 1.3;
     }
     
     .hero__subtitle {
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-xl);
     }
     
     .hero__description {
@@ -236,7 +233,7 @@
 
 @media (max-width: 360px) {
     .hero__title {
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-2xl);
     }
     
     .hero__subtitle {
@@ -256,3 +253,11 @@
         min-width: auto;
     }
 } 
+
+/* Desktop enhancement: make hero title a bit larger without affecting smaller breakpoints */
+@media (min-width: 1201px) {
+    .hero__title {
+        font-size: clamp(3.25rem, 5vw, 4rem);
+        line-height: 1.1;
+    }
+}

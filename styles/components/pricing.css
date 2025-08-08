@@ -265,7 +265,7 @@
     }
     
     .pricing-card__title {
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-2xl);
     }
     
     .pricing-card__price {

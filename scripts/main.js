@@ -25,6 +25,7 @@
             if (icon) {
                 icon.className = `fas ${iconClass}`;
             }
+            themeToggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
         }
         
         if (themeToggleMobile) {
@@ -32,6 +33,7 @@
             if (icon) {
                 icon.className = `fas ${iconClass}`;
             }
+            themeToggleMobile.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
         }
     }
 
@@ -61,7 +63,7 @@
         updateThemeIcon(newTheme);
         updateLogo(newTheme);
         
-        // Remove any active/pressed/clicked classes from both toggles
+        // Remove any active/pressed/clicked classes from both toggles and update aria state
         const themeToggle = document.querySelector('#theme-toggle');
         const themeToggleMobile = document.querySelector('#theme-toggle-mobile');
         
@@ -69,12 +71,14 @@
             themeToggle.classList.remove('theme-toggle--active', 'pressed', 'clicked');
             themeToggle.offsetHeight; // Force reflow
             themeToggle.blur();
+            themeToggle.setAttribute('aria-pressed', newTheme === 'dark' ? 'true' : 'false');
         }
         
         if (themeToggleMobile) {
             themeToggleMobile.classList.remove('theme-toggle--active', 'pressed', 'clicked');
             themeToggleMobile.offsetHeight; // Force reflow
             themeToggleMobile.blur();
+            themeToggleMobile.setAttribute('aria-pressed', newTheme === 'dark' ? 'true' : 'false');
         }
     }
 
@@ -492,17 +496,14 @@
         }
     }
 
-    // Ensure page loads at the very top - multiple attempts
+    // Ensure page loads at the very top (single consolidated call)
     if (history.scrollRestoration) {
         history.scrollRestoration = 'manual';
     }
 
-    // Immediate scroll to top
-    window.scrollTo(0, 0);
-
     // Initialize everything when DOM is loaded
     document.addEventListener('DOMContentLoaded', function() {
-        // Ensure page loads scrolled to the top
+        // Single scrollTo at DOM ready
         window.scrollTo(0, 0);
         
         // Reset any existing animations
@@ -517,10 +518,15 @@
         initIconClickEffects(); // Initialize the new function
         initThemeToggle(); // Initialize the new function
         
-        // Additional scroll to top after everything is initialized
-        setTimeout(() => {
-            window.scrollTo(0, 0);
-        }, 100);
+        // Optionally pause waves on low-power devices or small screens
+        try {
+            const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+            const lowPower = navigator?.connection?.saveData || false;
+            if (isMobile || lowPower) {
+                const wave = document.querySelector('.wave-container');
+                if (wave) wave.setAttribute('data-pause-waves', 'true');
+            }
+        } catch (_) {}
 
         // Theme toggle event listener
         // const themeToggle = document.getElementById('theme-toggle'); // This line is now handled by initThemeToggle
@@ -545,30 +551,42 @@
             }
         });
 
-        // Update active nav link on scroll
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav__link[href^="#"]');
-            
-            let currentSection = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.offsetHeight;
-                
-                if (window.scrollY >= sectionTop && 
-                    window.scrollY < sectionTop + sectionHeight) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-            
+        // Update active nav link on scroll (throttled + cached)
+        const sections = Array.from(document.querySelectorAll('section[id]'));
+        const navLinks = Array.from(document.querySelectorAll('.nav__link[href^="#"]'));
+        let rafPending = false;
+        let cachedSections = [];
+
+        const recalcSectionOffsets = () => {
+            cachedSections = sections.map(section => ({
+                id: section.getAttribute('id'),
+                top: section.offsetTop - 120,
+                bottom: section.offsetTop - 120 + section.offsetHeight
+            }));
+        };
+
+        recalcSectionOffsets();
+        window.addEventListener('resize', recalcSectionOffsets, { passive: true });
+
+        const updateActiveOnScroll = () => {
+            rafPending = false;
+            const y = window.scrollY;
+            let current = '';
+            for (let i = 0; i < cachedSections.length; i++) {
+                const s = cachedSections[i];
+                if (y >= s.top && y < s.bottom) { current = s.id; break; }
+            }
             navLinks.forEach(link => {
-                link.classList.remove('nav__link--active');
-                if (link.getAttribute('href') === `#${currentSection}`) {
-                    link.classList.add('nav__link--active');
-                }
+                const isActive = link.getAttribute('href') === `#${current}`;
+                link.classList.toggle('nav__link--active', isActive);
             });
-        });
+        };
+
+        window.addEventListener('scroll', () => {
+            if (rafPending) return;
+            rafPending = true;
+            requestAnimationFrame(updateActiveOnScroll);
+        }, { passive: true });
     });
 
     // Listen for system theme changes
@@ -582,13 +600,5 @@
         });
     }
 
-    // Additional scroll to top when page is fully loaded
-    window.addEventListener('load', function() {
-        window.scrollTo(0, 0);
-    });
-
-    // Prevent scroll restoration on page refresh
-    window.addEventListener('beforeunload', function() {
-        window.scrollTo(0, 0);
-    });
+    // Removed extra load/beforeunload scrolls to reduce jank
 })();

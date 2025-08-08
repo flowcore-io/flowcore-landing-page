@@ -125,6 +125,21 @@ a {
     text-decoration: none;
 }
 
+/* Site-wide content link styling (exclude buttons and nav) */
+main a:not(.btn):not(.nav__link):not(.visualization-text):not(.contact-card):not(.pricing-card):not(.footer-social__links a) {
+    color: var(--color-secondary);
+    text-decoration: none;
+}
+
+main a:not(.btn):not(.nav__link):not(.visualization-text):not(.contact-card):not(.pricing-card):not(.footer-social__links a):hover {
+    color: var(--color-secondary-hover);
+}
+
+main a:not(.btn):not(.nav__link):not(.visualization-text):not(.contact-card):not(.pricing-card):not(.footer-social__links a):focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}
+
 /* Focus states for accessibility - Orlando's accessibility-first approach */
 a:focus,
 button:focus,
@@ -227,6 +242,105 @@ body {
     transition: background-color var(--transition-base), color var(--transition-base);
 }
 
+/* Custom Scrollbar - Cross-browser (WebKit + Firefox) */
+html {
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #ffffff var(--color-nav-footer);
+    scrollbar-gutter: stable both-edges; /* Reserve space so content edge aligns with scrollbar */
+}
+
+/* WebKit browsers */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+/* Reverted: no arrow suppression or overlays */
+
+::-webkit-scrollbar-track {
+    background: var(--color-nav-footer);
+    /* separator line drawn via gradient; theme overrides set the color */
+    background-image: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 10px; /* moderate rounding to avoid odd end-caps */
+    border: 2px solid var(--color-nav-footer);
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+}
+
+/* Match the corner piece (both axes) */
+::-webkit-scrollbar-corner {
+    background: var(--color-nav-footer);
+}
+
+/* Theme-specific subtle track border to mirror navbar/footer separators */
+[data-theme="light"] ::-webkit-scrollbar-track {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+}
+
+/* Reverted: no track-piece margins */
+
+/* Reverted: remove content-edge separator line overlay */
+/* Edge separator line (matches navbar/footer divider) */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.1); /* default overridden by theme */
+    pointer-events: none;
+    z-index: 2;
+}
+
+[data-theme="light"] body::after {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] body::after {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Mask top/bottom scrollbar arrow areas to ensure a clean, arrow-less look */
+/* remove prior top/bottom masks to avoid visual artifacts */
+body::before {
+    content: '';
+    position: fixed;
+    right: 0;
+    width: 14px; /* slightly wider than scrollbar */
+    height: 14px; /* taller cap to fully cover arrow area */
+    top: 0;
+    background: var(--color-nav-footer);
+    pointer-events: none;
+    z-index: 2;
+    display: none;
+}
+
+/* bottom mask */
+html::after {
+    content: '';
+    position: fixed;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    bottom: 0;
+    background: var(--color-nav-footer);
+    pointer-events: none;
+    z-index: 2;
+    display: none;
+}
+
 /* Wave container positioning */
 body > .wave-container {
     position: fixed;
@@ -248,6 +362,33 @@ body > .wave-container {
 @media (max-width: 480px) {
     body > .wave-container {
         height: 100vh; /* Maintain full viewport height on smaller screens */
+    }
+}
+
+/* Subtle orange glow layer behind waves */
+.background-glow {
+    position: fixed;
+    inset: 0;
+    z-index: 0; /* Behind waves (1) and content (2) */
+    pointer-events: none;
+    /* Circular gradient glow anchored at bottom center: orange → transparent */
+    /* Hold more opacity higher up: slower fade with mid stops */
+    background: radial-gradient(
+      ellipse 160% 35% at 50% 100%,
+      rgba(255, 135, 85, 1) 0%,
+      rgba(255, 135, 85, 0.8) 40%,
+      rgba(255, 135, 85, 0.45) 70%,
+      rgba(255, 135, 85, 0) 100%
+    );
+    filter: blur(8px);
+}
+
+/* Temporary debug marker to show glow top edge */
+/* marker removed */
+
+@media (prefers-reduced-motion: reduce) {
+    .background-glow {
+        filter: blur(12px);
     }
 }
 
@@ -301,8 +442,8 @@ main {
         --font-size-lg: 1.125rem;
         --font-size-xl: 1.25rem;
         --font-size-2xl: 1.75rem;
-        --font-size-3xl: 2.25rem;
-        --font-size-4xl: 2.75rem;
+        --font-size-3xl: 2.5rem;
+        --font-size-4xl: 3rem;
         --line-height-base: 1.6;
         --line-height-relaxed: 1.7;
     }
@@ -313,9 +454,9 @@ main {
     }
     
     .section-title {
-        font-size: var(--font-size-3xl);
-        line-height: 1.3;
-        margin-bottom: var(--spacing-lg);
+        font-size: var(--font-size-4xl);
+        line-height: 1.25;
+        margin-bottom: var(--spacing-xl);
     }
 }
 
@@ -327,8 +468,8 @@ main {
         --font-size-lg: 1.125rem;
         --font-size-xl: 1.25rem;
         --font-size-2xl: 1.625rem;
-        --font-size-3xl: 2rem;
-        --font-size-4xl: 2.5rem;
+        --font-size-3xl: 2.25rem;
+        --font-size-4xl: 2.75rem;
         --line-height-base: 1.7;
         --line-height-relaxed: 1.8;
     }
@@ -338,9 +479,9 @@ main {
     }
     
     .section-title {
-        font-size: var(--font-size-2xl);
-        line-height: 1.4;
-        margin-bottom: var(--spacing-md);
+        font-size: var(--font-size-3xl);
+        line-height: 1.3;
+        margin-bottom: var(--spacing-lg);
     }
 }
 
@@ -352,14 +493,14 @@ main {
         --font-size-lg: 1rem; /* Reduced from 1.125rem */
         --font-size-xl: 1.125rem; /* Reduced from 1.25rem */
         --font-size-2xl: 1.5rem;
-        --font-size-3xl: 1.875rem;
-        --font-size-4xl: 2.25rem;
+        --font-size-3xl: 2rem;
+        --font-size-4xl: 2.5rem;
         --line-height-base: 1.8;
         --line-height-relaxed: 1.9;
     }
     
     .section-title {
-        font-size: var(--font-size-xl);
-        line-height: 1.5;
+        font-size: var(--font-size-2xl);
+        line-height: 1.35;
     }
 } 

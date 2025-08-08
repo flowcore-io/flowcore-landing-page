@@ -22,6 +22,8 @@
     box-shadow: 0 0 20px var(--wave-glow-color, var(--wave-color));
 }
 
+ 
+
 /* =====================================
    WAVE LAYER CONFIGURATIONS
    ===================================== */
@@ -33,13 +35,13 @@
 .wave-layer-1 {
     --wave-color: rgba(255, 0, 255, 1.0);
     --wave-glow-color: rgba(255, 0, 255, 1.0);
-    --wave-opacity: 1.0;
+    --wave-opacity: 0.6;
     --wave-blur: 8px;
     --wave-duration: 18s;
     bottom: -150px;
     left: -50%;
     animation-delay: 0s;
-    z-index: 1; /* Send Wave 1 to the back */
+    z-index: 10; /* Stack order: 4/4 (back) */
 }
 
 /* 🌊 WAVE #2 - PINK (Secondary Layer)
@@ -55,6 +57,7 @@
     bottom: -180px;
     left: -50%;
     animation-delay: -3s;
+    z-index: 30; /* Stack order: 3/4 */
 }
 
 /* 🌊 WAVE #3 - ORANGE (Mid Layer) - REMOVED FOR PERFORMANCE
@@ -77,14 +80,15 @@
    Animation: wave-drift (horizontal movement)
    ===================================== */
 .wave-layer-4 {
-    --wave-color: rgba(255, 204, 0, 1.0);
-    --wave-glow-color: rgba(255, 204, 0, 1.0);
+    --wave-color: rgba(255, 135, 85, 1.0); /* #FF8755 */
+    --wave-glow-color: rgba(255, 135, 85, 1.0);
     --wave-opacity: 1.0;
     --wave-blur: 5px;
     --wave-duration: 27s;
     bottom: -230px;
     left: -50%;
     animation-delay: -9s;
+    z-index: 40; /* Stack order: 2/4 */
 }
 
 /* 🌊 WAVE #5 - LIGHT YELLOW (Deepest Layer)
@@ -100,7 +104,7 @@
     bottom: -320px;
     left: -50%;
     animation-delay: -12s;
-    z-index: 50; /* Bring Wave 5 to the front */
+    z-index: 50; /* Stack order: 1/4 (top) */
 }
 
 /* 🌊 WAVE #6 - ACCENT PURPLE (Top Layer) - REMOVED FOR PERFORMANCE
@@ -193,6 +197,13 @@
     }
 }
 
+/* Pause waves on small screens to save battery/CPU if desired */
+@media (max-width: 480px) {
+    .wave-container[data-pause-waves="true"] .wave-layer {
+        animation: none !important;
+    }
+}
+
 /* Hardware acceleration hints */
 .wave-layer {
     backface-visibility: hidden;
@@ -214,7 +225,7 @@
 }
 
 [data-theme="dark"] .wave-layer-4 {
-    --wave-color: rgba(255, 204, 0, 0.8);
+    --wave-color: rgba(255, 135, 85, 0.8); /* #FF8755 with alpha */
 }
 
 [data-theme="dark"] .wave-layer-5 {

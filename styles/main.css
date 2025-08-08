@@ -67,7 +67,7 @@
     }
     
     .section-title {
-        font-size: var(--font-size-2xl);
+        font-size: var(--font-size-3xl);
     }
 }
 
@@ -92,7 +92,7 @@
     }
     
     .section-title {
-        margin-bottom: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
     }
     
     .container {
@@ -114,7 +114,7 @@
     }
     
     .section-title {
-        margin-bottom: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
     }
     
     .container {
@@ -136,7 +136,7 @@
     }
     
     .section-title {
-        margin-bottom: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
     }
 }
 
