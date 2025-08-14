@@ -4,8 +4,6 @@
 .footer {
     background-color: var(--color-nav-footer) !important;
     background-image: none !important;
-    backdrop-filter: blur(15px) !important;
-    -webkit-backdrop-filter: blur(15px) !important;
     border-top: 1px solid rgba(var(--color-border-rgb), 0.1);
     padding: var(--spacing-2xl) 0 var(--spacing-lg);
     position: relative;
@@ -14,19 +12,11 @@
 
 /* Match navbar theming for light/dark */
 [data-theme="light"] .footer {
-    /* Mirror navbar light blur and shadow */
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="dark"] .footer {
-    /* Mirror navbar dark blur and shadow */
-    backdrop-filter: blur(15px) !important;
-    -webkit-backdrop-filter: blur(15px) !important;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* Element: footer__content */

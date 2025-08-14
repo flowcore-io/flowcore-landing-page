@@ -35,7 +35,7 @@
     
     /* Typography */
     --font-family-header: 'Lalezar', cursive;
-    --font-family-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-family-body: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;
     --font-size-base: 1rem;
@@ -75,7 +75,7 @@
     --color-nav-footer: #fdf3ef;
     --color-nav-footer-rgb: 253, 243, 239;
     --color-text: #1a1a1a;
-    --color-text-muted: #1a1a1a; /* Changed from #666666 to dark */
+    --color-text-muted: #4a4a4a; /* Improved contrast for WCAG AA compliance */
     --color-border: #e5e5e5;
     --color-border-rgb: 229, 229, 229;
     --color-secondary-rgb: 255, 68, 170;
@@ -187,7 +187,7 @@ select:focus {
     outline-offset: 2px;
 }
 
-/* Mobile focus improvements */
+/* Mobile focus and touch improvements */
 @media (max-width: 768px) {
     *:focus {
         outline-width: 3px;
@@ -199,6 +199,27 @@ select:focus {
     .theme-toggle:focus {
         outline-width: 3px;
         outline-offset: 3px;
+    }
+    
+    /* Improve touch interactions for all interactive elements */
+    .btn,
+    .nav__link,
+    .theme-toggle,
+    .contact-card,
+    .pricing-card,
+    .feature-card,
+    .use-case-block {
+        -webkit-tap-highlight-color: rgba(var(--color-secondary-rgb), 0.2);
+        touch-action: manipulation;
+        cursor: pointer;
+    }
+    
+    /* Optimize touch scrolling */
+    .use-cases__content,
+    .features-grid,
+    .pricing__grid {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
     }
 }
 
@@ -232,6 +253,11 @@ select:focus {
     overflow: visible;
 }
 
+/* Font loading optimization */
+.fonts-loaded {
+    font-display: swap;
+}
+
 /* Body styles */
 body {
     font-family: var(--font-family-body);
@@ -240,13 +266,56 @@ body {
     color: var(--color-text);
     background-color: var(--color-background);
     transition: background-color var(--transition-base), color var(--transition-base);
+    /* Prevent layout shift during font loading */
+    font-display: swap;
+    /* Mobile performance optimizations */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Prevent horizontal scrolling on mobile */
+    overflow-x: hidden;
+    /* Improve touch scrolling */
+    -webkit-overflow-scrolling: touch;
+    /* Wave background - positioned relative for wave layers */
+    position: relative;
+    min-height: 100vh;
+}
+
+
+
+/* Wave animation keyframes */
+@keyframes wave-float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-20px) rotate(1deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(-1deg);
+    }
+    75% {
+        transform: translateY(-15px) rotate(0.5deg);
+    }
+}
+
+/* Background glow animation */
+@keyframes background-glow {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.1);
+    }
 }
 
 /* Custom Scrollbar - Cross-browser (WebKit + Firefox) */
 html {
     scrollbar-width: thin; /* Firefox */
     scrollbar-color: #ffffff var(--color-nav-footer);
-    scrollbar-gutter: stable both-edges; /* Reserve space so content edge aligns with scrollbar */
+    scrollbar-gutter: stable; /* Only reserve space on the right side */
 }
 
 /* WebKit browsers */
@@ -341,56 +410,7 @@ html::after {
     display: none;
 }
 
-/* Wave container positioning */
-body > .wave-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-}
 
-/* Mobile wave container adjustments */
-@media (max-width: 768px) {
-    body > .wave-container {
-        height: 100vh; /* Ensure full viewport height on mobile */
-    }
-}
-
-@media (max-width: 480px) {
-    body > .wave-container {
-        height: 100vh; /* Maintain full viewport height on smaller screens */
-    }
-}
-
-/* Subtle orange glow layer behind waves */
-.background-glow {
-    position: fixed;
-    inset: 0;
-    z-index: 0; /* Behind waves (1) and content (2) */
-    pointer-events: none;
-    /* Circular gradient glow anchored at bottom center: orange → transparent */
-    /* Hold more opacity higher up: slower fade with mid stops */
-    background: radial-gradient(
-      ellipse 160% 35% at 50% 100%,
-      rgba(255, 135, 85, 1) 0%,
-      rgba(255, 135, 85, 0.8) 40%,
-      rgba(255, 135, 85, 0.45) 70%,
-      rgba(255, 135, 85, 0) 100%
-    );
-    filter: blur(8px);
-}
-
-/* Temporary debug marker to show glow top edge */
-/* marker removed */
-
-@media (prefers-reduced-motion: reduce) {
-    .background-glow {
-        filter: blur(12px);
-    }
-}
 
 /* Container utility */
 .container {
@@ -416,6 +436,8 @@ main {
     margin-bottom: var(--spacing-2xl);
     color: var(--color-text);
     line-height: var(--line-height-tight);
+    /* Prevent layout shift during font loading */
+    font-display: swap;
 }
 
 /* Animation classes - Consolidated in utilities/animations.css */
@@ -502,5 +524,33 @@ main {
     .section-title {
         font-size: var(--font-size-2xl);
         line-height: 1.35;
+    }
+} 
+
+
+
+
+
+/* Wave container positioning */
+body > .wave-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Mobile wave container adjustments */
+@media (max-width: 768px) {
+    body > .wave-container {
+        height: 100vh; /* Ensure full viewport height on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    body > .wave-container {
+        height: 100vh; /* Maintain full viewport height on smaller screens */
     }
 } 

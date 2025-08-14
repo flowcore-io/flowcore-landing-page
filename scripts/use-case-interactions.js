@@ -35,23 +35,81 @@ function initializeInteractiveElements() {
     });
 }
 
-// Use Case Icon Click Animations
+// Use Case Icon Click and Keyboard Animations
 function initializeUseCaseIcons() {
-    const useCaseIcons = document.querySelectorAll('.use-case-icon i');
-    
-    useCaseIcons.forEach(icon => {
-        icon.addEventListener('click', function(e) {
-            e.preventDefault();
+    // Wait a bit to ensure other scripts have finished
+    setTimeout(() => {
+        const useCaseIcons = document.querySelectorAll('.use-case-block__icon');
+        
+        useCaseIcons.forEach(icon => {
+            // Ensure clicked class is not present on initialization
+            icon.classList.remove('clicked');
+            icon.setAttribute('aria-pressed', 'false');
             
-            // Add clicked class for smooth animation
-            this.classList.add('clicked');
+            // Click event for mouse users
+            icon.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation(); // Prevent other click handlers from interfering
+                triggerIconAnimation(this);
+            });
             
-            // Remove clicked class after animation completes
-            setTimeout(() => {
-                this.classList.remove('clicked');
-            }, 800);
+            // Keyboard event for accessibility
+            icon.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    triggerIconAnimation(this);
+                }
+            });
+            
+            // Focus event for screen readers
+            icon.addEventListener('focus', function() {
+                this.setAttribute('aria-pressed', 'false');
+            });
         });
-    });
+    }, 100); // Small delay to ensure other scripts have run
+}
+
+function triggerIconAnimation(icon) {
+    console.log('Icon clicked!', icon); // Debug log
+    console.log('Initial classes:', icon.className); // Debug log
+    
+    // Force remove clicked class first, then add it
+    icon.classList.remove('clicked');
+    icon.classList.add('clicked');
+    icon.setAttribute('aria-pressed', 'true');
+    
+    console.log('After adding clicked class:', icon.className); // Debug log
+    console.log('Added clicked class - should glow now!'); // Debug log
+    
+    // Announce to screen readers
+    const label = icon.getAttribute('aria-label');
+    if (label) {
+        announceToScreenReader(label + ' - Glow started');
+    }
+}
+
+function announceToScreenReader(message) {
+    // Create a live region for screen reader announcements
+    let liveRegion = document.getElementById('screen-reader-announcements');
+    if (!liveRegion) {
+        liveRegion = document.createElement('div');
+        liveRegion.id = 'screen-reader-announcements';
+        liveRegion.setAttribute('aria-live', 'polite');
+        liveRegion.setAttribute('aria-atomic', 'true');
+        liveRegion.style.position = 'absolute';
+        liveRegion.style.left = '-10000px';
+        liveRegion.style.width = '1px';
+        liveRegion.style.height = '1px';
+        liveRegion.style.overflow = 'hidden';
+        document.body.appendChild(liveRegion);
+    }
+    
+    liveRegion.textContent = message;
+    
+    // Clear the message after a short delay
+    setTimeout(() => {
+        liveRegion.textContent = '';
+    }, 1000);
 }
 
 function triggerSpecificInteraction(element) {

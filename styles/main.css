@@ -6,6 +6,7 @@
 /* Import component styles */
 @import url('components/nav.css');
 @import url('components/hero.css');
+@import url('advanced-effects.css');
 @import url('components/theme-toggle.css');
 @import url('components/features.css');
 @import url('components/solutions.css');
@@ -27,14 +28,162 @@
 
 /* All component styles have been extracted to individual component files */
 
+/* Core Web Vitals Optimizations */
+.nav__logo-img {
+    width: 200px;
+    height: 40px;
+    object-fit: contain;
+}
 
+.logo-image {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
 
+/* Prevent layout shifts during image loading */
+img {
+    max-width: 100%;
+    height: auto;
+}
 
+/* Advanced Accessibility Support */
+/* Reduced Motion Support */
+.reduced-motion *,
+.reduced-motion *::before,
+.reduced-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+}
 
+/* High Contrast Mode Support */
+.high-contrast {
+    --color-text: #000000;
+    --color-text-muted: #333333;
+    --color-background: #ffffff;
+    --color-surface: #f0f0f0;
+    --color-border: #000000;
+    --color-secondary: #0000ff;
+    --color-accent: #ff0000;
+}
 
+.high-contrast .btn {
+    border: 2px solid var(--color-text);
+    background: var(--color-background);
+    color: var(--color-text);
+}
 
-/* Responsive Design - Global styles only */
+.high-contrast .nav__link {
+    color: var(--color-text);
+    border: 1px solid transparent;
+}
+
+.high-contrast .nav__link:hover,
+.high-contrast .nav__link:focus {
+    border-color: var(--color-text);
+    background: var(--color-surface);
+}
+
+/* Enhanced Focus Indicators */
+*:focus-visible {
+    outline: 3px solid var(--color-secondary);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Improved Touch Targets for Mobile */
 @media (max-width: 768px) {
+    .btn,
+    .nav__link,
+    .theme-toggle,
+    .use-case-block__icon {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .nav,
+    .footer,
+    .theme-toggle,
+    .background-glow,
+    .wave-container {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .btn {
+        border: 1px solid black !important;
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* Global Section Spacing - Consistent Visual Rhythm */
+.hero,
+.capabilities,
+.solutions,
+.use-cases,
+.why-flowcore,
+.pricing,
+.faq,
+.getting-started,
+.contact {
+    padding: var(--spacing-2xl) 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Section Title Consistency */
+.section-title {
+    margin-bottom: var(--spacing-2xl);
+    text-align: center;
+}
+
+/* Container Consistency */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    width: 100%;
+}
+
+/* Responsive Design - Consolidated Breakpoints */
+@media (max-width: 768px) {
+    /* Global section spacing adjustments */
+    .hero,
+    .capabilities,
+    .solutions,
+    .use-cases,
+    .why-flowcore,
+    .pricing,
+    .faq,
+    .getting-started,
+    .contact {
+        padding: var(--spacing-xl) 0;
+        min-height: auto;
+    }
+    
+    .section-title {
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    /* Component-specific adjustments */
     .advantage-item {
         flex-direction: column;
         text-align: center;
@@ -62,45 +211,6 @@
 }
 
 @media (max-width: 480px) {
-    .container {
-        padding: 0 var(--spacing-sm);
-    }
-    
-    .section-title {
-        font-size: var(--font-size-3xl);
-    }
-}
-
-@media (max-width: 360px) {
-    .section-title {
-        font-size: var(--font-size-xl);
-    }
-}
-
-/* Mobile spacing optimizations */
-@media (max-width: 768px) {
-    .hero,
-    .capabilities,
-    .solutions,
-    .use-cases,
-    .why-flowcore,
-    .pricing,
-    .faq,
-    .getting-started,
-    .contact {
-        padding: var(--spacing-xl) 0;
-    }
-    
-    .section-title {
-        margin-bottom: var(--spacing-xl);
-    }
-    
-    .container {
-        padding: 0 var(--spacing-md);
-    }
-}
-
-@media (max-width: 480px) {
     .hero,
     .capabilities,
     .solutions,
@@ -115,6 +225,7 @@
     
     .section-title {
         margin-bottom: var(--spacing-lg);
+        font-size: var(--font-size-3xl);
     }
     
     .container {
@@ -137,6 +248,7 @@
     
     .section-title {
         margin-bottom: var(--spacing-md);
+        font-size: var(--font-size-xl);
     }
 }
 

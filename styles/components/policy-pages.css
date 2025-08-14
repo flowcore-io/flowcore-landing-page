@@ -3,20 +3,33 @@
 /* Policy Pages Container */
 .policy-section {
     min-height: 100vh;
-    background-color: var(--color-background);
+    background-color: rgba(var(--color-surface-rgb), 0.1);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     padding: var(--spacing-2xl) 0;
     position: relative;
-    z-index: 2;
+    z-index: 2; /* Above waves (1) to ensure content is visible */
 }
 
 /* Policy Container */
 .policy-container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 0 var(--spacing-lg);
-    background-color: var(--color-background);
+    padding: var(--spacing-xl);
+    background-color: rgba(var(--color-background-rgb), 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     border-radius: var(--border-radius-lg);
     position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Animation trigger for policy pages */
+.policy-section.loaded .policy-container {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Policy Header */

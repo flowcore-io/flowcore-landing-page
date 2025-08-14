@@ -18,7 +18,8 @@
     <meta property="og:url" content="https://flowcore.io/">
     <meta property="og:title" content="Flowcore - Event Storage and Processing Platform for AI Developers">
     <meta property="og:description" content="Event-first data platform for AI developers. Single source of truth with infinite replay capabilities and universal database support.">
-    <meta property="og:image" content="https://flowcore.io/public/images/flowcore-og-image.png">
+    <meta property="og:image" content="https://flowcore.io/public/images/flowcore-og-image.webp">
+    <meta property="og:image:type" content="image/webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Flowcore">
@@ -29,7 +30,7 @@
     <meta property="twitter:url" content="https://flowcore.io/">
     <meta property="twitter:title" content="Flowcore - Event Storage and Processing Platform for AI Developers">
     <meta property="twitter:description" content="Event-first data platform for AI developers. Single source of truth with infinite replay capabilities and universal database support.">
-    <meta property="twitter:image" content="https://flowcore.io/public/images/flowcore-og-image.png">
+    <meta property="twitter:image" content="https://flowcore.io/public/images/flowcore-og-image.webp">
     <meta property="twitter:site" content="@flowcore_io">
     <meta property="twitter:creator" content="@flowcore_io">
     
@@ -52,12 +53,64 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
+    <!-- Advanced Performance Optimizations -->
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload critical resources for LCP optimization -->
+    <link rel="preload" href="public/images/logo-text-sidebyside-white.png" as="image" type="image/png">
+    <link rel="preload" href="public/images/logo-text-sidebyside-dark.png" as="image" type="image/png">
+    <link rel="preload" href="styles/main.css" as="style">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:wght@400;700&display=swap"></noscript>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="public/manifest.json">
+    <meta name="theme-color" content="#ff44aa">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Flowcore">
+    
+    <!-- Resource hints for performance -->
+    <link rel="prefetch" href="styles/components/features.css">
+    <link rel="prefetch" href="styles/components/solutions.css">
+    <link rel="prefetch" href="styles/components/pricing.css">
+    
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Critical Font Loading Optimization -->
+    <script>
+        // Font loading optimization for critical fonts
+        if ('fonts' in document) {
+            Promise.all([
+                document.fonts.load('400 1em Lato'),
+                document.fonts.load('500 1em Lato'),
+                document.fonts.load('600 1em Lato'),
+                document.fonts.load('700 1em Lato'),
+                document.fonts.load('400 1em Lalezar')
+            ]).then(function() {
+                document.documentElement.classList.add('fonts-loaded');
+            });
+        }
+    </script>
     
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
@@ -86,7 +139,7 @@
         "url": "https://flowcore.io/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://flowcore.io/public/images/Just-Logo_-_Transparent.png"
+          "url": "https://flowcore.io/public/images/Just-Logo_-_Transparent.webp"
         },
         "contactPoint": {
           "@type": "ContactPoint",
@@ -133,6 +186,7 @@
         <div class="wave-layer wave-layer-4"></div>
         <div class="wave-layer wave-layer-5"></div>
     </div>
+
     <script>
     (function() {
         const savedTheme = localStorage.getItem('theme');
@@ -146,7 +200,7 @@
             <div class="nav__container">
                 <div class="nav__logo">
                      <a href="#home" class="nav__logo-link">
-                         <img src="public/images/logo-text-sidebyside-white.png" alt="Flowcore Logo" class="nav__logo-img" data-light-src="public/images/logo-text-sidebyside-dark.png" data-dark-src="public/images/logo-text-sidebyside-white.png">
+                         <img src="public/images/logo-text-sidebyside-white.png" alt="Flowcore Logo" class="nav__logo-img" data-light-src="public/images/logo-text-sidebyside-dark.png" data-dark-src="public/images/logo-text-sidebyside-white.png" fetchpriority="high" width="200" height="40">
                     </a>
                 </div>
                 <ul class="nav__menu">
@@ -192,10 +246,10 @@
                 <div class="hero__content">
                     <h1 class="hero__title">Event Storage and Processing</h1>
                     <p class="hero__subtitle">Data Platform for AI Developers</p>
-                    <p class="hero__description">Preserve every change event with full context for a single source of truth. Replay anywhere, transform in real time, and deploy fully managed or self‑hosted on Kubernetes.</p>
+                    <p class="hero__description">Build reliable AI applications with infinite event replay and real-time processing. Scale to 10M+ events per second with guaranteed data consistency and zero data loss.</p>
                     <div class="hero__buttons">
-                        <a href="https://flowcore.io/" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Explore Platform</a>
-                        <a href="https://docs.flowcore.io/" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">Learn More</a>
+                        <a href="https://flowcore.io/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--large">Start Building Now</a>
+                        <a href="https://docs.flowcore.io/" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">View Documentation</a>
                     </div>
                 </div>
                 <div class="hero__stats">
@@ -273,31 +327,58 @@
                     <div class="solutions-visual fade-in-right animate-in">
                         <div class="data-visualization">
                             <div class="logo-container solutions-logo--1">
-                                <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
+                                <picture>
+                                    <source srcset="public/images/Just-Logo_-_Transparent.webp" type="image/webp">
+                                    <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image" width="60" height="60" fetchpriority="high">
+                                </picture>
                             </div>
                             <div class="logo-container solutions-logo--2">
-                                <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
+                                <picture>
+                                    <source srcset="public/images/Just-Logo_-_Transparent.webp" type="image/webp">
+                                    <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image" width="60" height="60">
+                                </picture>
                             </div>
                             <div class="logo-container solutions-logo--3">
-                                <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
+                                <picture>
+                                    <source srcset="public/images/Just-Logo_-_Transparent.webp" type="image/webp">
+                                    <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image" width="60" height="60">
+                                </picture>
                             </div>
                             <div class="logo-container solutions-logo--4">
-                                <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
+                                <picture>
+                                    <source srcset="public/images/Just-Logo_-_Transparent.webp" type="image/webp">
+                                    <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image" width="60" height="60" loading="lazy">
+                                </picture>
                             </div>
                             <div class="logo-container solutions-logo--5">
-                                <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
+                                <picture>
+                                    <source srcset="public/images/Just-Logo_-_Transparent.webp" type="image/webp">
+                                    <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image" width="60" height="60" loading="lazy">
+                                </picture>
                             </div>
                             <div class="logo-container solutions-logo--6">
-                                <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
+                                <picture>
+                                    <source srcset="public/images/Just-Logo_-_Transparent.webp" type="image/webp">
+                                    <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image" width="60" height="60" loading="lazy">
+                                </picture>
                             </div>
                             <div class="logo-container solutions-logo--7">
-                                <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
+                                <picture>
+                                    <source srcset="public/images/Just-Logo_-_Transparent.webp" type="image/webp">
+                                    <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image" width="60" height="60" loading="lazy">
+                                </picture>
                             </div>
                             <div class="logo-container solutions-logo--8">
-                                <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
+                                <picture>
+                                    <source srcset="public/images/Just-Logo_-_Transparent.webp" type="image/webp">
+                                    <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image" width="60" height="60" loading="lazy">
+                                </picture>
                             </div>
                             <div class="logo-container solutions-logo--9">
-                                <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image">
+                                <picture>
+                                    <source srcset="public/images/Just-Logo_-_Transparent.webp" type="image/webp">
+                                    <img src="public/images/Just-Logo_-_Transparent.png" alt="Flowcore Logo" class="logo-image" width="60" height="60" loading="lazy">
+                                </picture>
                             </div>
                             <a href="https://flowcore.io/" target="_blank" rel="noopener noreferrer" class="visualization-text">
                                 <h3>Flowcore Platform</h3>
@@ -316,7 +397,7 @@
                     <div class="use-case-block animate-on-scroll">
                         <div class="use-case-block__text">
                             <h3 class="use-case-block__title">AI Model Training</h3>
-                            <p class="use-case-block__description">Feed consistent, structured event data to your AI models. Replay historical events to train new models without data corruption or missing information.</p>
+                            <p class="use-case-block__description" id="ai-training-desc">Feed consistent, structured event data to your AI models. Replay historical events to train new models without data corruption or missing information.</p>
                             <ul class="use-case-block__benefits">
                                 <li class="use-case-block__benefit">Consistent Data</li>
                                 <li class="use-case-block__benefit">Historical Replay</li>
@@ -324,15 +405,15 @@
                             </ul>
                         </div>
                         <div class="use-case-block__visual">
-                            <div class="use-case-block__icon">
-                                <i class="fas fa-brain"></i>
+                            <div class="use-case-block__icon" role="button" tabindex="0" aria-label="AI Training use case - Click to see animation" aria-describedby="ai-training-desc">
+                                <i class="fas fa-brain" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
                     <div class="use-case-block animate-on-scroll">
                         <div class="use-case-block__text">
                             <h3 class="use-case-block__title">Real-time Analytics</h3>
-                            <p class="use-case-block__description">Process millions of events per second for real-time dashboards, monitoring, and alerting systems with guaranteed event ordering and delivery.</p>
+                            <p class="use-case-block__description" id="analytics-desc">Process millions of events per second for real-time dashboards, monitoring, and alerting systems with guaranteed event ordering and delivery.</p>
                             <ul class="use-case-block__benefits">
                                 <li class="use-case-block__benefit">Real-time Processing</li>
                                 <li class="use-case-block__benefit">Event Ordering</li>
@@ -340,15 +421,15 @@
                             </ul>
                         </div>
                         <div class="use-case-block__visual">
-                            <div class="use-case-block__icon">
-                                <i class="fas fa-chart-line"></i>
+                            <div class="use-case-block__icon" role="button" tabindex="0" aria-label="Real-time Analytics use case - Click to see animation" aria-describedby="analytics-desc">
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
                     <div class="use-case-block animate-on-scroll">
                         <div class="use-case-block__text">
                             <h3 class="use-case-block__title">Microservices Architecture</h3>
-                            <p class="use-case-block__description">Build resilient microservices with event-driven communication. Each service can replay events to rebuild state and recover from failures.</p>
+                            <p class="use-case-block__description" id="microservices-desc">Build resilient microservices with event-driven communication. Each service can replay events to rebuild state and recover from failures.</p>
                             <ul class="use-case-block__benefits">
                                 <li class="use-case-block__benefit">Event-Driven</li>
                                 <li class="use-case-block__benefit">Fault Tolerance</li>
@@ -356,15 +437,15 @@
                             </ul>
                         </div>
                         <div class="use-case-block__visual">
-                            <div class="use-case-block__icon">
-                                <i class="fas fa-project-diagram"></i>
+                            <div class="use-case-block__icon" role="button" tabindex="0" aria-label="Microservices Architecture use case - Click to see animation" aria-describedby="microservices-desc">
+                                <i class="fas fa-project-diagram" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
                     <div class="use-case-block animate-on-scroll">
                         <div class="use-case-block__text">
                             <h3 class="use-case-block__title">Data Synchronization</h3>
-                            <p class="use-case-block__description">Keep multiple systems in sync across different environments, databases, and cloud providers with eventual consistency guarantees.</p>
+                            <p class="use-case-block__description" id="sync-desc">Keep multiple systems in sync across different environments, databases, and cloud providers with eventual consistency guarantees.</p>
                             <ul class="use-case-block__benefits">
                                 <li class="use-case-block__benefit">Multi-Environment</li>
                                 <li class="use-case-block__benefit">Cross-Platform</li>
@@ -372,8 +453,8 @@
                             </ul>
                         </div>
                         <div class="use-case-block__visual">
-                            <div class="use-case-block__icon">
-                                <i class="fas fa-sync-alt"></i>
+                            <div class="use-case-block__icon" role="button" tabindex="0" aria-label="Data Synchronization use case - Click to see animation" aria-describedby="sync-desc">
+                                <i class="fas fa-sync-alt" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -768,8 +849,64 @@
         </div>
     </footer>
 
-    <script src="scripts/main.js"></script>
-    <script src="scripts/use-case-interactions.js"></script>
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/use-case-interactions.js" defer></script>
+    <script src="scripts/performance-monitor.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('✅ Service Worker registered successfully:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.error('❌ Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+    
+    <!-- Enhanced Accessibility Script -->
+    <script>
+        // Enhanced accessibility features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add ARIA labels to interactive elements
+            const interactiveElements = document.querySelectorAll('.btn, .nav__link, .theme-toggle, .use-case-block__icon');
+            interactiveElements.forEach(element => {
+                if (!element.getAttribute('aria-label')) {
+                    const text = element.textContent.trim() || element.alt || 'Interactive element';
+                    element.setAttribute('aria-label', text);
+                }
+            });
+            
+            // Enhanced keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                // Skip to main content with 'S' key
+                if (e.key === 's' && e.ctrlKey) {
+                    e.preventDefault();
+                    document.getElementById('main-content').focus();
+                }
+                
+                // Theme toggle with 'T' key
+                if (e.key === 't' && e.ctrlKey) {
+                    e.preventDefault();
+                    document.querySelector('.theme-toggle').click();
+                }
+            });
+            
+            // Reduced motion support
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.documentElement.classList.add('reduced-motion');
+            }
+            
+            // High contrast mode support
+            if (window.matchMedia('(prefers-contrast: high)').matches) {
+                document.documentElement.classList.add('high-contrast');
+            }
+        });
+    </script>
 
     <!-- FAQPage structured data for SEO (describes the visible FAQ content) -->
     <script type="application/ld+json">

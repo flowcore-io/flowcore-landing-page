@@ -1,9 +1,10 @@
 /* CSS Wave Animation - Performance Optimized Alternative */
-
 .wave-container {
-    position: absolute;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     overflow: hidden;
     pointer-events: none;
 }
@@ -234,4 +235,32 @@
 
 [data-theme="dark"] .wave-layer-6 {
     --wave-color: rgba(255, 0, 255, 0.5);
+}
+
+/* =====================================
+   BACKGROUND GLOW EFFECTS
+   ===================================== */
+
+/* Subtle orange glow layer behind waves */
+.background-glow {
+    position: fixed;
+    inset: 0;
+    z-index: 0; /* Behind waves (1) and content (2) */
+    pointer-events: none;
+    /* Circular gradient glow anchored at bottom center: orange → transparent */
+    /* Hold more opacity higher up: slower fade with mid stops */
+    background: radial-gradient(
+      ellipse 160% 35% at 50% 100%,
+      rgba(255, 135, 85, 1) 0%,
+      rgba(255, 135, 85, 0.8) 40%,
+      rgba(255, 135, 85, 0.45) 70%,
+      rgba(255, 135, 85, 0) 100%
+    );
+    filter: blur(8px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .background-glow {
+        filter: blur(12px);
+    }
 }

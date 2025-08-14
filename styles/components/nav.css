@@ -362,15 +362,20 @@
     .nav__link {
         font-size: var(--font-size-lg);
         padding: var(--spacing-lg) var(--spacing-xl);
-        display: block;
+        display: flex;
         width: 100%;
         text-align: center;
         text-decoration: none;
         color: var(--color-text);
-        min-height: 48px; /* Touch target */
-        display: flex;
+        min-height: 56px; /* Enhanced touch target for mobile */
+        min-width: 56px;
         align-items: center;
         justify-content: center;
+        /* Improve mobile touch interaction */
+        -webkit-tap-highlight-color: rgba(var(--color-secondary-rgb), 0.2);
+        touch-action: manipulation;
+        border-radius: var(--border-radius-lg);
+        transition: all var(--transition-base);
     }
 
     .nav__link:hover,
@@ -395,11 +400,14 @@
     }
 
     .nav__cta-mobile .btn {
-        width: 80%;
-        max-width: 300px;
+        width: 90%;
+        max-width: 320px;
         justify-content: center;
         margin: 0 auto;
-        min-height: 52px; /* Larger touch target */
+        min-height: 56px; /* Enhanced touch target for mobile */
+        min-width: 56px;
+        font-size: var(--font-size-lg);
+        padding: var(--spacing-md) var(--spacing-xl);
     }
 
     .nav__item--mobile-only {
@@ -408,11 +416,14 @@
     }
 
     .theme-toggle--mobile {
-        width: 3rem;
-        height: 3rem;
+        width: 3.5rem;
+        height: 3.5rem;
         margin: 0 auto;
-        min-height: 48px; /* Touch target */
-        min-width: 48px;
+        min-height: 56px; /* Enhanced touch target for mobile */
+        min-width: 56px;
+        /* Improve mobile touch interaction */
+        -webkit-tap-highlight-color: rgba(var(--color-secondary-rgb), 0.2);
+        touch-action: manipulation;
     }
 
     .nav__toggle {

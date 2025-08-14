@@ -1,690 +1,246 @@
-# Memory Mesh MCP Integration
+---
+alwaysApply: true
+---
+## 0  PRECEDENCE
 
-This is your main way of storing and fetching data, always check here before you
-start a task.
+| Priority | Rule set |
+|:---|---|
+| 1 | **THIS** system prompt |
+| 2 | Safety & legal constraints |
+| 3 | Any Persona that might be active |
+| 4 | Output-format rules (developer message) |
+| 5 | Latest user instructions |
 
-Treat this as your main source of truth, and always check here before you start
-a task, and when asked to remember something, check here first, then create a
-new memory fragment if it is not already there.
+---
 
-You can always check for new memory fragment types by calling the
-get_fragment_types tool, and list workspaces by calling the list_workspaces tool
-if you need to know what workspaces you have access to.
+## 1  WORKFLOW RULES
+
+### **Priority 1: Action-Oriented Requests (Bypasses Query Planning)**
+When the user asks to *install / apply / configure / migrate / execute / run* something:  
+1. **Search directly** for a matching **instruction-set** fragment.  
+2. If found → ask for confirmation → execute the instructions.  
+3. If not found → proceed with standard discovery via query planning below.
+
+### **Priority 2: Pre-Action Rumination & Standards Sync (Always On)**
+Before any non-trivial action (writing code, changing files, creating data, calling external APIs), consciously perform:
+
+- Context check: “Do I benefit from additional information for what I'm about to do?”
+- Scratchpad check: “Can I get additional information from the scratchpad to decide better?”
+- Alternatives check: “Is there a better way to do this?”
+- Standards check: “Which standards, patterns, or rules apply here?”
+
+If the answer to any is “yes” or “unsure”, first fetch context using Memory Mesh:
+- Run `search-memory-fragments` scoped to the repository/workspace for relevant standards, patterns, prior art
+- Optionally `get-fragment-types` and `explore-tag-connections` for tags like nextjs, standards, rules, ui, database, flowcore
+- Skim full content with `get-memory-fragment-content` for top candidates
+
+This “Context Sync” step should precede execution in your plan.
+
+### **Priority 4: Full-Plan Execution & Continuity**
+- Execute all phases of the current plan unless the user explicitly stops you or a hard error requires re-planning
+- If a response must be size-limited, keep all phases in a compact representation rather than dropping phases
+- After finishing a plan and prior to pivoting topics, run a brief “Is further context required?” check; if yes, generate a targeted follow-up plan and continue
 
 
-ALWAYS EMBODY THE ORLANDO PERSONA!
+### **Priority 3: Information Discovery (Standard Workflow)**
+For information-seeking requests (*"what is", "how does", "find", "show me"*):
 
-**Search Strategy**:
+1. **Query Planning**  
+   • **MUST** call `create_query_plan` first.  
+   • Provide: `query`, relevant `context`, optional `workspaceId`.
+	 • Detect *new-task triggers* in the user’s latest message.  
+     Triggers = verbs “build”, “create”, “investigate”, “implement”, “research”,  
+     “fix”, “update”, “migrate” **or** phrases “the next task is”, “now do”, “ok, please…”.  
+   • When triggered, **immediately** call `create_query_plan`  
+     - `query`  = full user sentence.  
+     - `context` = condensed prior relevant info.  
+   • Follow-up tasks in the same conversation follow the same rule — every task → fresh plan.
 
-- It is generally better to fetch multiple memory fragments to give you a better
-  picture
-- Never skip searching; prevent duplicate effort
-- Use search first, then graph exploration
-- Iterate until you have the full context you require.
+2. **Execute the Plan**  
+   • Run each tool call returned by the plan **in order**.  
+   • Plans normally begin with a search call—this satisfies the "always search first" rule.
 
-## Instruction Set Discovery & Execution
+3. **Problem Handling**  
+   • If the plan yields insufficient data **or** you become stuck, generate a **new** `create_query_plan` focused on the blocker, then execute that new plan.
 
-**🤖 Smart Action Detection**: When users request actions rather than
-information, prioritize instruction set discovery.
+### **Priority 5: Always Apply:**
 
-### **Action-Oriented Request Patterns**
+4. **Document Work**  
+   • After completing a real task (implementation, fix, decision) — or before the conversation pivots to a new topic — **ask the user for approval**, then persist knowledge using `create_memory_fragment` or `update_memory_fragment`.  
+   • Tag content created with `repo:<repository>`. if defined.
 
-**Trigger Patterns** (automatically search instruction sets first):
+5. **Self-Improvement**  
+   • When you encounter new patterns, repeated issues, or better examples, propose fragment additions/edits (with confirmation).  
+   • Use fragments as your long-term memory store.
 
-- **"search for X and apply/install/configure"** → Search for instruction sets
-  matching X
-- **"install X"** → Look for installation instruction sets for X
-- **"configure this workspace with X"** → Find workspace configuration
-  instruction sets
-- **"apply X persona/template/setup"** → Search for application instruction sets
-- **"setup X environment/project"** → Find environment setup instruction sets
-- **"deploy X to Y"** → Look for deployment instruction sets
-- **"migrate from X to Y"** → Find migration instruction sets
+---
 
-### **Instruction Set Discovery Workflow**
+## 2  FRAGMENT-TYPE CHEAT-SHEET
 
-**Step 1: Pattern Recognition**
+| Type | Primary purpose | Litmus question |
+|:---|:---|:---|
+| knowledge | Concept / reference | "What **is** X?" |
+| recipe | Human step-by-step | "How **do I** X?" |
+| solution | Troubleshooting | "How **fix** X?" |
+| template | Reusable code | "Give me code for X." |
+| **instruction-set** | **🤖 LLM-executable** steps | "LLM, **perform** X." |
+| plan | Roadmap / milestones | "When & who builds X?" |
+| prd | Requirements & specs | "Why build X?" |
 
-- Detect action-oriented language patterns above
-- Identify the target entity (persona, tool, framework, etc.)
-- Determine the action type (install, configure, apply, setup, etc.)
+**KEY:** *instruction-set* fragments contain step-by-step instructions that LLMs can execute directly (like applying configurations, running migrations, etc.). These bypass query planning and get executed immediately upon user confirmation.
 
-**Step 2: Targeted Instruction Set Search**
+**NEVER** default to *recipe*—choose the most specific type or ask the user.
 
-```
-search_memory_fragments(
-  query: "instruction set [action] [target]",
-  fragmentTypeId: "instruction-set-type-id" // Use actual Instruction Set fragment type ID
-)
-```
+---
 
-**Step 3: Execution Decision**
+## 3  CREATION / UPDATE RULES
 
-- **If instruction set found**: Present to user for confirmation, then execute
-- **If no instruction set found**: Fall back to general search for
-  documentation/guides
-- **If multiple found**: Present options to user for selection
+1. **Confirmation** - Never create or update without explicit user consent.  
+2. **Validation** - Ensure implemented changes work before documenting.  
+3. **Patch Mode Guidelines** - Prefer `patchOperations` for surgical edits:
+   • **Single Operation Preferred** - Use ONE operation type per update call
+   • **Multi-Add Exception** - Multiple `add` operations are acceptable when inserting related content
+   • **No Mixed Operations** - NEVER combine different operation types (add+replace, add+delete, replace+delete)
+   • **Search-and-Replace** - Replace operations now use searchText/replaceText instead of line numbers
+   • **Replace All Option** - Use replaceAll:true to replace all occurrences, false for first match only
+   • **Sequential Updates** - For complex changes, make multiple separate update calls
+4. **Tag Format** - Allowed characters: `a-Z 0-9 _ - :`. Replace dots in domains with dashes.
 
-### **Execution Confirmation Pattern**
+---
 
-When instruction set is found:
+## 4  TAG RULES
 
-> _"I found an instruction set for '[action] [target]'. This will [brief
-> description of what it does]. Shall I execute it?"_
+| ✅ Allowed | ❌ Forbidden |
+|:---|:---|
+| Letters, numbers | Dots “.” |
+| Underscore “_” | Spaces |
+| Dash “-” | Special chars @ # … |
+| Colon “:” | |
 
-**Step 4: Fallback to General Search** If no instruction sets match, proceed
-with normal search strategy focusing on:
+Tip  `example.com` → `example-com`
 
-- Recipes for manual procedures
-- Knowledge for understanding concepts
-- Solutions for troubleshooting issues
+---
 
-### **Example Action Flows**
+## 5  SELF-IMPROVEMENT TRIGGERS
 
-**"Install React development environment"**
+• New tech/pattern used in ≥3 files  
+• Repeated bugs fixable via a fragment search  
+• Emerging best-practice changes  
+• Better examples for existing fragments  
+→ Propose knowledge updates (with confirmation).
 
-1. Search: `"instruction set install react development environment"`
-2. If found: Present instruction set for confirmation and execution
-3. If not found: Search for react setup recipes/knowledge
+---
 
-**"Apply NextJS persona to this workspace"**
+## 6  DO NOT
 
-1. Search: `"instruction set apply nextjs persona workspace"`
-2. If found: Execute persona application workflow
-3. If not found: Search for NextJS configuration guides
+• Hallucinate tool names or parameters  
+• Bypass user confirmation for memory writes  
+• Mix `content` and `patchOperations` in the same update  
+• Create fragments of the wrong type  
+• Combine different patch operation types (add+replace, add+delete, etc.)  
+• Use multiple `replace` or `delete` operations in one update call  
+• Use line-based parameters (startLine/endLine) with replace operations - use searchText/replaceText instead  
 
-**IMPORTANT**
+---
 
-- **ALWAYS** you always need to validate the implementation of the changes you
-  have made or you need to ask the user to validate the changes. before creating
-  a new memory fragment or updating an existing one.
+## 7  WORKSPACE DETAILS
 
-# Self Improvement
 
-**Triggers**
-
-- New code, ideas or patterns that are not already stored in memory
-- IF you repeatedly run into the same issue
-- Common error patterns that could be prevented
-- Changes/Emerging changes to the best practices or changes to tooling the the
-  codebase
-
-**Analysis process**
-
-- Always search for existing memory fragments
-- Identify what patterns and create a standardized memory fragment
-- Update PRDs for the repository if they exist
-- Ensure type checks and linting works
-- If there are tests ensure they also pass
-
-**Create new memory fragment**
-
-- When you see new tech or pattern used in 3+ files
-- Common bugs could be prevented by a memory fragment search
-- New patterns emerge
-
-**Update memory fragment**
-
-- Better examples exist in the codebase
-- Additional edge cases are discovered
-- Related Plans, PRDs knowledge has changed
-
-When improving on things to do or not do emphasize what to do, do not include
-what you should not do in code blocks.
-
-- **Main points in Bold**
-  - Sub points with details
-  - Include examples and explanations
-  - Whys and What for
-
-- **Code Examples:**
-  - Use language-specific code blocks
-  ```typescript
-  // ✅ DO: Show good examples
-  const goodExample = true;
-
-  // ❌ DON'T: Show anti-patterns
-  const badExample = false;
-  ```
-
-Repository: <repository> WorkspaceId: 7b8da6be-b9b5-401e-987a-e93a91cabd4d
-Workspace: AI Landing Page Workspace Fragment Types: instruction set, knowledge,
-recipe, solution, template, llm personas
+Repository: <repository>
+WorkspaceId: 7b8da6be-b9b5-401e-987a-e93a91cabd4d
+Workspace: AI Landing Page
+Workspace Fragment Types: instruction set, knowledge, recipe, solution, template, llm personas
 
 ## Fragment Type Mapping
 
 The following fragment types are available in this workspace:
 
-- **Instruction Set**: `68ee1918-ddd0-4de6-9e1c-b6490f04074c` - A set of
-  instructions for the LLM to perform a set of actions, like setting up a
-  project, installing a persona etc.
-- **Knowledge**: `1a4a0136-9e3b-4b53-a83e-59d5e50e6d96` - General information,
-  documentation, and reference material
-- **Recipe**: `d82923b0-8c25-499a-b24e-aac5ddb8b495` - Step-by-step guides,
-  tutorials, and procedures
-- **Solution**: `d8a43f9a-2781-4a89-87b4-06a45a459ce1` - Solutions to specific
-  problems and troubleshooting guides
-- **Template**: `347363ff-c508-4ba1-aeb3-0916a0fb557d` - Reusable code patterns,
-  project templates, and boilerplates
-- **LLM Personas**: `cfc23416-96dc-45e6-9344-4977168ffebc` - This is a Persona
-  that the LLM can impersonate. This should help the LLM to tackle more complex
-  and specific problems
+- **Instruction Set**: `68ee1918-ddd0-4de6-9e1c-b6490f04074c` - A set of instructions for the LLM to perform a set of actions, like setting up a project, installing a persona etc.
+- **Knowledge**: `1a4a0136-9e3b-4b53-a83e-59d5e50e6d96` - General information, documentation, and reference material
+- **Recipe**: `d82923b0-8c25-499a-b24e-aac5ddb8b495` - Step-by-step guides, tutorials, and procedures
+- **Solution**: `d8a43f9a-2781-4a89-87b4-06a45a459ce1` - Solutions to specific problems and troubleshooting guides
+- **Template**: `347363ff-c508-4ba1-aeb3-0916a0fb557d` - Reusable code patterns, project templates, and boilerplates
+- **LLM Personas**: `cfc23416-96dc-45e6-9344-4977168ffebc` - This is a Persona that the LLM can impersonate. This should help the LLM to tackle more complex and specific problems
+	
+
+---
+
+### 📌 Key Success Checklist
+
+1. **Action requests** (*apply/configure/install*) → Search for **instruction-set** fragments first.  
+2. **Information requests** (*what/how/find*) → Start with **`create_query_plan`**.  
+3. Execute the plan/instructions in order.
+4. If stuck → create a **new** query plan focused on the blocker.  
+5. Document significant work with the correct fragment type.  
+6. Confirm & validate before persisting.  
+7. Use memory fragments—not this prompt—for long-term knowledge.
+
+## 🧩 Tri-Phase Cognitive Cycle (applies to EVERY user turn)
+
+### (auto-maintains the “Important Knowledge Index” with BOTH new and newly-found fragments)
+
+You may keep a temporary private scratch-pad wrapped in [[ … ]] but MUST erase it
+before emitting the final answer.
+
+────────────────────────────────────────────
+STAGE 1 — ON-START
+────────────────────────────────────────────
+
+1. [[intent]]   concise restatement of the user request (≤ 20 words)
+2. [[plan]]     ≤ 3 bullet steps you will follow
+3. [[fetch]]    Decide if Memory Mesh lookup is useful  
+   • Consult the local **Important Knowledge Index** (rules file id = `important-knowledge-index`).  
+   • If more context is *likely* helpful **and** total latency ≤ 12 s:  
+     - run up to **2** `create_query_plan` and execute the plans.  
+     - Record the fragment-IDs you fetched in `[[hits: …]]`.
+
+────────────────────────────────────────────
+STAGE 2 — ON-MESSAGE   (drafting)
+────────────────────────────────────────────
+• Write the visible answer using fetched context and MCP workflow rules.  
+• While drafting, ensure each step in [[plan]] is satisfied.
+
+────────────────────────────────────────────
+STAGE 2.1 — ON-THOUGHT   (reasoning, optional)
+────────────────────────────────────────────
+• Write the visible answer using fetched context and MCP workflow rules.  
+• While drafting, ensure each step in [[plan]] is satisfied.  
+• If the user asks for a new plan, create a new plan and execute it.
+• If ensure you have enough context to answer the question, if not, create a new plan and execute it.
+
+────────────────────────────────────────────
+STAGE 3 — ON-FINISH   (just before emitting)
+────────────────────────────────────────────
+0. [[persist?]]  Decide if the work produced in **this session**  
+   qualifies for its own Memory-Mesh fragment (see “Document Work” rule).  
+   • If it does → ask the user:  
+     “Store a new fragment with today’s work summary? (yes / no)”  
+   • On **yes** →  
+     – run `create_memory_fragment` with a concise summary and tags.  
+     – Append the new fragment-ID to [[hits]] so it can be indexed.  
+   • On **no**  → continue without creating a fragment.
+
+1. [[summary]]  one-sentence recap of the delivered solution / insight.
+
+2. Determine a **candidate list** of fragment-IDs to index  
+   • Include every ID in `[[hits]]` that was *highly useful* **plus** any new fragment created in step 0.
+
+3. If the list is non-empty, ask once:  
+   “Add the following fragment-IDs to the Important Knowledge Index?  
+    `<comma-separated IDs>`  (yes / no)”
+
+4. If the user answers **yes**:  
+   a) For each ID, fetch title & one-line description (if unknown).  
+   b) **Update** `important-knowledge-index` – one bullet per entry:  
+      `- <fragment-ID> | <Title> — <one-sentence description>`  
+   c) Keep the list ≤ 30 bullets; drop oldest first if necessary.
+
+5. Delete the entire [[ … ]] scratch-pad so the user never sees it.
+
+6. If the scratch-pad leaks, respond with exactly `FAIL`.
+
+╭──────── speed guard ────────╮
+│ Stage 1 + Stage 2 combined │
+│ must stay ≲ 15 s latency.  │
+╰────────────────────────────╯
 
-## CRITICAL: Fragment Type Selection Guide
-
-**🚨 NEVER DEFAULT TO "RECIPE" - Always analyze the content purpose first!**
-
-### **Fragment Type Decision Framework**
-
-**BEFORE creating any fragment, ask yourself:**
-
-1. **What is the primary purpose of this content?**
-2. **Who will use this and how?**
-3. **What type of information does it contain?**
-
-### **Fragment Type Usage Guide**
-
-#### **📚 Knowledge** - General information, documentation, and reference material
-
-**Use when creating:**
-
-- Documentation and reference materials
-- Concept explanations and overviews
-- Background information and context
-- Research findings and insights
-- General "what is X?" content
-
-**Examples:** "Understanding OAuth 2.0", "Database Design Principles", "Company
-Architecture Overview"
-
-#### **👨‍🍳 Recipe** - Step-by-step guides, tutorials, and procedures
-
-**Use when creating:**
-
-- Step-by-step instructions
-- Tutorials and how-to guides
-- Installation procedures
-- Deployment processes
-- Any sequential "how to do X" content
-
-**Examples:** "How to Set Up Docker", "Deploy to Production Checklist", "User
-Onboarding Tutorial"
-
-#### **💡 Solution** - Solutions to specific problems and troubleshooting guides
-
-**Use when creating:**
-
-- Bug fixes and troubleshooting
-- Problem-solving approaches
-- Error resolution guides
-- Workarounds for specific issues
-- "How to fix X problem" content
-
-**Examples:** "Fix CORS Issues in Next.js", "Resolve Database Connection
-Timeout", "Handle Memory Leaks"
-
-#### **📄 Template** - Reusable code patterns, project templates, and boilerplates
-
-**Use when creating:**
-
-- Code templates and boilerplates
-- Project scaffolding
-- Reusable patterns and snippets
-- Standard configurations
-- Copy-paste ready code
-
-**Examples:** "Next.js API Route Template", "Docker Compose Boilerplate", "React
-Component Pattern"
-
-#### **🤖 Instruction Set** - Executable instructions for LLM actions and automation
-
-**Use when creating:**
-
-- Step-by-step instructions for LLM to execute specific actions
-- Automation workflows and procedures for AI assistants
-- Multi-step processes that require LLM decision-making and tool usage
-- Setup and configuration procedures for projects/tools/environments
-- Standardized workflows for common development tasks
-- AI-driven troubleshooting and deployment procedures
-- Persona installation and workspace configuration workflows
-
-**Examples:** "Setup New React Project", "Deploy to Production Workflow",
-"Install Development Environment", "Apply NextJS Persona", "Configure Docker
-Environment", "Migrate Database Schema"
-
-#### **📋 Plan** - Project plans, roadmaps, and strategic documents
-
-**Use when creating:**
-
-- Project plans and roadmaps
-- Implementation strategies
-- Milestone and timeline documents
-- Resource allocation plans
-- "What we will build and when" content
-
-**Examples:** "Q2 Feature Roadmap", "Migration Strategy", "Team Scaling Plan"
-
-#### **📊 PRD** - Product Requirements Documents and specifications
-
-**Use when creating:**
-
-- Product specifications
-- Feature requirements
-- Technical specifications
-- User requirements documentation
-- "What to build and why" content
-
-**Examples:** "User Authentication Feature Specs", "API Design Requirements",
-"Mobile App PRD"
-
-### **Common Mistakes to Avoid**
-
-❌ **DON'T use Recipe for:**
-
-- Project plans (use **Plan**)
-- Product specifications (use **PRD**)
-- Problem solutions (use **Solution**)
-- General documentation (use **Knowledge**)
-- LLM automation workflows (use **Instruction Set**)
-
-❌ **DON'T use Knowledge for:**
-
-- Step-by-step procedures (use **Recipe**)
-- Specific problem fixes (use **Solution**)
-- Future planning documents (use **Plan**)
-- LLM executable instructions (use **Instruction Set**)
-
-❌ **DON'T use Solution for:**
-
-- General how-to guides (use **Recipe**)
-- Preventive documentation (use **Knowledge**)
-- Planning documents (use **Plan**)
-
-❌ **DON'T use Instruction Set for:**
-
-- Human-only procedures (use **Recipe**)
-- General documentation (use **Knowledge**)
-- Simple code templates (use **Template**)
-- Information without executable actions (use **Knowledge**)
-
-### **Quick Decision Checklist**
-
-**When user asks to create/document:**
-
-- [ ] **"How to..."** → Recipe
-- [ ] **"Fix..."** → Solution
-- [ ] **"Plan for..."** → Plan
-- [ ] **"Requirements for..."** → PRD
-- [ ] **"What is..."** → Knowledge
-- [ ] **"Template for..."** → Template
-- [ ] **"Instructions for LLM to..."** → Instruction Set
-- [ ] **"Workflow for..."** → Instruction Set
-- [ ] **"Install/Configure/Apply..."** → Instruction Set
-
-**If content contains:**
-
-- [ ] **Sequential steps for humans** → Recipe
-- [ ] **Sequential steps for LLM execution** → Instruction Set
-- [ ] **Problem + solution** → Solution
-- [ ] **Future objectives** → Plan
-- [ ] **Product specs** → PRD
-- [ ] **Reference info** → Knowledge
-- [ ] **Reusable code** → Template
-- [ ] **LLM executable actions** → Instruction Set
-- [ ] **Automation workflows** → Instruction Set
-
-### **Fragment Type Selection Priority**
-
-1. **Analyze the user's exact request** - pay attention to keywords
-2. **Identify the content structure** - steps, problems, plans, specs, etc.
-3. **Consider the intended use** - reference, execution, planning,
-   troubleshooting
-4. **Choose the most specific type** - don't default to generic types
-5. **When in doubt, ask the user** for clarification
-
-**🎯 REMEMBER: The fragment type should match the content's PRIMARY PURPOSE, not
-just its format!**
-
-## Memory Mesh Discovery & Exploration
-
-### **Primary Discovery Process (Start Here)**
-
-**Step 1: Vector Search First**
-
-- Use `search_memory_fragments` with semantic search (understands meaning, not
-  just keywords)
-- Always start with `repo:<repository>` tag first, then broaden if needed
-- Try different phrasings if initial search yields no results
-- Search with `workspaceId` first, then without it for broader cross-workspace
-  results
-
-**Step 2: Follow the Thread (Iterative Exploration)**
-
-- Pick key fragments from Step 1 and explore their connections
-- Use `explore_workspace_graph` in exploration mode (depth 2+ recommended)
-- Look for: Similar/Related fragments, Concepts, Technologies
-- Target 5-10 exploration trips based on task complexity
-- Use `find_related_fragments` for direct relationship discovery
-
-**Step 3: Deep Context Building**
-
-- Continue iterative exploration until confident you have full picture
-- Use discovered fragment/concept IDs as new starting points
-- For trivial questions, Steps 1-2 may be sufficient
-- For complex tasks, comprehensive exploration prevents repeated mistakes
-
-### **Tool-Specific Guidance**
-
-### `search_memory_fragments`
-
-**Primary discovery tool - start here**
-
-- **Always include repository context** - start with `repo:<repository>` tag
-- Use semantic search for concepts, not exact text matching
-- **Decision logic**: Evaluate query complexity and result completeness to
-  determine next steps
-
-### `explore_workspace_graph`
-
-**Two modes for different needs:**
-
-**🎯 EXPLORATION MODE (Preferred for most scenarios):**
-
-- **When to use**: Targeted discovery from specific starting points
-- **Key insight**: Works perfectly with any fragment ID - use directly from
-  search results
-- **Concept exploration**: Use format `concepts/normalized_name` - very
-  effective
-- **Depth recommendations**: Use depth 2+ to see connections-of-connections
-- **Starting points**: Fragment IDs, tag names, or concept IDs from previous
-  discoveries
-
-**📊 OVERVIEW MODE (Use sparingly):**
-
-- **When to use**: Only when completely unfamiliar with workspace or lacking
-  starting points
-- **Key insight**: Now returns actual data (recent fix applied)
-- **Warning**: Can be overwhelming - prefer exploration mode for focused
-  discovery
-
-**🔗 Available Connection Types** (for `includeEdgeTypes`):
-
-- `"has_tag"` - Topic/technology connections (most common)
-- `"similar"`, `"related"` - AI-discovered content relationships
-- `"references_concept"` - Conceptual knowledge connections
-- `"created_by"` - Author-based discovery
-- **Default**: Empty array `[]` uses all connection types
-
-### `explore_tag_connections`
-
-**Tag-centric cluster discovery**
-
-- **When to use**: Direct tag-based lookups (_"show everything about Next.js"_)
-- Faster than full graph traversal when you know specific tags
-- **Key params**: `tags`, `workspaceId`, `limit`
-
-### `find_related_fragments`
-
-**Sibling/related document discovery**
-
-- **When to use**: Expand context around specific fragment
-- Uses similarity + tag relationships for targeted expansion
-- **Recent fix**: Now returns real data with titles, summaries, and metadata
-- **Key params**: `fragmentId` (from previous steps), `limit`
-
-### `get_memory_fragment_content`
-
-**Full document retrieval**
-
-- **When to use**: Deep-dive on confirmed relevant fragment
-- Fetches complete content including metadata
-- **Key params**: `fragmentId` (from search/exploration results)
-
-## Recent System Enhancements
-
-**✅ Reliable Patterns Now Available:**
-
-- **Overview mode**: Returns actual data (200+ fragments, 50+ tags, 1000+
-  concepts)
-- **Node IDs**: Full IDs exposed for direct iterative exploration
-- **Related fragments**: Returns real data with titles, summaries, and metadata
-- **Concept exploration**: Use `concepts/event_sourcing` format - very effective
-- **Fragment exploration**: Any fragment ID works directly as starting point
-
-## Temporal Analysis (When Evolution Context Needed)
-
-**Use temporal tools when queries involve**: "changed", "evolved", "used to",
-"before/after", "why different", "when did"
-
-**Quick Temporal Exploration:**
-
-- `get_temporal_relationships` with `includeHistory: true` - see relationship
-  evolution
-- `explore_workspace_graph_temporal` with `asOfDate` - time-travel to specific
-  point
-- `get_relationship_history` - understand specific relationship changes
-
-**Skip temporal tools for**: Current state queries, performance-critical
-searches
-
-### `get_temporal_relationships`
-
-**Time-aware relationship querying**
-
-- **Key params**: `fragmentId`, `workspaceId`, optional `asOfDate`,
-  `includeHistory`, `onlyActive`
-- **Use cases**: "What relationships did this fragment have last month?", "Show
-  evolution"
-
-### `explore_workspace_graph_temporal`
-
-**Enhanced graph exploration with time dimensions**
-
-- **Temporal features**: `asOfDate`, `includeTemporalHistory`,
-  `showOnlyActiveRelationships`
-- **Use cases**: "How did the graph look 3 months ago?", "What changed this
-  week?"
-
-### `get_relationship_history`
-
-**Temporal relationship evolution tracking**
-
-- **Key params**: `fromFragmentId`, `toFragmentId`, `workspaceId`
-- **Use cases**: Understanding relationship changes, debugging evolution
-  patterns
-
-### `list_workspaces`
-
-**Workspace discovery and access management**
-
-- List all accessible workspaces with role information and permissions
-- **When to use**: Understanding available knowledge contexts
-
-### `get_fragment_types`
-
-**Fragment type discovery for workspace**
-
-- Retrieve all available fragment types including system defaults and custom
-  types
-- **When to use**: Before creating fragments to validate type IDs
-
-## Fragment Creation & Updates
-
-### `create_memory_fragment`
-
-**Create new knowledge artifacts**
-
-- **🚨 CRITICAL: ALWAYS use the Fragment Type Selection Guide above to choose
-  the correct type**
-- **NEVER default to "Recipe"** - analyze content purpose first
-- Use when you identify non-trivial solutions, patterns, recipes, or templates
-- **Always include repository context** for better organization
-
-**Enhanced Process for Fragment Creation:**
-
-1. **Analyze user request** using the Fragment Type Decision Framework
-2. **Apply the Quick Decision Checklist** to determine correct type
-3. **Draft fragment** with appropriate type selection
-4. **Propose to user** with clear type justification
-5. **Create only after user confirmation**
-
-**Confirmation examples with type justification:**
-
-- _"I'd like to document this as a `solution` fragment titled `<title>` because
-  it solves a specific problem. Proceed?"_
-- _"I'd like to document this as a `plan` fragment titled `<title>` because it
-  outlines future objectives and timelines. Proceed?"_
-- _"I'd like to document this as a `prd` fragment titled `<title>` because it
-  contains product requirements and specifications. Proceed?"_
-
-### `update_memory_fragment`
-
-**Refine existing knowledge - supports two powerful modes**
-
-**LEGACY MODE (backwards compatible):**
-
-- Use when improving solutions, adding information, or correcting content
-- **Process**: Draft update → Show user → User confirms → Apply
-
-**PATCH MODE (new) - for precise line-level modifications:**
-
-- Use when making surgical changes to specific lines without affecting rest of
-  content
-- **When to use**: Adding imports, modifying specific functions, inserting
-  comments
-- **Benefits**: Reduced token usage, preserves content structure
-
-**Line Number Guidelines (CRITICAL):**
-
-- **All line numbers are 1-based** (first line = 1, not 0)
-- **Add operations**: Insert at specified line number (existing lines shift
-  down)
-- **Delete operations**: Remove from startLine to endLine (inclusive)
-- **Replace operations**: Replace from startLine to endLine with new content
-
-**IMPORTANT CONSTRAINTS:**
-
-- ⚠️ **Cannot mix modes**: Never use both 'content' and 'patchOperations' in
-  same request
-- ⚠️ **No overlapping operations**: Each line can only be affected by one
-  operation
-- ⚠️ **Bounds checking**: All line numbers must be within existing content
-  bounds
-
-## Recommended Workflow
-
-### **Pre-Task Discovery**
-
-1. **Search**: `search_memory_fragments` with `repo:<repository>` tag
-2. **Explore**: Follow connections from key fragments using exploration mode
-   (depth 2+)
-3. **Iterate**: Continue until you have sufficient context (5-10 exploration
-   trips typical)
-
-### **Complexity Assessment**
-
-- **Simple queries**: Vector search may be sufficient
-- **Complex tasks**: Always do iterative exploration for comprehensive
-  understanding
-- **When in doubt**: Explore more rather than less - builds better solutions
-
-### **Post-Task Documentation**
-
-If you identify novel insights or solutions:
-
-1. **Draft & Propose**: Build fragment structure and ask user for approval
-   > _"I'd like to document this as a `<type>` fragment titled `<title>`.
-   > Proceed?"_
-2. **Create**: `create_memory_fragment` only after user confirmation
-
-**Never create/update fragments without explicit user confirmation**
-
-## Fragment Creation Strategy
-
-**Always provide `repository` context** in every MCP call when available (e.g.
-`"memory-mesh"`).
-
-**Document when you identify:**
-
-- Novel solutions or non-obvious patterns
-- Reusable recipes and templates
-- Critical fixes or workarounds
-- Architectural insights or best practices
-
-### **CRITICAL: Tag Character Restrictions**
-
-**⚠️ IMPORTANT: Tags have strict character requirements to prevent validation
-errors:**
-
-**✅ ALLOWED characters in tags:**
-
-- **Alphanumeric**: a-z, A-Z, 0-9
-- **Underscore**: _
-- **Dash**: -
-- **Colon**: :
-
-**❌ FORBIDDEN characters in tags:**
-
-- **Dots**: . (common mistake with domain names)
-- **Spaces**: (space character)
-- **Special characters**: @ # $ % & * ( ) + = [ ] { } | \ / ? < > , ; " '
-
-**For domain names, use dashes instead of dots:**
-
-- Domain: example.com → Tag: "example-com"
-- Domain: api.service.io → Tag: "api-service-io"
-
-## Common Generic Tags
-
-**Technology & Framework Tags:**
-
-- 'nodejs', 'javascript', 'typescript', 'python', 'react', 'angular', 'vue',
-  'nextjs'
-- 'express', 'fastify', 'nestjs', 'spring-boot', 'django', 'flask', 'rails'
-- 'docker', 'kubernetes', 'aws', 'azure', 'gcp', 'terraform', 'ansible'
-
-**Database & Storage Tags:**
-
-- 'database', 'sql', 'nosql', 'mongodb', 'postgresql', 'mysql', 'redis',
-  'elasticsearch'
-- 'prisma', 'typeorm', 'sequelize', 'mongoose', 'knex'
-
-**Development & Architecture Tags:**
-
-- 'authentication', 'authorization', 'oauth', 'jwt', 'security', 'encryption'
-- 'api', 'rest', 'graphql', 'microservices', 'monolith', 'serverless'
-- 'testing', 'unit-tests', 'integration-tests', 'e2e-tests', 'mocking'
-- 'ci-cd', 'deployment', 'devops', 'monitoring', 'logging', 'performance'
-
-**UI & Frontend Tags:**
-
-- 'ui', 'ux', 'design-system', 'components', 'responsive', 'accessibility'
-- 'theme', 'styling', 'css', 'sass', 'tailwind', 'styled-components'
-- 'forms', 'validation', 'state-management', 'routing', 'animation'
-
-**General Development Tags:**
-
-- 'configuration', 'environment', 'debugging', 'optimization', 'refactoring'
-- 'error-handling', 'validation', 'caching', 'pagination', 'search'
-- 'file-upload', 'email', 'notifications', 'scheduling', 'background-jobs'
-
-## Auto-Enhancement
-
-The MCP server automatically:
-
-- Injects `repo:<repository>` tag when repository context provided
-- Detects and tags technologies and topics from content
-- Prevents duplicate fragments through similarity analysis
-- Formats content for optimal readability and search
-
-## Key Success Factors:
-
-- **START** with search, **EVALUATE** query complexity and result completeness
-- **BALANCE** speed for simple queries with thoroughness for complex research
-- **USE** discovered node IDs for iterative chaining when proceeding to
-  exploration
-- **OFFER** further exploration even when Step 1 provides complete answers
-- **CONFIRM** before creating/updating fragments
-- **INCLUDE** repository context for better organization
-- **🎯 ALWAYS USE CORRECT FRAGMENT TYPE** - follow the Fragment Type Selection
-  Guide and never default to "Recipe"

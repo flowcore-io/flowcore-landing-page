@@ -252,6 +252,14 @@
                 termsSection.classList.add('loaded');
             }, 300); // Same delay as hero for consistency
         }
+        
+        // Add loaded class to policy section for policy pages (same animation as hero)
+        const policySection = document.querySelector('.policy-section');
+        if (policySection) {
+            setTimeout(() => {
+                policySection.classList.add('loaded');
+            }, 300); // Same delay as hero for consistency
+        }
     }
 
     // Reset animations on page reload

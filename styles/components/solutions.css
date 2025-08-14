@@ -17,13 +17,9 @@
 
 /* Block: solutions */
 .solutions {
-    padding: calc(var(--spacing-2xl) + var(--spacing-lg)) 0;
     background-color: rgba(var(--color-surface-rgb), 0.65);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
 }
 
 /* Element: solutions__content */

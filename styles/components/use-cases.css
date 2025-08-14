@@ -2,11 +2,7 @@
 
 /* Block: use-cases */
 .use-cases {
-    padding: calc(var(--spacing-2xl) + var(--spacing-lg)) 0;
     background-color: rgba(var(--color-background-rgb), 0.65);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
 }
 
 /* Element: use-cases__content */
@@ -150,7 +146,10 @@
     padding: var(--spacing-sm);
     overflow: hidden;
     cursor: pointer;
+    transition: all var(--transition-base);
 }
+
+/* Only the original published animations - no additional effects */
 
 /* Gradient top line effect on hover */
 .use-case-block__icon::before {
@@ -171,13 +170,8 @@
 
 /* Glowing effect when clicked - applies only to the icon */
 .use-case-block__icon.clicked i {
-    animation: logoFloat 3s ease-in-out infinite, iconGlow 2s ease-in-out infinite 0.3s;
+    filter: drop-shadow(0 0 5px rgba(255, 165, 0, 0.3)) drop-shadow(0 0 10px rgba(255, 0, 255, 0.2));
     transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Fade-out effect when removing glow */
-.use-case-block__icon i.fade-out {
-    animation: logoFloat 3s ease-in-out infinite, iconGlowFadeOut 0.6s ease-out forwards;
 }
 
 @keyframes iconGlow {
@@ -210,11 +204,10 @@
 /* Element: use-case-block__icon i */
 .use-case-block__icon i {
     font-size: 6rem;
-    background: linear-gradient(45deg, #ffa500 0%, #ff00ff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-secondary);
     animation: logoFloat 3s ease-in-out infinite;
+    animation-play-state: running; /* Ensure animation is always running */
+    transition: filter 0.8s ease-out; /* Smooth fade-out transition */
 }
 
 /* ==========================================================================

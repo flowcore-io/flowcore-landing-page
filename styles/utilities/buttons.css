@@ -99,37 +99,51 @@
     box-shadow: none;
 }
 
-/* Responsive Design */
+/* Responsive Design - Mobile Touch Target Optimization */
 @media (max-width: 768px) {
     .btn {
-        min-height: 44px; /* Reduced from 48px */
+        min-height: 48px; /* WCAG 2.1 AA compliant touch target */
+        min-width: 48px; /* Ensure minimum width for touch targets */
         padding: var(--spacing-sm) var(--spacing-lg);
         font-size: var(--font-size-base);
+        /* Improve touch feedback */
+        -webkit-tap-highlight-color: rgba(var(--color-secondary-rgb), 0.2);
+        touch-action: manipulation;
     }
     
     .btn--small {
-        min-height: 40px; /* Reduced from 44px */
-        padding: var(--spacing-xs) var(--spacing-md);
+        min-height: 44px; /* Maintain accessibility standards */
+        min-width: 44px;
+        padding: var(--spacing-sm) var(--spacing-md);
     }
 }
 
 @media (max-width: 480px) {
     .btn {
-        min-height: 48px; /* Reduced from 52px */
-        padding: var(--spacing-sm) var(--spacing-lg);
+        min-height: 48px; /* Maintain consistent touch target size */
+        min-width: 48px;
+        padding: var(--spacing-md) var(--spacing-lg);
         font-size: var(--font-size-base);
+    }
+    
+    .btn--large {
+        min-height: 56px; /* Larger touch target for primary actions */
+        min-width: 56px;
+        padding: var(--spacing-md) var(--spacing-xl);
     }
 }
 
 @media (max-width: 360px) {
     .btn {
-        min-height: 40px; /* Further reduced for smallest screens */
-        padding: var(--spacing-xs) var(--spacing-md);
-        font-size: var(--font-size-sm); /* Smaller font for smallest screens */
+        min-height: 44px; /* Minimum accessible touch target */
+        min-width: 44px;
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-base);
     }
     
     .btn--small {
-        min-height: 36px; /* Even smaller for small buttons */
-        padding: var(--spacing-xs) var(--spacing-sm);
+        min-height: 44px; /* Don't go below accessibility minimum */
+        min-width: 44px;
+        padding: var(--spacing-sm) var(--spacing-md);
     }
 } 
