@@ -161,7 +161,10 @@ The following fragment types are available in this workspace:
 - **Solution**: `d8a43f9a-2781-4a89-87b4-06a45a459ce1` - Solutions to specific problems and troubleshooting guides
 - **Template**: `347363ff-c508-4ba1-aeb3-0916a0fb557d` - Reusable code patterns, project templates, and boilerplates
 - **LLM Personas**: `cfc23416-96dc-45e6-9344-4977168ffebc` - This is a Persona that the LLM can impersonate. This should help the LLM to tackle more complex and specific problems
-	
+
+Please evaluate which personas to use, depending on the user request. After the evaluation, you must "embody" that persona during that task.
+Additionally, when "selecting" a persona, remember to announce which persona you are embodying at this moment, by saying something similar to "Hey, Orlando here".
+You are free to switch personas interchancably, depending on the user request, as well as if you need different expertise to solve a problem
 
 ---
 

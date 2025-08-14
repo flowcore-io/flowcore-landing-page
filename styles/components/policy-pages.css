@@ -1,24 +1,62 @@
 /* Policy Pages Component - Dark Theme Design */
 
-/* Policy Pages Container */
-.policy-section {
+/* Policy Pages Full Page Background */
+body.policy-page {
+    background-color: var(--color-background);
+    position: relative;
+    width: 100%;
+    margin: 0;
     min-height: 100vh;
+}
+
+/* Policy Pages Transparent Overlay - Full Page */
+body.policy-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: rgba(var(--color-surface-rgb), 0.1);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
+    z-index: 2; /* Above waves (1) to ensure content is visible */
+    pointer-events: none;
+}
+
+/* Policy Pages Main Content Area */
+main#main-content {
+    background-color: rgba(var(--color-surface-rgb), 0.65);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    position: relative;
+    width: 100%;
+    margin: 0;
+    min-height: 100vh;
+    z-index: 2;
+}
+
+/* Policy Pages Container */
+.policy-section {
+    min-height: 100vh;
     padding: var(--spacing-2xl) 0;
     position: relative;
-    z-index: 2; /* Above waves (1) to ensure content is visible */
+}
+
+/* Override container width for policy pages */
+.policy-section .container {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 /* Policy Container */
 .policy-container {
-    max-width: 800px;
+    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     padding: var(--spacing-xl);
-    background-color: rgba(var(--color-background-rgb), 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
     border-radius: var(--border-radius-lg);
     position: relative;
     opacity: 0;
@@ -204,13 +242,7 @@
 }
 
 /* Dark Theme Specific Styles */
-[data-theme="dark"] .policy-section {
-    background-color: var(--color-background);
-}
-
-[data-theme="dark"] .policy-container {
-    background-color: var(--color-background);
-}
+/* Removed solid background colors to allow waves to show through */
 
 [data-theme="dark"] .policy-title {
     background: var(--color-gradient);
@@ -261,13 +293,7 @@
 }
 
 /* Light Theme Specific Styles */
-[data-theme="light"] .policy-section {
-    background-color: var(--color-background);
-}
-
-[data-theme="light"] .policy-container {
-    background-color: var(--color-background);
-}
+/* Removed solid background colors to allow waves to show through */
 
 [data-theme="light"] .policy-title {
     color: var(--color-secondary);
