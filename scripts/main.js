@@ -88,8 +88,17 @@
         const navToggle = document.querySelector('.nav__toggle');
         
         if (navMenu && navToggle) {
+            const isActive = navMenu.classList.contains('nav__menu--active');
+            
             navMenu.classList.toggle('nav__menu--active');
             navToggle.classList.toggle('nav__toggle--active');
+            
+            // Prevent body scroll when menu is open
+            if (!isActive) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         }
     }
 
