@@ -203,12 +203,13 @@
             document.head.appendChild(script);
         }
         
-        // Enable inspector when page is fully loaded
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => enableWebInspector());
-        } else {
-            enableWebInspector();
-        }
+        // Keyboard shortcut to toggle inspector (Ctrl+Shift+E)
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.shiftKey && e.key === 'E') {
+                e.preventDefault();
+                enableWebInspector();
+            }
+        });
     </script>
 </head>
 <body>
