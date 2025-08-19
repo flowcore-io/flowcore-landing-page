@@ -173,6 +173,43 @@
       ]
     }
     </script>
+    
+    <!-- Alminni Web Inspector - AI-Powered Element Analysis -->
+    <script>
+        // Load and enable Open Web Inspector for AI-assisted analysis
+        function enableWebInspector(targetSelector = null) {
+            // Check if already loaded
+            if (typeof OpenWebInspector !== 'undefined') {
+                OpenWebInspector.enable();
+                if (targetSelector) {
+                    OpenWebInspector.selectElement(targetSelector);
+                }
+                return;
+            }
+            
+            // Load library
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/open-web-inspector@latest/dist/open-web-inspector.min.js';
+            script.onload = () => {
+                OpenWebInspector.enable();
+                if (targetSelector) {
+                    setTimeout(() => OpenWebInspector.selectElement(targetSelector), 100);
+                }
+                console.log('🎯 Alminni Web Inspector activated! Click any element to inspect.');
+            };
+            script.onerror = () => {
+                console.error('Failed to load Open Web Inspector');
+            };
+            document.head.appendChild(script);
+        }
+        
+        // Enable inspector when page is fully loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => enableWebInspector());
+        } else {
+            enableWebInspector();
+        }
+    </script>
 </head>
 <body>
     <!-- Skip to main content link for accessibility -->
@@ -246,7 +283,7 @@
                 <div class="hero__content">
                     <h1 class="hero__title">Event Storage and Processing</h1>
                     <p class="hero__subtitle">Data Platform for AI Developers</p>
-                    <p class="hero__description">Build reliable AI applications with infinite event replay and real-time processing. Scale to 10M+ events per second with guaranteed data consistency and zero data loss.</p>
+                    <p class="hero__description">Stop losing data when debugging AI models. Replay any moment in time to reproduce issues, test new features, and train on historical data. Scale to 10M+ events per second with guaranteed consistency.</p>
                     <div class="hero__buttons">
                         <a href="https://flowcore.io/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--large">Start Building Now</a>
                         <a href="https://docs.flowcore.io/" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">View Documentation</a>
@@ -276,17 +313,17 @@
                     <div class="feature-card animate-on-scroll stagger-delay-1">
                         <div class="feature-card__icon"><i class="fas fa-edit"></i></div>
                         <h3 class="feature-card__title">Event-First Architecture</h3>
-                        <p class="feature-card__description">Everything is written to the event store first, creating a single source of truth for all your data.</p>
+                        <p class="feature-card__description">Never lose data again. Every change is captured as an immutable event, creating a complete audit trail and single source of truth for your AI applications.</p>
                     </div>
                     <div class="feature-card animate-on-scroll stagger-delay-2">
                         <div class="feature-card__icon"><i class="fas fa-sync-alt"></i></div>
                         <h3 class="feature-card__title">Replay & Iterate</h3>
-                        <p class="feature-card__description">Replay events infinitely to iterate development faster and test new features without risk.</p>
+                        <p class="feature-card__description">Debug production issues instantly. Replay any moment in time to reproduce bugs, test new features safely, and train models on historical data.</p>
                     </div>
                     <div class="feature-card animate-on-scroll stagger-delay-3">
                         <div class="feature-card__icon"><i class="fas fa-rocket"></i></div>
                         <h3 class="feature-card__title">Auto-Managed Storage</h3>
-                        <p class="feature-card__description">Automatic hot and cold data management - no manual intervention required from developers.</p>
+                        <p class="feature-card__description">Focus on building, not infrastructure. Automatic data lifecycle management handles hot/cold storage, scaling, and optimization without developer intervention.</p>
                     </div>
                 </div>
             </div>
@@ -299,7 +336,7 @@
                 <h2 class="section-title animate-on-scroll">Solutions</h2>
                 <div class="solutions__content">
                     <div class="solutions__text fade-in-left">
-                        <p>Stream events to any destination with parallel processing. Our standardized toolbox supports all major databases, storage systems, and communication channels. Deploy fully managed or self‑hosted on Kubernetes (BYOI supported).</p>
+                        <p>Connect to your existing stack seamlessly. Stream events to any database, warehouse, or API with our standardized toolbox. No migration required - just add Flowcore to your pipeline. Deploy fully managed or self‑hosted on Kubernetes (BYOI supported).</p>
                         <div class="solutions__list">
                             <div class="solution-item">
                                 <div class="solution-item__icon"><i class="fas fa-database"></i></div>
@@ -471,7 +508,7 @@
                         <div class="feature-card fade-in-up">
                             <div class="feature-icon"><i class="fas fa-infinity"></i></div>
                             <h3>Infinite Event Replay</h3>
-                            <p>Unlike traditional databases, every event is preserved forever. Replay from any point in time to debug issues, test new features, or train models on historical data.</p>
+                            <p>Traditional databases overwrite data. Flowcore preserves every event forever. Replay from any timestamp to debug production issues, test new features safely, or train models on historical data.</p>
                         </div>
                         <div class="feature-card fade-in-up">
                             <div class="feature-icon"><i class="fas fa-code"></i></div>
@@ -710,21 +747,21 @@
                             <i class="fas fa-rocket"></i>
                         </div>
                         <h3 class="feature-item__title">Quick Setup</h3>
-                        <p class="feature-item__description">Get your first data core running in under 5 minutes with our CLI tools</p>
+                        <p class="feature-item__description">Add Flowcore to your existing project in under 5 minutes. No data migration required - just connect your current data sources and start streaming events.</p>
                     </div>
                     <div class="feature-item animate-on-scroll stagger-delay-2">
                         <div class="feature-item__icon">
                             <i class="fas fa-code"></i>
                         </div>
                         <h3 class="feature-item__title">Developer Friendly</h3>
-                        <p class="feature-item__description">Clean APIs, comprehensive docs, and SDK support for all major languages</p>
+                        <p class="feature-item__description">Clean APIs, comprehensive docs, and SDK support for all major languages. Built by developers, for developers with extensive documentation and community support.</p>
                     </div>
                     <div class="feature-item animate-on-scroll stagger-delay-3">
                         <div class="feature-item__icon">
                             <i class="fas fa-play"></i>
                         </div>
                         <h3 class="feature-item__title">Start Building</h3>
-                        <p class="feature-item__description">Real-time event processing with guaranteed ordering and infinite replay</p>
+                        <p class="feature-item__description">Real-time event processing with guaranteed ordering and infinite replay. Scale to millions of events per second with zero data loss and complete audit trails.</p>
                     </div>
                 </div>
 
@@ -758,7 +795,7 @@
                         <a href="tel:+298556600" target="_blank" class="contact-card animate-on-scroll stagger-delay-2">
                             <div class="contact-card__icon"><i class="fas fa-phone"></i></div>
                             <h3 class="contact-card__title">Call Us</h3>
-                            <p class="contact-card__description">Speak directly with our team for immediate assistance.</p>
+                            <p class="contact-card__description">Speak directly with us for immediate assistance.</p>
                             <span class="contact-card__link">+298 556 600</span>
                         </a>
                         <a href="https://maps.app.goo.gl/5czHaR9F8Een7D94A" target="_blank" class="contact-card animate-on-scroll stagger-delay-3">
@@ -769,7 +806,7 @@
                         </a>
                         <a href="https://discord.gg/k97YWAw8XF" target="_blank" class="contact-card contact-card--discord animate-on-scroll stagger-delay-4">
                             <div class="contact-card__icon"><i class="fab fa-discord"></i></div>
-                            <h3 class="contact-card__title">Join Our Community</h3>
+                            <h3 class="contact-card__title">Join Our Developer Community</h3>
                             <p class="contact-card__description">Connect with other developers and get real-time support.</p>
                             <span class="contact-card__link">Join Discord Community</span>
                         </a>
