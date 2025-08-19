@@ -2,6 +2,7 @@
 
 /* Block: use-cases */
 .use-cases {
+    min-height: 100vh;
     background-color: rgba(var(--color-background-rgb), 0.65);
 }
 

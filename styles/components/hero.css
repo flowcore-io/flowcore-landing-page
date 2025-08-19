@@ -137,6 +137,15 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .hero {
+        align-items: flex-start;
+        padding-top: 80px;
+    }
+    
+    .hero__container {
+        margin-top: 80px;
+    }
+    
     .hero__container {
         flex-direction: column;
         gap: var(--spacing-xl);
@@ -210,6 +219,15 @@
 }
 
 @media (max-width: 480px) {
+    .hero {
+        align-items: flex-start;
+        padding-top: 95px;
+    }
+    
+    .hero__container {
+        margin-top: 95px;
+    }
+    
     .hero__title {
         font-size: var(--font-size-3xl);
         line-height: 1.3;

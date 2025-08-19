@@ -2,6 +2,7 @@
 
 /* Block: getting-started */
 .getting-started {
+    min-height: 100vh;
     background-color: rgba(var(--color-background-rgb), 0.65);
 }
 
