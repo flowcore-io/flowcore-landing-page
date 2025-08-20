@@ -138,8 +138,7 @@
                     toggleMobileNav();
                 }
                 
-                // Update active nav link
-                updateActiveNavLink(this);
+                // Don't update active nav link immediately - let scroll-based highlighting handle it
             });
         });
     }
