@@ -93,21 +93,13 @@
             navMenu.classList.toggle('nav__menu--active');
             navToggle.classList.toggle('nav__toggle--active');
             
-            // Prevent body scroll when menu is open
+            // Prevent body scroll when menu is open (less aggressive method)
             if (!isActive) {
-                // Lock body scroll completely
+                // Use overflow hidden only - less likely to interfere with links
                 document.body.style.overflow = 'hidden';
-                document.body.style.position = 'fixed';
-                document.body.style.width = '100%';
-                document.body.style.top = `-${window.scrollY}px`;
             } else {
                 // Restore body scroll
-                const scrollY = document.body.style.top;
                 document.body.style.overflow = '';
-                document.body.style.position = '';
-                document.body.style.width = '';
-                document.body.style.top = '';
-                window.scrollTo(0, parseInt(scrollY || '0') * -1);
             }
         }
     }
@@ -119,6 +111,7 @@
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
+                e.stopPropagation(); // Prevent event bubbling
                 
                 const targetId = this.getAttribute('href');
                 
@@ -566,6 +559,8 @@
         if (navToggle) {
             navToggle.addEventListener('click', toggleMobileNav);
         }
+        
+
 
         // Close mobile menu when clicking outside
         document.addEventListener('click', function(e) {

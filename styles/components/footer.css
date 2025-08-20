@@ -271,6 +271,10 @@
         text-align: center;
     }
     
+    .footer-brand__logo {
+        justify-content: center;
+    }
+    
     .footer-brand__logo-img {
         width: 120px;
         height: auto;
