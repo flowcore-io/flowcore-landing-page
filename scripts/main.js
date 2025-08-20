@@ -1,19 +1,8 @@
 
 
-// Theme management
+// Optimized Theme Management - Critical initialization moved to inline script
 (function() {
-    // Initialize theme on page load
-    function initializeTheme() {
-        const savedTheme = localStorage.getItem('theme');
-        const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = savedTheme || (systemDark ? 'dark' : 'light');
-        
-        document.documentElement.setAttribute('data-theme', theme);
-        updateThemeIcon(theme);
-        updateLogo(theme);
-    }
-
-    // Update theme icon based on current theme
+    // Update theme icon based on current theme (non-critical)
     function updateThemeIcon(theme) {
         const themeToggle = document.querySelector('#theme-toggle');
         const themeToggleMobile = document.querySelector('#theme-toggle-mobile');
@@ -37,7 +26,7 @@
         }
     }
 
-    // Update logo based on theme
+    // Update logo based on theme (non-critical)
     function updateLogo(theme) {
         const logos = document.querySelectorAll('.nav__logo-img, .footer-brand__logo-img');
         
@@ -529,7 +518,7 @@
         // Reset any existing animations
         resetAnimations();
         
-        initializeTheme();
+        // Theme already initialized inline - no need to call again
         initSmoothScrolling();
         initContactForm();
         initAdvancedScrollAnimations();
