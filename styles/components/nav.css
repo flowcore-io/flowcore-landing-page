@@ -239,8 +239,8 @@
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
-        padding: 1.5rem 0;
-        gap: 0.5rem;
+        padding: 1rem 0;
+        gap: 0.125rem;
         z-index: 999;
         justify-content: flex-start;
         align-items: center;
@@ -260,7 +260,7 @@
 
     .nav__link {
         font-size: var(--font-size-lg);
-        padding: 1rem 2rem;
+        padding: 0.75rem 1.5rem;
         display: block;
         width: 100%;
         text-align: center;
@@ -284,21 +284,25 @@
 
     .nav__cta-mobile {
         display: block;
-        margin-top: 2rem;
+        margin-top: 1.5rem;
         width: 100%;
         text-align: center;
     }
 
     .nav__cta-mobile .btn {
-        width: 80%;
-        max-width: 300px;
+        width: 75%;
+        max-width: 260px;
         justify-content: center;
         margin: 0 auto;
+        font-size: var(--font-size-lg);
+        min-height: 44px;
+        min-width: 44px;
+        padding: var(--spacing-sm) var(--spacing-lg);
     }
 
     .nav__item--mobile-only {
         display: block;
-        margin-top: 1rem;
+        margin-top: 0.5rem;
     }
 
     .theme-toggle--mobile {
@@ -338,8 +342,8 @@
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
-        padding: 1rem 0;
-        gap: 0.25rem;
+        padding: 0.75rem 0;
+        gap: 0.125rem;
         z-index: 999;
         justify-content: flex-start;
         align-items: center;
@@ -359,14 +363,14 @@
 
     .nav__link {
         font-size: var(--font-size-lg);
-        padding: 0.75rem 1.5rem;
+        padding: 0.5rem 1rem;
         display: flex;
         width: 100%;
         text-align: center;
         text-decoration: none;
         color: var(--color-text);
-        min-height: 48px; /* Reduced touch target for mobile */
-        min-width: 48px;
+        min-height: 44px; /* Reduced touch target for mobile */
+        min-width: 44px;
         align-items: center;
         justify-content: center;
         /* Improve mobile touch interaction */
@@ -392,25 +396,25 @@
 
     .nav__cta-mobile {
         display: block;
-        margin-top: 2rem;
+        margin-top: 1.5rem;
         width: 100%;
         text-align: center;
     }
 
     .nav__cta-mobile .btn {
-        width: 90%;
-        max-width: 320px;
+        width: 80%;
+        max-width: 280px;
         justify-content: center;
         margin: 0 auto;
-        min-height: 56px; /* Enhanced touch target for mobile */
-        min-width: 56px;
+        min-height: 44px; /* Match nav links touch target */
+        min-width: 44px;
         font-size: var(--font-size-lg);
-        padding: var(--spacing-md) var(--spacing-xl);
+        padding: var(--spacing-sm) var(--spacing-lg);
     }
 
     .nav__item--mobile-only {
         display: block;
-        margin-top: 0.5rem;
+        margin-top: 0.25rem;
     }
 
     .theme-toggle--mobile {
@@ -460,8 +464,8 @@
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
-        padding: 1.5rem 0;
-        gap: 0.5rem;
+        padding: 0.75rem 0;
+        gap: 0.125rem;
         z-index: 999;
         justify-content: flex-start;
         align-items: center;
@@ -481,7 +485,7 @@
 
     .nav__link {
         font-size: var(--font-size-base);
-        padding: 1rem 2rem;
+        padding: 0.5rem 1rem;
         display: block;
         width: 100%;
         text-align: center;
@@ -505,21 +509,25 @@
 
     .nav__cta-mobile {
         display: block;
-        margin-top: 2rem;
+        margin-top: 1.5rem;
         width: 100%;
         text-align: center;
     }
 
     .nav__cta-mobile .btn {
-        width: 80%;
+        width: 85%;
         max-width: 300px;
         justify-content: center;
         margin: 0 auto;
+        font-size: var(--font-size-base);
+        min-height: 44px;
+        min-width: 44px;
+        padding: var(--spacing-sm) var(--spacing-lg);
     }
 
     .nav__item--mobile-only {
         display: block;
-        margin-top: 1rem;
+        margin-top: 0.5rem;
     }
 
     .theme-toggle--mobile {
