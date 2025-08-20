@@ -562,42 +562,70 @@
             }
         });
 
-        // Update active nav link on scroll (throttled + cached)
-        const sections = Array.from(document.querySelectorAll('section[id]'));
-        const navLinks = Array.from(document.querySelectorAll('.nav__link[href^="#"]'));
-        let rafPending = false;
-        let cachedSections = [];
+        // Update active nav link on scroll (throttled + cached) - Fixed timing
+        function initNavigationHighlighting() {
+            const sections = Array.from(document.querySelectorAll('section[id]'));
+            const navLinks = Array.from(document.querySelectorAll('.nav__link[href^="#"]'));
+            let rafPending = false;
+            let cachedSections = [];
 
-        const recalcSectionOffsets = () => {
-            cachedSections = sections.map(section => ({
-                id: section.getAttribute('id'),
-                top: section.offsetTop - 120,
-                bottom: section.offsetTop - 120 + section.offsetHeight
-            }));
-        };
+            const recalcSectionOffsets = () => {
+                cachedSections = sections.map(section => ({
+                    id: section.getAttribute('id'),
+                    top: section.offsetTop - 120,
+                    bottom: section.offsetTop - 120 + section.offsetHeight
+                }));
+            };
 
-        recalcSectionOffsets();
-        window.addEventListener('resize', recalcSectionOffsets, { passive: true });
+            // Initialize after a small delay to ensure DOM is ready
+            setTimeout(() => {
+                recalcSectionOffsets();
+                
+                // Set initial active state based on current scroll position
+                const y = window.scrollY;
+                let current = '';
+                for (let i = 0; i < cachedSections.length; i++) {
+                    const s = cachedSections[i];
+                    if (y >= s.top && y < s.bottom) { current = s.id; break; }
+                }
+                
+                // Clear all active states first
+                navLinks.forEach(link => {
+                    link.classList.remove('nav__link--active');
+                });
+                
+                // Set correct active state
+                navLinks.forEach(link => {
+                    const isActive = link.getAttribute('href') === `#${current}`;
+                    link.classList.toggle('nav__link--active', isActive);
+                });
+            }, 100);
 
-        const updateActiveOnScroll = () => {
-            rafPending = false;
-            const y = window.scrollY;
-            let current = '';
-            for (let i = 0; i < cachedSections.length; i++) {
-                const s = cachedSections[i];
-                if (y >= s.top && y < s.bottom) { current = s.id; break; }
-            }
-            navLinks.forEach(link => {
-                const isActive = link.getAttribute('href') === `#${current}`;
-                link.classList.toggle('nav__link--active', isActive);
-            });
-        };
+            window.addEventListener('resize', recalcSectionOffsets, { passive: true });
 
-        window.addEventListener('scroll', () => {
-            if (rafPending) return;
-            rafPending = true;
-            requestAnimationFrame(updateActiveOnScroll);
-        }, { passive: true });
+            const updateActiveOnScroll = () => {
+                rafPending = false;
+                const y = window.scrollY;
+                let current = '';
+                for (let i = 0; i < cachedSections.length; i++) {
+                    const s = cachedSections[i];
+                    if (y >= s.top && y < s.bottom) { current = s.id; break; }
+                }
+                navLinks.forEach(link => {
+                    const isActive = link.getAttribute('href') === `#${current}`;
+                    link.classList.toggle('nav__link--active', isActive);
+                });
+            };
+
+            window.addEventListener('scroll', () => {
+                if (rafPending) return;
+                rafPending = true;
+                requestAnimationFrame(updateActiveOnScroll);
+            }, { passive: true });
+        }
+
+        // Initialize navigation highlighting
+        initNavigationHighlighting();
     });
 
     // Listen for system theme changes

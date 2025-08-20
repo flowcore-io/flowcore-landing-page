@@ -101,6 +101,7 @@
     --color-primary: #1a1d30;
     --color-secondary: #ff44aa;
     --color-secondary-rgb: 255, 68, 170;
+    --color-secondary-hover: #ff66cc;
     --color-background: #ffffff;
     --color-background-rgb: 255, 255, 255;
     --color-surface: #f8fafc;
@@ -158,6 +159,22 @@
 /* Critical Reset */
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; overflow-x: hidden; }
+
+/* Critical Link Styles - Prevent blue flash */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Site-wide content link styling (exclude buttons and nav) */
+main a:not(.btn):not(.nav__link):not(.visualization-text):not(.contact-card):not(.pricing-card):not(.footer-social__links a) {
+    color: var(--color-secondary);
+    text-decoration: none;
+}
+
+main a:not(.btn):not(.nav__link):not(.visualization-text):not(.contact-card):not(.pricing-card):not(.footer-social__links a):hover {
+    color: var(--color-secondary-hover);
+}
 
 /* Critical Body Styles */
 body {
