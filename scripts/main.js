@@ -1,8 +1,19 @@
 
 
-// Optimized Theme Management - Critical initialization moved to inline script
+// Theme Management
 (function() {
-    // Update theme icon based on current theme (non-critical)
+    // Initialize theme on page load
+    function initializeTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = savedTheme || (systemDark ? 'dark' : 'light');
+        
+        document.documentElement.setAttribute('data-theme', theme);
+        updateThemeIcon(theme);
+        updateLogo(theme);
+    }
+
+    // Update theme icon based on current theme
     function updateThemeIcon(theme) {
         const themeToggle = document.querySelector('#theme-toggle');
         const themeToggleMobile = document.querySelector('#theme-toggle-mobile');
@@ -518,7 +529,7 @@
         // Reset any existing animations
         resetAnimations();
         
-        // Theme already initialized inline - no need to call again
+        initializeTheme();
         initSmoothScrolling();
         initContactForm();
         initAdvancedScrollAnimations();
@@ -562,70 +573,42 @@
             }
         });
 
-        // Update active nav link on scroll (throttled + cached) - Fixed timing
-        function initNavigationHighlighting() {
-            const sections = Array.from(document.querySelectorAll('section[id]'));
-            const navLinks = Array.from(document.querySelectorAll('.nav__link[href^="#"]'));
-            let rafPending = false;
-            let cachedSections = [];
+        // Update active nav link on scroll (throttled + cached)
+        const sections = Array.from(document.querySelectorAll('section[id]'));
+        const navLinks = Array.from(document.querySelectorAll('.nav__link[href^="#"]'));
+        let rafPending = false;
+        let cachedSections = [];
 
-            const recalcSectionOffsets = () => {
-                cachedSections = sections.map(section => ({
-                    id: section.getAttribute('id'),
-                    top: section.offsetTop - 120,
-                    bottom: section.offsetTop - 120 + section.offsetHeight
-                }));
-            };
+        const recalcSectionOffsets = () => {
+            cachedSections = sections.map(section => ({
+                id: section.getAttribute('id'),
+                top: section.offsetTop - 120,
+                bottom: section.offsetTop - 120 + section.offsetHeight
+            }));
+        };
 
-            // Initialize after a small delay to ensure DOM is ready
-            setTimeout(() => {
-                recalcSectionOffsets();
-                
-                // Set initial active state based on current scroll position
-                const y = window.scrollY;
-                let current = '';
-                for (let i = 0; i < cachedSections.length; i++) {
-                    const s = cachedSections[i];
-                    if (y >= s.top && y < s.bottom) { current = s.id; break; }
-                }
-                
-                // Clear all active states first
-                navLinks.forEach(link => {
-                    link.classList.remove('nav__link--active');
-                });
-                
-                // Set correct active state
-                navLinks.forEach(link => {
-                    const isActive = link.getAttribute('href') === `#${current}`;
-                    link.classList.toggle('nav__link--active', isActive);
-                });
-            }, 100);
+        recalcSectionOffsets();
+        window.addEventListener('resize', recalcSectionOffsets, { passive: true });
 
-            window.addEventListener('resize', recalcSectionOffsets, { passive: true });
+        const updateActiveOnScroll = () => {
+            rafPending = false;
+            const y = window.scrollY;
+            let current = '';
+            for (let i = 0; i < cachedSections.length; i++) {
+                const s = cachedSections[i];
+                if (y >= s.top && y < s.bottom) { current = s.id; break; }
+            }
+            navLinks.forEach(link => {
+                const isActive = link.getAttribute('href') === `#${current}`;
+                link.classList.toggle('nav__link--active', isActive);
+            });
+        };
 
-            const updateActiveOnScroll = () => {
-                rafPending = false;
-                const y = window.scrollY;
-                let current = '';
-                for (let i = 0; i < cachedSections.length; i++) {
-                    const s = cachedSections[i];
-                    if (y >= s.top && y < s.bottom) { current = s.id; break; }
-                }
-                navLinks.forEach(link => {
-                    const isActive = link.getAttribute('href') === `#${current}`;
-                    link.classList.toggle('nav__link--active', isActive);
-                });
-            };
-
-            window.addEventListener('scroll', () => {
-                if (rafPending) return;
-                rafPending = true;
-                requestAnimationFrame(updateActiveOnScroll);
-            }, { passive: true });
-        }
-
-        // Initialize navigation highlighting
-        initNavigationHighlighting();
+        window.addEventListener('scroll', () => {
+            if (rafPending) return;
+            rafPending = true;
+            requestAnimationFrame(updateActiveOnScroll);
+        }, { passive: true });
     });
 
     // Listen for system theme changes
