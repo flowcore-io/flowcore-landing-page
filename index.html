@@ -308,21 +308,21 @@
                                 <div class="solution-item__icon"><i class="fas fa-database"></i></div>
                                 <div class="solution-item__content">
                                     <h4>Universal Database Support</h4>
-                                    <p>Relational, graph, time series, vector, key-value, column-based, document, and more</p>
+                                    <p>Relational, graph, time series, vector, key-value, column-based, document, and more.</p>
                                 </div>
                             </div>
                             <div class="solution-item">
                                 <div class="solution-item__icon"><i class="fas fa-warehouse"></i></div>
                                 <div class="solution-item__content">
                                     <h4>Data Warehouses & Storage</h4>
-                                    <p>Object storage, CSV, Parquet files, and enterprise data warehouse integration</p>
+                                    <p>Object storage, CSV, Parquet files, and enterprise data warehouse integration.</p>
                                 </div>
                             </div>
                             <div class="solution-item">
                                 <div class="solution-item__icon"><i class="fas fa-envelope"></i></div>
                                 <div class="solution-item__content">
                                     <h4>Communication & Notifications</h4>
-                                    <p>Email, SMS, message queues, push notifications, webhooks, and more</p>
+                                    <p>Email, SMS, message queues, push notifications, webhooks, and more.</p>
                                 </div>
                             </div>
                         </div>
@@ -468,12 +468,12 @@
                         <div class="feature-card fade-in-up">
                             <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
                             <h3>Unmatched Performance</h3>
-                            <p>Process over 10 million events per second with sub-millisecond latency. Auto-scaling infrastructure handles traffic spikes seamlessly.</p>
+                            <p>Process an abundance of events per second with almost no latency. Auto-scaling infrastructure handles traffic spikes seamlessly.</p>
                         </div>
                         <div class="feature-card fade-in-up">
                             <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
                             <h3>Built for Modern Developers</h3>
-                            <p>Join thousands of developers who have streamlined their data architecture with Flowcore's CLI-first approach. Deploy in minutes, not months.</p>
+                            <p>Join other developers who have streamlined their data architecture with Flowcore's CLI-first approach. Deploy in minutes, not months.</p>
                         </div>
                     </div>
                 </div>
@@ -647,56 +647,88 @@
             <div class="container">
                 <div class="getting-started__header">
                     <h2 class="section-title animate-on-scroll">Get Started in Minutes</h2>
-                    <p class="getting-started__subtitle animate-on-scroll">Build your first event-driven application with our simple, powerful tools</p>
+                    <p class="getting-started__subtitle animate-on-scroll">Deploy your first data pipeline in minutes, not months. Connect to any database, warehouse, or API with our standardized toolbox. No migration required - just add Flowcore to your existing project.</p>
                 </div>
                 
-                <div class="getting-started__demo animate-on-scroll">
-                    <div class="demo-terminal">
-                        <div class="demo-terminal__header">
-                            <div class="demo-terminal__controls">
-                                <span class="demo-terminal__control demo-terminal__control--close"></span>
-                                <span class="demo-terminal__control demo-terminal__control--minimize"></span>
-                                <span class="demo-terminal__control demo-terminal__control--maximize"></span>
+
+
+                <div class="getting-started__demo-actions-wrapper">
+                    <div class="getting-started__demo animate-on-scroll">
+                        <div class="demo-terminal">
+                            <div class="demo-terminal__header">
+                                <div class="demo-terminal__controls">
+                                    <span class="demo-terminal__control demo-terminal__control--close"></span>
+                                    <span class="demo-terminal__control demo-terminal__control--minimize"></span>
+                                    <span class="demo-terminal__control demo-terminal__control--maximize"></span>
+                                </div>
+                                <span class="demo-terminal__title">Terminal</span>
                             </div>
-                            <span class="demo-terminal__title">Terminal</span>
+                            <div class="demo-terminal__content">
+                                <div class="terminal-line">
+                                    <span class="terminal-line__prompt">$</span>
+                                    <span class="terminal-line__command">npm install -g @flowcore/cli</span>
+                                </div>
+                                <div class="terminal-line terminal-line--output">
+                                    <span class="terminal-line__success">✓ Flowcore CLI installed successfully</span>
+                                </div>
+                                <div class="terminal-line">
+                                    <span class="terminal-line__prompt">$</span>
+                                    <span class="terminal-line__command">flowcore data-core init -t best-tenant</span>
+                                </div>
+                                <div class="terminal-line terminal-line--output">
+                                    <span class="terminal-line__success">✓ Data core initialized</span>
+                                </div>
+                                <div class="terminal-line">
+                                    <span class="terminal-line__prompt">$</span>
+                                    <span class="terminal-line__command">flowcore scenario init -t best-tenant</span>
+                                </div>
+                                <div class="terminal-line terminal-line--output">
+                                    <span class="terminal-line__success">✓ Scenario initialized</span>
+                                </div>
+                                <div class="terminal-line">
+                                    <span class="terminal-line__prompt">$</span>
+                                    <span class="terminal-line__command">flowcore apply -f flowcore.yaml</span>
+                                </div>
+                                <div class="terminal-line terminal-line--output">
+                                    <span class="terminal-line__success">✓ Infrastructure deployed</span>
+                                </div>
+                                <div class="terminal-line">
+                                    <span class="terminal-line__prompt">$</span>
+                                    <span class="terminal-line__command terminal-line__command--typing">flowcore-cli stream "https://flowcore.io/best-tenant/&lt;datacore&gt;/*"</span>
+                                </div>
+                                <div class="terminal-line terminal-line--output">
+                                    <span class="terminal-line__success">✓ Stream data from deployed data-core</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="demo-terminal__content">
-                            <div class="terminal-line">
-                                <span class="terminal-line__prompt">$</span>
-                                <span class="terminal-line__command">npm install -g @flowcore/cli</span>
-                            </div>
-                            <div class="terminal-line terminal-line--output">
-                                <span class="terminal-line__success">✓ Flowcore CLI installed successfully</span>
-                            </div>
-                            <div class="terminal-line">
-                                <span class="terminal-line__prompt">$</span>
-                                <span class="terminal-line__command">flowcore datacore create my-app</span>
-                            </div>
-                            <div class="terminal-line terminal-line--output">
-                                <span class="terminal-line__success">✓ Data core 'my-app' created</span>
-                            </div>
-                            <div class="terminal-line">
-                                <span class="terminal-line__prompt">$</span>
-                                <span class="terminal-line__command terminal-line__command--typing">flowcore events send --data '{"user": "john", "action": "login"}'</span>
-                            </div>
-                        </div>
+                    </div>
+
+                    <div class="getting-started__actions animate-on-scroll">
+                        <a href="https://docs.flowcore.io/guides/5-minute-tutorial/5-min-tutorial/" target="_blank" class="btn btn--primary">
+                            <i class="fas fa-play"></i>
+                            5-Minute Tutorial
+                        </a>
+                        <a href="https://flowcore.io/" target="_blank" class="btn btn--secondary">
+                            <i class="fas fa-rocket"></i>
+                            Start Free Trial
+                        </a>
                     </div>
                 </div>
 
                 <div class="getting-started__features">
                     <div class="feature-item animate-on-scroll stagger-delay-1">
                         <div class="feature-item__icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h3 class="feature-item__title">Quick Setup</h3>
-                        <p class="feature-item__description">Add Flowcore to your existing project in under 5 minutes. No data migration required - just connect your current data sources and start streaming events.</p>
-                    </div>
-                    <div class="feature-item animate-on-scroll stagger-delay-2">
-                        <div class="feature-item__icon">
                             <i class="fas fa-code"></i>
                         </div>
                         <h3 class="feature-item__title">Developer Friendly</h3>
                         <p class="feature-item__description">Clean APIs, comprehensive docs, and SDK support for all major languages. Built by developers, for developers with extensive documentation and community support.</p>
+                    </div>
+                    <div class="feature-item animate-on-scroll stagger-delay-2">
+                        <div class="feature-item__icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="feature-item__title">Quick Setup</h3>
+                        <p class="feature-item__description">Add Flowcore to your existing project in under 5 minutes. No data migration required - just connect your current data sources and start streaming events.</p>
                     </div>
                     <div class="feature-item animate-on-scroll stagger-delay-3">
                         <div class="feature-item__icon">
@@ -707,15 +739,6 @@
                     </div>
                 </div>
 
-                <div class="getting-started__actions animate-on-scroll">
-                    <a href="https://docs.flowcore.io/" target="_blank" class="btn btn--primary">
-                        <i class="fas fa-book"></i>
-                        Read Documentation
-                    </a>
-                    <a href="https://flowcore.io/" target="_blank" class="btn btn--secondary">
-                        <i class="fas fa-play"></i>
-                        Start Free Trial
-                    </a>
                 </div>
             </div>
         </section>

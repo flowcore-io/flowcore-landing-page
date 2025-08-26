@@ -27,6 +27,28 @@
     -webkit-backdrop-filter: blur(10px);
 }
 
+/* Remove pink focus highlighting for entire use case blocks */
+.use-case-block:focus {
+    outline: none;
+    outline-offset: 0;
+}
+
+.use-case-block:focus-visible {
+    outline: none;
+    outline-offset: 0;
+}
+
+/* Remove pink tap highlighting on mobile devices */
+.use-case-block {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .use-case-block.animate-in {
     animation: slideInUp 0.6s ease-out;
 }
@@ -148,6 +170,17 @@
     overflow: hidden;
     cursor: pointer;
     transition: all var(--transition-base);
+}
+
+/* Remove pink focus highlighting for use case blocks */
+.use-case-block__icon:focus {
+    outline: none;
+    outline-offset: 0;
+}
+
+.use-case-block__icon:focus-visible {
+    outline: none;
+    outline-offset: 0;
 }
 
 /* Only the original published animations - no additional effects */
