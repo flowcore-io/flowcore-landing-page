@@ -174,43 +174,7 @@
     }
     </script>
     
-    <!-- Alminni Web Inspector - AI-Powered Element Analysis -->
-    <script>
-        // Load and enable Open Web Inspector for AI-assisted analysis
-        function enableWebInspector(targetSelector = null) {
-            // Check if already loaded
-            if (typeof OpenWebInspector !== 'undefined') {
-                OpenWebInspector.enable();
-                if (targetSelector) {
-                    OpenWebInspector.selectElement(targetSelector);
-                }
-                return;
-            }
-            
-            // Load library
-            const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/open-web-inspector@latest/dist/open-web-inspector.min.js';
-            script.onload = () => {
-                OpenWebInspector.enable();
-                if (targetSelector) {
-                    setTimeout(() => OpenWebInspector.selectElement(targetSelector), 100);
-                }
-                console.log('🎯 Alminni Web Inspector activated! Click any element to inspect.');
-            };
-            script.onerror = () => {
-                console.error('Failed to load Open Web Inspector');
-            };
-            document.head.appendChild(script);
-        }
-        
-        // Keyboard shortcut to toggle inspector (Ctrl+Shift+E)
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && e.shiftKey && e.key === 'E') {
-                e.preventDefault();
-                enableWebInspector();
-            }
-        });
-    </script>
+
 </head>
 <body>
     <!-- Skip to main content link for accessibility -->
